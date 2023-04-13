@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('videos', function (Blueprint $table) {
             $table->id();
+            $table->string('sport');
+            $table->string('level');
+            $table->string('url');
             $table->timestamps();
         });
     }
