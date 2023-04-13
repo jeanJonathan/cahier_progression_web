@@ -23,6 +23,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // Pour raccourcir la prise en compte de la longueur de cle
+        Schema::defaultStringLength(191);
     }
 }
