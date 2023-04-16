@@ -10,17 +10,16 @@
                             <h2>{{ __('AMELIORER VOTRE TECHNIQUE') }}</h2>
                         </div>
                         <div style="display: flex; flex-wrap: nowrap;">
-                            <img src="{{ asset('cahier.jpg') }}" alt="Wingfoil image" class="card-img-top" style="width: 50%;">
-                            <img src="{{ asset('cahier.jpg') }}" alt="Wingfoil image" class="card-img-top" style="width: 50%;">
+                            <img src="{{ asset('progresSurf.jpg') }}" alt="Wingfoil image" class="card-img-top" style="width: 100%;">
                         </div>
                     </div>
                 </div>
                 <!--bloc1 section1--->
                 <div class="col-md-4">
-                    <section class="card mb-4">
+                    <section class="card mb-4 text-center">
                         <img src="{{ asset('surf.jpg') }}" alt="surf" class="card-img-top">
                         <article class="card-body">
-                            <h2>{{ __('Surf') }}</h2>
+                            <h2 class="">{{ __('Surf') }}</h2>
                         </article>
                         <aside class="card-body">
                             <p>{{ __('Lorem ipsum dolor sit amet, consectetur adipiscing elit.') }}</p>
@@ -29,7 +28,7 @@
                 </div>
                 <!--bloc2 section2--->
                 <div class="col-md-4">
-                    <section class="card mb-4">
+                    <section class="card mb-4 text-center">
                         <img src="{{ asset('kitesurf.jpg') }}" alt="planches" class="card-img-top">
                         <article class="card-body">
                             <h2>{{ __('KiteSurf') }}</h2>
@@ -39,7 +38,7 @@
                 </div>
                 <!--bloc3 section3 article1--->
                 <div class="col-md-4">
-                    <section class="card mb-4">
+                    <section class="card mb-4 text-center">
                         <img src="{{ asset('wingfoil.jpg') }}" alt="surf" class="card-img-top">
                         <article class="card-body">
                             <h2>{{ __('WingFoil') }}</h2>
@@ -60,7 +59,7 @@
                     </div>
                     <!--bloc 4 article 2-->
                     <div class="col-md-6 text-center text-md-left">
-                        <section >
+                        <section>
                             <article class="card-body">
                                 <h2 class="font-size-md-35px" style="font-size: 35px">{{ __('Progressez par chapitre et niveau') }}</h2>
                                 <p class="font-size-md-25px" style="font-size: 25px">{{ __('Consigner votre progression dans une feuille de notes.') }}</p>
