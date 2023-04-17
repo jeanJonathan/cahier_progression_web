@@ -58,7 +58,7 @@
                 </section>
             </div>
             <div class="col-md-6">
-                <section class="card mb-4">
+                <section class="card mb-4" style="position:relative;top:65px;">
                     <article class="card-body">
                         <h2>{{ __('Progress by chapter and level') }}</h2>
                         <p>{{ __('Record your progress in a note sheet') }}</p>
