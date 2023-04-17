@@ -152,7 +152,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-4">
-                        <h3>Contact Us</h3>
+                        <h3 class="text-center mb-4">Contact Us</h3>
                         <p>+33 XX XX XX XX </p>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
@@ -164,23 +164,23 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <ul>
-                                    <li>Notre société</li>
-                                    <li>Contactez-nous</li>
-                                    <li>Événements</li>
-                                    <li>Clients</li>
+                                    <li><a href="#">Our society</a></li>
+                                    <li><a href="#">contact us</a></li>
+                                    <li><a href="#">Events</a></li>
+                                    <li><a href="#">Clients</a></li>
                                 </ul>
                             </div>
                             <div class="col-md-6">
                                 <ul>
-                                    <li>Informations légales</li>
-                                    <li>Confidentialité</li>
-                                    <li>Sécurité</li>
+                                    <li><a href="#">legal information</a></li>
+                                    <li><a href="#">Privacy</a></li>
+                                    <li><a href="#">Security</a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <h3>Subscribe</h3>
+                        <h3 class="text-center mb-4">Subscribe</h3>
                         <form>
                             <div class="form-group">
                                 <input type="text" class="form-control" placeholder="Your Name">
