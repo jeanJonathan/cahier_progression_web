@@ -7,7 +7,7 @@
                 <div class="col-md-12">
                     <div class="card mb-4">
                         <div class="card-body">
-                            <h2>{{ __('AMELIORER VOTRE TECHNIQUE') }}</h2>
+                            <h2 class="text-center">{{ __('IMPROVE YOUR TECHNIQUE') }}</h2>
                         </div>
                         <div style="display: flex; flex-wrap: nowrap;">
                             <img src="{{ asset('progresSurf.jpg') }}" alt="Wingfoil image" class="card-img-top" style="width: 100%;">
@@ -16,8 +16,8 @@
                 </div>
                 <!--bloc1 section1--->
                 <div class="col-md-4">
-                    <section class="card mb-4 text-center">
-                        <img src="{{ asset('surf.jpg') }}" alt="surf" class="card-img-top">
+                    <section class="text-center">
+                        <img src="{{ asset('surf.jpg') }}" alt="surf" class="card-img-top card mb-4">
                         <article class="card-body">
                             <h2 class="">{{ __('Surf') }}</h2>
                         </article>
@@ -28,8 +28,8 @@
                 </div>
                 <!--bloc2 section2--->
                 <div class="col-md-4">
-                    <section class="card mb-4 text-center">
-                        <img src="{{ asset('kitesurf.jpg') }}" alt="planches" class="card-img-top">
+                    <section class=" text-center">
+                        <img src="{{ asset('kitesurf.jpg') }}" alt="planches" class="card-img-top card mb-4">
                         <article class="card-body">
                             <h2>{{ __('KiteSurf') }}</h2>
                             <p>{{ __('Lorem ipsum dolor sit amet, consectetur adipiscing elit.') }}</p>
@@ -37,9 +37,9 @@
                     </section>
                 </div>
                 <!--bloc3 section3 article1--->
-                <div class="col-md-4">
-                    <section class="card mb-4 text-center">
-                        <img src="{{ asset('wingfoil.jpg') }}" alt="surf" class="card-img-top">
+                <div class="col-md-4 ">
+                    <section class="text-center">
+                        <img src="{{ asset('wingfoil.jpg') }}" alt="surf" class="card-img-top card mb-4">
                         <article class="card-body">
                             <h2>{{ __('WingFoil') }}</h2>
                             <p>{{ __('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.') }}</p>
@@ -51,8 +51,8 @@
                 </div>
                 <!--fin--->
                 <!--bloc4 section4-->
-                <div class="row align-items-center">
-                    <div class="col-md-6">
+                <div class="row align-items-center my-4">
+                    <div class="col-md-6 ">
                         <section class="card mb-4">
                             <img src="{{ asset('cahierprogres.jpg') }}" alt="surf" class="card-img-top">
                         </section>
@@ -61,23 +61,22 @@
                     <div class="col-md-6 text-center text-md-left">
                         <section>
                             <article class="card-body">
-                                <h2 class="font-size-md-35px" style="font-size: 35px">{{ __('Progressez par chapitre et niveau') }}</h2>
-                                <p class="font-size-md-25px" style="font-size: 25px">{{ __('Consigner votre progression dans une feuille de notes.') }}</p>
+                                <h2 class="font-size-md-35px" style="font-size: 35px">{{ __('Progress by chapter and level') }}</h2>
+                                <p class="font-size-md-25px" style="font-size: 25px">{{ __('Record your progress in a note sheet') }}</p>
                             </article>
                             <aside class="card-body font-size-md-18px">
-                                <p class="d-none d-md-block">{{ __('Des vidéos incluses pour améliorer votre technique.') }}</p>
+                                <p class="d-none d-md-block">{{ __('Lorem ipsum dolor sit amet, consectetur adipiscing elit.') }}</p>
                             </aside>
                         </section>
                     </div>
                 </div>
-
                 <!---bloc4 section5---->
                 <div class="row align-items-center">
                     <div class="col-md-6 text-center text-md-left">
                         <section>
                             <article class="card-body">
-                                <h2 class="font-size-md-35px" style="font-size: 35px">{{ __('Des vidéos incluses pour améliorer votre technique') }}</h2>
-                                <p class="font-size-md-25px" style="font-size: 25px">{{ __('Connectez-vous pour accéder à votre feuille de note et aux vidéos.') }}</p>
+                                <h2 class="font-size-md-35px" style="font-size: 35px">{{ __('Videos included to improve your technique') }}</h2>
+                                <p class="font-size-md-25px" style="font-size: 25px">{{ __('Log in to access your grade sheet and videos.') }}</p>
                             </article>
                             <aside class="card-body font-size-md-18px">
                                 <p class="d-none d-md-block">{{ __('Lorem ipsum dolor sit amet, consectetur adipiscing elit.') }}</p>
@@ -89,9 +88,7 @@
                             <img src="{{ asset('video.jpg') }}" alt="surf" class="card-img-top">
                         </section>
                     </div>
-                    <!--bloc 4 article 2-->
                 </div>
-
             <div class="col-md-6">
                 <section class="card mb-4">
                     <article class="card-body">
@@ -129,15 +126,24 @@
                         </p>
                     </div>
                     <div class="col-md-4">
-                        <h3>About us</h3>
-                        <ul>
-                            <li>Notre société</li>
-                            <li>Contactez-nous</li>
-                            <li>Événements</li>
-                            <li>Clients</li>
-                            <li>Informations légales • Confidentialité</li>
-                            <li>Sécurité</li>
-                        </ul>
+                        <h3 class="text-center mb-4">About us</h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul>
+                                    <li>Notre société</li>
+                                    <li>Contactez-nous</li>
+                                    <li>Événements</li>
+                                    <li>Clients</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul>
+                                    <li>Informations légales</li>
+                                    <li>Confidentialité</li>
+                                    <li>Sécurité</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-md-4">
                         <h3>Subscribe</h3>
