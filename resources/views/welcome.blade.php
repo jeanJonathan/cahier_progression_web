@@ -51,14 +51,14 @@
                 </div>
                 <!--fin--->
             <div class="col-md-6">
-                <section class="card mb-4">
+                <section class="">
                     <article class="card-body">
-                        <img src="{{ asset('cahierprogres.jpg') }}" alt="surf" class="card-img-top">
+                        <img src="{{ asset('cahierprogres.jpg') }}" alt="surf" class="card-img-top card mb-4">
                     </article>
                 </section>
             </div>
             <div class="col-md-6">
-                <section class="card mb-4" style="position:relative;top:65px;">
+                <section class="text-center" style="position:relative;top:65px;">
                     <article class="card-body">
                         <h2>{{ __('Progress by chapter and level') }}</h2>
                         <p>{{ __('Record your progress in a note sheet') }}</p>
@@ -68,14 +68,11 @@
                     </aside>
                 </section>
             </div>
-
-
-                <div class="col-md-6 ">
-                    <section class="card mb-4">
+                <div class="col-md-6" style="position:relative;top:90px;">
+                    <section class="text-center" style="">
                         <article class="card-body">
                             <h2>{{ __('Videos included to improve your technique') }}</h2>
                             <p>{{ __('Log in to access your grade sheet and videos.') }}</p>
-
                         </article>
                         <aside class="card-body">
                             <p>{{ __('Lorem ipsum dolor sit amet, consectetur adipiscing elit.') }}</p>
@@ -83,9 +80,9 @@
                     </section>
                 </div>
                 <div class="col-md-6">
-                    <section class="card mb-4">
+                    <section class="">
                         <article class="card-body">
-                            <img src="{{ asset('video.jpg') }}" alt="surf" class="card-img-top">
+                            <img src="{{ asset('video.jpg') }}" alt="surf" class="card-img-top card mb-4">
                         </article>
                     </section>
                 </div>
@@ -151,7 +148,7 @@
             </div>
         </div>
     </div>
-        <footer class="pt-5 pb-4">
+        <footer class="pt-5 pb-4 card mb-4">
             <div class="container">
                 <div class="row">
                     <div class="col-md-4">
