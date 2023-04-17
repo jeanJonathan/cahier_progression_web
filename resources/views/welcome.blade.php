@@ -50,67 +50,104 @@
                     </section>
                 </div>
                 <!--fin--->
-                <!--bloc4 section4-->
-                <div class="row align-items-center my-4">
-                    <div class="col-md-6 ">
-                        <section class="card mb-4">
-                            <img src="{{ asset('cahierprogres.jpg') }}" alt="surf" class="card-img-top">
-                        </section>
-                    </div>
-                    <!--bloc 4 article 2-->
-                    <div class="col-md-6 text-center text-md-left">
-                        <section>
-                            <article class="card-body">
-                                <h2 class="font-size-md-35px" style="font-size: 35px">{{ __('Progress by chapter and level') }}</h2>
-                                <p class="font-size-md-25px" style="font-size: 25px">{{ __('Record your progress in a note sheet') }}</p>
-                            </article>
-                            <aside class="card-body font-size-md-18px">
-                                <p class="d-none d-md-block">{{ __('Lorem ipsum dolor sit amet, consectetur adipiscing elit.') }}</p>
-                            </aside>
-                        </section>
-                    </div>
-                </div>
-                <!---bloc4 section5---->
-                <div class="row align-items-center">
-                    <div class="col-md-6 text-center text-md-left">
-                        <section>
-                            <article class="card-body">
-                                <h2 class="font-size-md-35px" style="font-size: 35px">{{ __('Videos included to improve your technique') }}</h2>
-                                <p class="font-size-md-25px" style="font-size: 25px">{{ __('Log in to access your grade sheet and videos.') }}</p>
-                            </article>
-                            <aside class="card-body font-size-md-18px">
-                                <p class="d-none d-md-block">{{ __('Lorem ipsum dolor sit amet, consectetur adipiscing elit.') }}</p>
-                            </aside>
-                        </section>
-                    </div>
-                    <div class="col-md-6">
-                        <section class="card mb-4">
-                            <img src="{{ asset('video.jpg') }}" alt="surf" class="card-img-top">
-                        </section>
-                    </div>
-                </div>
             <div class="col-md-6">
                 <section class="card mb-4">
                     <article class="card-body">
-                        <h2>{{ __('article4') }}</h2>
-                        <p>{{ __('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.') }}</p>
-
+                        <img src="{{ asset('cahierprogres.jpg') }}" alt="surf" class="card-img-top">
+                    </article>
+                </section>
+            </div>
+            <div class="col-md-6">
+                <section class="card mb-4">
+                    <article class="card-body">
+                        <h2>{{ __('Progress by chapter and level') }}</h2>
+                        <p>{{ __('Record your progress in a note sheet') }}</p>
                     </article>
                     <aside class="card-body">
                         <p>{{ __('Lorem ipsum dolor sit amet, consectetur adipiscing elit.') }}</p>
                     </aside>
                 </section>
             </div>
-            <div class="col-md-6">
-                <section class="card mb-4">
-                    <article class="card-body">
-                        <h2>{{ __('article5') }}</h2>
-                        <p>{{ __('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.') }}</p>
-                    </article>
-                    <aside class="card-body">
-                        <p>{{ __('Lorem ipsum dolor sit amet, consectetur adipiscing elit.') }}</p>
-                    </aside>
-                </section>
+
+
+                <div class="col-md-6 ">
+                    <section class="card mb-4">
+                        <article class="card-body">
+                            <h2>{{ __('Videos included to improve your technique') }}</h2>
+                            <p>{{ __('Log in to access your grade sheet and videos.') }}</p>
+
+                        </article>
+                        <aside class="card-body">
+                            <p>{{ __('Lorem ipsum dolor sit amet, consectetur adipiscing elit.') }}</p>
+                        </aside>
+                    </section>
+                </div>
+                <div class="col-md-6">
+                    <section class="card mb-4">
+                        <article class="card-body">
+                            <img src="{{ asset('video.jpg') }}" alt="surf" class="card-img-top">
+                        </article>
+                    </section>
+                </div>
+                <!--    -->
+                <div class="col-md-6">
+                    <section class="card mb-4">
+                        <article class="card-body">
+                            <h2>{{ __('article4') }}</h2>
+                            <p>{{ __('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.') }}</p>
+
+                        </article>
+                        <aside class="card-body">
+                            <p>{{ __('Lorem ipsum dolor sit amet, consectetur adipiscing elit.') }}</p>
+                        </aside>
+                    </section>
+                </div>
+                <div class="col-md-6">
+                    <section class="card mb-4">
+                        <article class="card-body">
+                            <h2>{{ __('article5') }}</h2>
+                            <p>{{ __('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.') }}</p>
+                        </article>
+                        <aside class="card-body">
+                            <p>{{ __('Lorem ipsum dolor sit amet, consectetur adipiscing elit.') }}</p>
+                        </aside>
+                    </section>
+                </div>
+                <div class="col-md-4">
+                    <section class="text-center">
+                        <img src="{{ asset('ocean.png') }}" alt="surf" class="card-img-top rounded-circle mx-auto d-block mb-4" style="max-width: 50%; margin: 0 auto;">
+                        <article class="card-body">
+                            <h2 class="">{{ __('Surf') }}</h2>
+                        </article>
+                        <aside class="card-body">
+                            <p>{{ __('Lorem ipsum dolor sit amet, consectetur adipiscing elit.') }}</p>
+                        </aside>
+                    </section>
+                </div>
+
+                <!--bloc4 section2--->
+                <div class="col-md-4">
+                    <section class=" text-center">
+                        <img src="{{ asset('planches.jpg') }}" alt="planches" class="card-img-top rounded-circle mx-auto d-block mb-4" style="max-width: 50%; margin: 0 auto;">
+                        <article class="card-body">
+                            <h2>{{ __('Lorem ipsum ') }}</h2>
+                            <p>{{ __('Lorem ipsum dolor sit amet, consectetur adipiscing elit.') }}</p>
+                        </article>
+                    </section>
+                </div>
+                <!--bloc3 section3 article1--->
+                <div class="col-md-4 ">
+                    <section class="text-center">
+                        <img src="{{ asset('plage.jpg') }}" alt="surf" class="card-img-top rounded-circle mx-auto d-block mb-4"style="max-width: 50%; margin: 0 auto;">
+                        <article class="card-body">
+                            <h2>{{ __('Lorem ipsum ') }}</h2>
+                            <p>{{ __('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.') }}</p>
+                        </article>
+                        <aside class="card-body">
+                            <p>{{ __('Lorem ipsum dolor sit amet, consectetur adipiscing elit.') }}</p>
+                        </aside>
+                    </section>
+                </div>
             </div>
         </div>
     </div>
@@ -166,5 +203,4 @@
                 © 2023 Website made with Laravel | All Rights Reserved | Powered by Jean-Jonathan
             </div>
         </footer>
-
 @endsection
