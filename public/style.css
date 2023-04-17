@@ -1,0 +1,150 @@
+@media only screen and (min-width: 768px) {
+  /* Pour les tablettes et les ordinateurs portables */
+  .image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .image-container img {
+    max-width: 50%;
+    height: auto;
+    margin-right: 20px;
+  }
+  .image-container p {
+    text-align: left;
+    font-size: 16px;
+  }
+}
+
+
+@media only screen and (max-width: 320px) {
+/* Pour les appareils mobiles de 320px et moins */
+nav {
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+.nav-links {
+display: flex;
+flex-direction: column;
+align-items: center;
+position: absolute;
+top: 60px;
+left: 0;
+background-color: #f4f4f4;
+width: 100%;
+text-align: center;
+}
+.nav-links li {
+display: block;
+margin: 5px 0;
+}
+.burger {
+display: block;
+}
+.hero-text {
+text-align: center;
+}
+.about-us-box {
+margin-bottom: 30px;
+}
+img {
+max-width: 100%;
+height: auto;
+}
+}
+
+@media only screen and (min-width: 321px) and (max-width: 375px) {
+/* Pour les appareils mobiles de 321px à 375px */
+nav {
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+.nav-links {
+display: none;
+position: absolute;
+top: 60px;
+left: 0;
+background-color: #f4f4f4;
+width: 100%;
+text-align: center;
+}
+.nav-links li {
+display: block;
+margin: 10px 0;
+}
+.burger {
+display: block;
+}
+.hero-text {
+text-align: center;
+}
+.about-us-box {
+margin-bottom: 30px;
+}
+}
+
+@media only screen and (min-width: 376px) and (max-width: 425px) {
+/* Pour les appareils mobiles de 376px à 425px */
+nav {
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+.nav-links {
+display: none;
+position: absolute;
+top: 60px;
+left: 0;
+background-color: #f4f4f4;
+width: 100%;
+text-align: center;
+}
+.nav-links li {
+display: block;
+margin: 10px 0;
+}
+.burger {
+display: block;
+}
+.hero-text {
+text-align: center;
+}
+.about-us-box {
+margin-bottom: 30px;
+}
+}
+
+@media only screen and (min-width: 768px) {
+/* Pour les tablettes et les ordinateurs portables */
+nav {
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+.nav-links {
+display: flex;
+flex-direction: row;
+justify-content: flex-end;
+align-items: center;
+margin-right: 30px;
+}
+.nav-links li {
+margin: 0 15px;
+}
+.burger {
+display: none;
+}
+.hero-text {
+text-align: left;
+}
+.about-us-box {
+margin-right: 30px;
+}
+img {
+max-width: 100%;
+height: auto;
+}
+}
