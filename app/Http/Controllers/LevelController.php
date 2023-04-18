@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
+//Pour permettre au Controller d'utiliser le modele
 use App\Models\Level;
 
 class LevelController extends Controller
@@ -57,7 +59,10 @@ class LevelController extends Controller
      */
     public function show($id)
     {
-        //
+        $level = Level::findOrFail($id);
+        $etapes = Etape::where('level_id', $id)->orderBy('id', 'asc')->get();
+
+        return view('levels.show', compact('level', 'etapes'));
     }
 
     /**

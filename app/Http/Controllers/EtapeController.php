@@ -23,7 +23,7 @@ class EtapeController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**

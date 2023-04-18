@@ -25,7 +25,13 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //Liste des routes accessible qu'aux utilisateurs connecte
 Route::get('/dashboard', 'DashboardController@index')->middleware('auth');
 
-Route::get('/surf', [App\Http\Controllers\SurfController::class, 'index'])->name('surf.index');
-Route::get('/kitesurf', [App\Http\Controllers\KitesurfController::class, 'index'])->name('kite.index');
-Route::get('/wingfoil', [App\Http\Controllers\WingfoilController::class, 'index'])->name('wingfoil.index');
+//Imeplementation des routes permettant d'acceder aux methode de LevelController
+
+Route::get('/levels', [LevelController::class, 'index'])->name('levels.index');
+Route::get('/levels/create', [LevelController::class, 'create'])->name('levels.create');
+Route::post('/levels', [LevelController::class, 'store'])->name('levels.store');
+Route::get('/levels/{id}', [LevelController::class, 'show'])->name('levels.show');
+Route::get('/levels/{id}/edit', [LevelController::class, 'edit'])->name('levels.edit');
+Route::put('/levels/{id}', [LevelController::class, 'update'])->name('levels.update');
+Route::delete('/levels/{id}', [LevelController::class, 'destroy'])->name('levels.destroy');
 
