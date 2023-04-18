@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Kite extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['nom', 'description', 'price', 'custom'];
 }
