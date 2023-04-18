@@ -18,9 +18,8 @@ return new class extends Migration
             $table->string('nom');
             $table->text('description')->nullable();
             $table->decimal('price', 8, 2)->nullable();
-            $table->timestamps();
             $table->boolean('custom')->default(false);
-
+            $table->timestamps();
         });
     }
 

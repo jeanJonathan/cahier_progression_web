@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('kite_id');
             $table->foreign('kite_id')->references('id')->on('kites');
-            $table->unsignedBigInteger('niveau_id');
-            $table->foreign('niveau_id')->references('id')->on('niveau');
+            $table->unsignedBigInteger('level_id');
+            $table->foreign('level_id')->references('id')->on('levels');
             $table->dateTime('date');
             $table->string('location');
             $table->string('weather');
@@ -26,7 +26,8 @@ return new class extends Migration
             $table->string('photo_url')->nullable();
             $table->string('video_url')->nullable();
             $table->integer('user_id');
-            $table->integer('etape_id');
+            $table->unsignedBigInteger('etape_id');
+            $table->foreign('etape_id')->references('id')->on('etapes');
             $table->timestamps();
         });
     }

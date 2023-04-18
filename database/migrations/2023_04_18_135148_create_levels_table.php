@@ -19,7 +19,8 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->integer('hours_needed');
             $table->string('video_url')->nullable();
-            $table->integer('kite_id');
+            $table->unsignedBigInteger('sport_id');
+            $table->foreign('sport_id')->references('id')->on('sports');
             $table->timestamps();
         });
     }
