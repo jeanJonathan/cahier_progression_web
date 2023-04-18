@@ -21,7 +21,7 @@ class Level extends Model
         return $this->belongsTo(Sport::class);
     }
 
-    public function etapes()
+    public function etape()
     {
         return $this->hasMany(Etape::class);
     }
