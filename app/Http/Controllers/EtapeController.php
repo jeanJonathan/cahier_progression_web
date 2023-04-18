@@ -35,7 +35,12 @@ class EtapeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $etapes = new Etape;
+        $etapes->level_id = $request->level_id;
+        $etapes->lieu = $request->lieu;
+        $etapes->date = $request->date;
+        $etapes->meteo = $request->meteo;
+        $etapes->progression = $request->progression;
     }
 
     /**
