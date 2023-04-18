@@ -21,9 +21,10 @@ class EtapeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($level_id)
     {
-
+        $level = Level::find($level_id);
+        return view('etapes.create', compact('level'));
     }
 
     /**
