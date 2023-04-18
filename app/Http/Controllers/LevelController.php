@@ -80,7 +80,17 @@ class LevelController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'nom' => 'required',
+            'description' => 'nullable',
+            'hours_needed' => 'required|integer',
+            'video_url' => 'nullable',
+            'sport_id' => 'required|exists:sports,id'
+        ]);
+
+        $level->update($validatedData);
+
+        return redirect()->route('levels.index');
     }
 
     /**
