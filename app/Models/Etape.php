@@ -10,19 +10,20 @@ class Etape extends Model
     use HasFactory;
     protected $fillable = [
         'progression_id',
-        'nom',
-        'description',
+        'lieu',
+        'date',
+        'meteo',
         'video_url',
         'level_id'
     ];
 
     public function progression()
     {
-        return $this->belongsTo('App\Progression');
+        return $this->belongsTo('Progression::class');
     }
 
     public function level()
     {
-        return $this->belongsTo('App\Level');
+        return $this->belongsTo('Level::class');
     }
 }

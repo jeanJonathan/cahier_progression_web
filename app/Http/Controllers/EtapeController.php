@@ -40,7 +40,8 @@ class EtapeController extends Controller
         $etapes->lieu = $request->lieu;
         $etapes->date = $request->date;
         $etapes->meteo = $request->meteo;
-        $etapes->progression = $request->progression;
+        $etapes->video_url = $request->video_url;
+        $etapes->progression_id = $request->progression_id;
 
         if ($request->hasFile('image')) {
             $file = $request->file('image');
@@ -98,7 +99,8 @@ class EtapeController extends Controller
         $etapes->lieu = $request->lieu;
         $etapes->date = $request->date;
         $etapes->meteo = $request->meteo;
-        $etapes->progression = $request->progression;
+        $etapes->video_url = $request->video_url;
+        $etapes->progression_id = $request->progression_id;
 
         if ($request->hasFile('image')) {
             $file = $request->file('image');
@@ -133,6 +135,5 @@ class EtapeController extends Controller
         $etapes->delete();
 
         return redirect()->route('levels.show', $level_id)->with('success', 'Etape supprimée avec succès');
-
     }
 }
