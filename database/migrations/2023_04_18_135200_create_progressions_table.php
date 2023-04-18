@@ -28,6 +28,9 @@ return new class extends Migration
             $table->integer('user_id');
             $table->unsignedBigInteger('etape_id');
             $table->foreign('etape_id')->references('id')->on('etapes');
+            $table->integer('surf_progression')->nullable();
+            $table->integer('kite_progression')->nullable();
+            $table->integer('wingfoil_progression')->nullable();
             $table->timestamps();
         });
     }

@@ -26,7 +26,6 @@ return new class extends Migration
             $table->unsignedBigInteger('kite_progression')->nullable();
             $table->unsignedBigInteger('surf_progression')->nullable();
             $table->unsignedBigInteger('windsurf_progression')->nullable();
-
             $table->foreign('kite_progression')->references('id')->on('progressions');
             $table->foreign('surf_progression')->references('id')->on('progressions');
             $table->foreign('wingfoil_progression')->references('id')->on('progressions');
