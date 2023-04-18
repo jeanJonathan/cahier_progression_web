@@ -23,9 +23,13 @@ return new class extends Migration
             $table->foreign('sport_id')->references('id')->on('sports');
             $table->string('address')->nullable();
             $table->string('phone')->nullable();
-            $table->integer('kite_progression')->nullable();
-            $table->integer('surf_progression')->nullable();
-            $table->integer('wakeboard_progression')->nullable();
+            $table->unsignedBigInteger('kite_progression')->nullable();
+            $table->unsignedBigInteger('surf_progression')->nullable();
+            $table->unsignedBigInteger('windsurf_progression')->nullable();
+
+            $table->foreign('kite_progression')->references('id')->on('progressions');
+            $table->foreign('surf_progression')->references('id')->on('progressions');
+            $table->foreign('wingfoil_progression')->references('id')->on('progressions');
             $table->rememberToken();
             $table->timestamps();
         });
