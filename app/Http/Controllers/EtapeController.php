@@ -80,7 +80,9 @@ class EtapeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $etapes = Etape::find($id);
+        $level = Level::find($etapes->level_id);
+        return view('etapes.edit', compact('etapes', 'level'));
     }
 
     /**
