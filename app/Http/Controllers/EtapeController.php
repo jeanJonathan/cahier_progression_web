@@ -41,6 +41,24 @@ class EtapeController extends Controller
         $etapes->date = $request->date;
         $etapes->meteo = $request->meteo;
         $etapes->progression = $request->progression;
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('images'), $filename);
+            $etapes->image = $filename;
+        }
+
+        if ($request->hasFile('video')) {
+            $file = $request->file('video');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('videos'), $filename);
+            $etapes->video = $filename;
+        }
+
+        $etapes->save();
+
+        return redirect()->route('levels.show', $etapes->level_id)->with('success', 'Etape créée avec succès');
     }
 
     /**
