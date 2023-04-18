@@ -36,7 +36,17 @@ class LevelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'nom' => 'required',
+            'description' => 'nullable',
+            'hours_needed' => 'required|integer',
+            'video_url' => 'nullable',
+            'sport_id' => 'required|exists:sports,id'
+        ]);
+
+        Level::create($validatedData);
+
+        return redirect()->route('levels.index');
     }
 
     /**
@@ -58,7 +68,7 @@ class LevelController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('levels.edit', compact('level'));
     }
 
     /**
