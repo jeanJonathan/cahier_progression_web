@@ -128,6 +128,11 @@ class EtapeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $etapes = Etape::find($id);
+        $level_id = $etapes->level_id;
+        $etapes->delete();
+
+        return redirect()->route('levels.show', $level_id)->with('success', 'Etape supprimée avec succès');
+
     }
 }
