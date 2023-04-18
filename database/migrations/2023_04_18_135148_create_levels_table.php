@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('levels', function (Blueprint $table) {
             $table->id();
+            $table->string('nom');
+            $table->text('description')->nullable();
+            $table->integer('hours_needed');
+            $table->string('video_url')->nullable();
+            $table->integer('kite_id');
             $table->timestamps();
         });
     }

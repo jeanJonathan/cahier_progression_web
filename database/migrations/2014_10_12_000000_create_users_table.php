@@ -19,6 +19,12 @@ return new class extends Migration
             $table->string('email', 191);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('sport');
+            $table->string('adress')->nullable();
+            $table->string('phone')->nullable();
+            $table->integer('kite_progression')->nullable();
+            $table->integer('surf_progression')->nullable();
+            $table->integer('wakeboard_progression')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
