@@ -66,7 +66,7 @@ class LevelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Level $level)
     {
         return view('levels.edit', compact('level'));
     }
@@ -78,7 +78,7 @@ class LevelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Level $level)
     {
         $validatedData = $request->validate([
             'nom' => 'required',
@@ -99,8 +99,10 @@ class LevelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Level $level)
     {
-        //
+        $level->delete();
+
+        return redirect()->route('levels.index');
     }
 }
