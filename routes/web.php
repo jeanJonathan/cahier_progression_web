@@ -44,3 +44,11 @@ Route::group(['prefix' => 'etapes'], function () {
     Route::delete('/{id}', [EtapeController::class, 'destroy'])->name('etapes.destroy');
 });
 
+Route::group(['prefix' => 'kites'], function () {
+    Route::get('/', [KiteController::class, 'index'])->name('kites.index');
+    Route::get('/create', [KiteController::class, 'create'])->name('kites.create');
+    Route::post('/', [KiteController::class, 'store'])->name('kites.store');
+    Route::get('/{id}/edit', [KiteController::class, 'edit'])->name('kites.edit');
+    Route::put('/{id}', [KiteController::class, 'update'])->name('kites.update');
+    Route::delete('/{id}', [KiteController::class, 'destroy'])->name('kites.destroy');
+});
