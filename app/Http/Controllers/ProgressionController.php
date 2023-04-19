@@ -89,7 +89,24 @@ class ProgressionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        }
+        $progression = Progression::find($id);
+        $progression->kite_id = $request->kite_id;
+        $progression->level_id = $request->level_id;
+        $progression->date = $request->date;
+        $progression->location = $request->location;
+        $progression->weather = $request->weather;
+        $progression->notes = $request->notes;
+        $progression->photo_url = $request->photo_url;
+        $progression->video_url = $request->video_url;
+        $progression->etape_id = $request->etape_id;
+        $progression->surf_progression = $request->surf_progression;
+        $progression->kite_progression = $request->kite_progression;
+        $progression->wingfoil_progression = $request->wingfoil_progression;
+        $progression->save();
+
+        return redirect()->route('progression.show', ['progression' => $progression])->with('success', 'La progression a été mise à jour avec succès !');
+
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -99,6 +116,10 @@ class ProgressionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $progression = Progression::find($id);
+        $progression->delete();
+
+        return redirect()->route('progression.index')->with('success', 'La progression a été supprimée avec succès !');
+
     }
 }
