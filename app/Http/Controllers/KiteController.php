@@ -13,7 +13,8 @@ class KiteController extends Controller
      */
     public function index()
     {
-        //
+        $kites = Kite::all();
+        return view('kites.index', compact('kites'));
     }
 
     /**
@@ -23,7 +24,6 @@ class KiteController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
