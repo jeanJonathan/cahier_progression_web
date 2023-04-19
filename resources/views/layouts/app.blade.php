@@ -31,11 +31,10 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
+                    <!----
                     <ul class="navbar-nav me-auto">
-                        <li class="nav-item"><a class="nav-link"  href="{{ route('surf.index') }}" class="custom-link me-2">{{ __('surf') }}</a></li>
-                        <li class="nav-item"><a class="nav-link"  href="{{ route('kitesurf.index') }}" class="custom-link me-2">{{ __('kitesurf') }}</a></li>
-                        <li class="nav-item"><a class="nav-link"  href="{{ route('wingfoil.index') }}" class="custom-link me-2">{{ __('wingfoil') }}</a></li>
-                    </ul>
+                    A completer a la fin des fonctionnalites implementer 
+                    </ul> ---->
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
