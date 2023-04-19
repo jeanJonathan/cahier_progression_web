@@ -75,7 +75,9 @@ class ProgressionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $progression = Progression::find($id);
+        return view('progressions.edit', compact('progression'));
+
     }
 
     /**
@@ -87,9 +89,7 @@ class ProgressionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $progression = Progression::find($id);
-        return view('progressions.edit', compact('progression'));
-    }
+        }
 
     /**
      * Remove the specified resource from storage.
