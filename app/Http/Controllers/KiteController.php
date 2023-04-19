@@ -24,6 +24,7 @@ class KiteController extends Controller
      */
     public function create()
     {
+        return view('kites.create');
     }
 
     /**
