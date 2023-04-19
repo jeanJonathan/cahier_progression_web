@@ -52,3 +52,11 @@ Route::group(['prefix' => 'kites'], function () {
     Route::put('/{id}', [KiteController::class, 'update'])->name('kites.update');
     Route::delete('/{id}', [KiteController::class, 'destroy'])->name('kites.destroy');
 });
+
+Route::get('/progressions', [ProgressionController::class, 'index'])->name('progressions.index');
+Route::get('/progressions/create', [ProgressionController::class, 'create'])->name('progressions.create');
+Route::post('/progressions', [ProgressionController::class, 'store'])->name('progressions.store');
+Route::get('/progressions/{progression}', [ProgressionController::class, 'show'])->name('progressions.show');
+Route::get('/progressions/{progression}/edit', [ProgressionController::class, 'edit'])->name('progressions.edit');
+Route::put('/progressions/{progression}', [ProgressionController::class, 'update'])->name('progressions.update');
+Route::delete('/progressions/{progression}', [ProgressionController::class, 'destroy'])->name('progressions.destroy');
