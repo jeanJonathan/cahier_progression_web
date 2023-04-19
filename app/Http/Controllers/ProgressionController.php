@@ -87,7 +87,8 @@ class ProgressionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $progression = Progression::find($id);
+        return view('progressions.edit', compact('progression'));
     }
 
     /**
