@@ -24,7 +24,7 @@ class ProgressionController extends Controller
      */
     public function create()
     {
-        //
+        return view('progressions.create');
     }
 
     /**
