@@ -63,7 +63,8 @@ class ProgressionController extends Controller
      */
     public function show($id)
     {
-        //
+        $progression = Progression::find($id);
+        return view('progressions.show', compact('progression'));
     }
 
     /**
