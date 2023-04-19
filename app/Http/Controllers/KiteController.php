@@ -63,7 +63,8 @@ class KiteController extends Controller
      */
     public function show($id)
     {
-        //
+        $kite = Kite::find($id);
+        return view('kites.show', compact('kite'));
     }
 
     /**
@@ -74,7 +75,8 @@ class KiteController extends Controller
      */
     public function edit($id)
     {
-        //
+        $kite = Kite::find($id);
+        return view('kites.edit', compact('kite'));
     }
 
     /**
