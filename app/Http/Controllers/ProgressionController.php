@@ -35,7 +35,24 @@ class ProgressionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $progression = Progression::create([
+            'kite_id' => $request->kite_id,
+            'level_id' => $request->level_id,
+            'date' => $request->date,
+            'location' => $request->location,
+            'weather' => $request->weather,
+            'notes' => $request->notes,
+            'photo_url' => $request->photo_url,
+            'video_url' => $request->video_url,
+            'user_id' => auth()->user()->id,
+            'etape_id' => $request->etape_id,
+            'surf_progression' => $request->surf_progression,
+            'kite_progression' => $request->kite_progression,
+            'wingfoil_progression' => $request->wingfoil_progression
+        ]);
+
+        return redirect()->route('progressions.show', $progression->id)->with('success', 'Progression créée avec succès');
+
     }
 
     /**
