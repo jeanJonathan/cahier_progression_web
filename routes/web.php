@@ -35,3 +35,12 @@ Route::get('/levels/{id}/edit', [LevelController::class, 'edit'])->name('levels.
 Route::put('/levels/{id}', [LevelController::class, 'update'])->name('levels.update');
 Route::delete('/levels/{id}', [LevelController::class, 'destroy'])->name('levels.destroy');
 
+Route::group(['prefix' => 'etapes'], function () {
+    Route::get('/', [EtapeController::class, 'index'])->name('etapes.index');
+    Route::get('/create', [EtapeController::class, 'create'])->name('etapes.create');
+    Route::post('/', [EtapeController::class, 'store'])->name('etapes.store');
+    Route::get('/{id}/edit', [EtapeController::class, 'edit'])->name('etapes.edit');
+    Route::put('/{id}', [EtapeController::class, 'update'])->name('etapes.update');
+    Route::delete('/{id}', [EtapeController::class, 'destroy'])->name('etapes.destroy');
+});
+
