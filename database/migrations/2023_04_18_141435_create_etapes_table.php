@@ -15,8 +15,6 @@ return new class extends Migration
     {
         Schema::create('etapes', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('progression_id');
-            $table->foreign('progression_id')->references('id')->on('progression');
             $table->string('nom');
             $table->text('description')->nullable();
             $table->string('video_url');
