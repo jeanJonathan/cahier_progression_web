@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Etape;
 
 //Pour permettre au Controller d'utiliser le modele
 use App\Models\Level;

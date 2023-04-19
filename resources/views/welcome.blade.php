@@ -60,7 +60,7 @@
             <div class="col-md-6">
                 <section class="text-center" style="position:relative;top:65px;">
                     <article class="card-body">
-                        <h2>{{ __('Progress by chapter and level') }}</h2>
+                        <h2>{{ __('Progress by chapter and levels') }}</h2>
                         <p>{{ __('Record your progress in a note sheet') }}</p>
                     </article>
                     <aside class="card-body">

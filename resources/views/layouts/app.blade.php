@@ -33,7 +33,7 @@
                     <!-- Left Side Of Navbar -->
                     <!----
                     <ul class="navbar-nav me-auto">
-                    A completer a la fin des fonctionnalites implementer 
+                    A completer a la fin des fonctionnalites implementer
                     </ul> ---->
 
                     <!-- Right Side Of Navbar -->

@@ -8,6 +8,12 @@ use App\Models\Level;
 
 class EtapeController extends Controller
 {
+    public function index()
+    {
+        $etapes = Etape::all();
+        return view('etape.index', compact('etapes'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

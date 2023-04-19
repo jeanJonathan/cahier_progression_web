@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\LevelController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -60,3 +61,7 @@ Route::get('/progressions/{progression}', [ProgressionController::class, 'show']
 Route::get('/progressions/{progression}/edit', [ProgressionController::class, 'edit'])->name('progressions.edit');
 Route::put('/progressions/{progression}', [ProgressionController::class, 'update'])->name('progressions.update');
 Route::delete('/progressions/{progression}', [ProgressionController::class, 'destroy'])->name('progressions.destroy');
+
+
+Route::resource('etapes', 'App\Http\Controllers\EtapeController');
+Route::resource('levels', 'App\Http\Controllers\LevelController');

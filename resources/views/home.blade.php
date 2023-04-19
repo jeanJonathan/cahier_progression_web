@@ -15,6 +15,7 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+                        <a href="{{ route('etapes.index') }}">Voir les étapes</a>
                 </div>
             </div>
         </div>
