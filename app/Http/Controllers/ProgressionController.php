@@ -13,7 +13,8 @@ class ProgressionController extends Controller
      */
     public function index()
     {
-        //
+        $progressions = Progression::all();
+        return view('progressions.index', compact('progressions'));
     }
 
     /**
