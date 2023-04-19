@@ -35,7 +35,24 @@ class KiteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nom' => 'required',
+            'description' => 'required',
+            'price' => 'required|numeric|min:0',
+            'custom' => 'boolean'
+        ]);
+
+        $kite = new Kite([
+            'nom' => $request->get('nom'),
+            'description' => $request->get('description'),
+            'price' => $request->get('price'),
+            'custom' => $request->get('custom') ? true : false
+        ]);
+
+        $kite->save();
+
+        return redirect('/kites')->with('success', 'Kite ajouté avec succès !');
+
     }
 
     /**
