@@ -114,6 +114,10 @@ class KiteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $kite = Kite::find($id);
+        $kite->delete();
+
+        return redirect('/kites')->with('success', 'Kite supprimé avec succès !');
+
     }
 }
