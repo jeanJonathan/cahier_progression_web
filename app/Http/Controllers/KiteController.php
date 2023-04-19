@@ -88,7 +88,22 @@ class KiteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nom' => 'required',
+            'description' => 'required',
+            'price' => 'required|numeric|min:0',
+            'custom' => 'boolean'
+        ]);
+
+        $kite = Kite::find($id);
+        $kite->nom = $request->get('nom');
+        $kite->description = $request->get('description');
+        $kite->price = $request->get('price');
+        $kite->custom = $request->get('custom') ? true : false;
+        $kite->save();
+
+        return redirect('/kites')->with('success', 'Kite modifié avec succès !');
+
     }
 
     /**
