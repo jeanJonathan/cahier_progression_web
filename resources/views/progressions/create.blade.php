@@ -113,5 +113,14 @@
         background-color: white;
         color: black;
     }
-
+    .ui-autocomplete {
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        background-color: #fff;
+        padding: 0.5em;
+        list-style-type: none;
+    }
+    .ui-autocomplete li {
+        list-style-type: none;
+    }
 </style>
