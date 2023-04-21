@@ -102,3 +102,16 @@
             </div>
     </form>
 @endsection
+<style>
+    .ui-autocomplete {
+        color: blue;
+        /*pour placer la liste au-dessus de tous les autres éléments de la page avec*/
+        z-index: 9999;
+    }
+
+    .ui-menu-item {
+        background-color: white;
+        color: black;
+    }
+
+</style>
