@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Notez votre Progression</div>
+                    <div class="panel-heading"><strong>Notez votre Progression</strong></div>
                     <div class="panel-body">
                         {!! Form::open(['route' => 'progressions.store', 'method' => 'POST', 'files' => true, 'class' => 'form-horizontal']) !!}
 
@@ -23,30 +23,39 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('location') ? ' has-error' : '' }}">
-                            {!! Form::label('location', 'Location', ['class' => 'col-md-4 control-label']) !!}
+                            {!! Form::label('location', 'Lieu', ['class' => 'col-md-4 control-label']) !!}
                             <div class="col-md-6">
-                                {!! Form::text('location', null, ['class' => 'form-control', 'required']) !!}
-
+                                {!! Form::text('location', null, ['class' => 'form-control', 'required', 'id' => 'location-input']) !!}
                                 @if ($errors->has('location'))
                                     <span class="help-block">
-                                            <strong>{{ $errors->first('location') }}</strong>
-                                        </span>
+                <strong>{{ $errors->first('location') }}</strong>
+            </span>
                                 @endif
                             </div>
                         </div>
 
                         <div class="form-group{{ $errors->has('weather') ? ' has-error' : '' }}">
-                            {!! Form::label('weather', 'Weather', ['class' => 'col-md-4 control-label']) !!}
+                            {!! Form::label('weather', 'Météo', ['class' => 'col-md-4 control-label']) !!}
                             <div class="col-md-6">
                                 {!! Form::text('weather', null, ['class' => 'form-control', 'required']) !!}
-
                                 @if ($errors->has('weather'))
                                     <span class="help-block">
-                                            <strong>{{ $errors->first('weather') }}</strong>
-                                        </span>
+                <strong>{{ $errors->first('weather') }}</strong>
+            </span>
                                 @endif
                             </div>
                         </div>
+
+                        <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+                        <script src="//code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+                        <script>
+                            $(document).ready(function() {
+                                var lieux = [            'Capbreton',            'Hossegor',            'Biarritz',            'Lacanau',            'Hendaye',            'Vieux Boucau',            'Sicile',            'Bilbao',            'Galice',            'Conil',            'Tarifa',            'Lanzarote',            'Fuerteventura',            'Las Palmas',            'Caparica',            'Lisbonne',            'Porto',            'Ericeira',            'Peniche',            'Nazare',            'Madère',            'Açores',            'Boa Vista',            'Essaouira',            'Imsouane',            'Taghazout',            'Dakhla',            'Ahangama',            'Madiha',            'Polhena',            'Weligama',            'Herekitya',            'Mirissa',            'Arugam Bay',            'Zanzibar',            'El Gouna',            'Pavones',            'Santa Teresa',            'Tamarindo',            'Nosara',            'Uvita',            'Quepos',            'Jaco',            'Montezuma',            'Toncones',            'Mentawai',            'Bali',            'Sumbawa',            'Cabarete'        ];
+                                $("#location-input").autocomplete({
+                                    source: lieux
+                                });
+                            });
+                        </script>
 
                         <div class="form-group{{ $errors->has('notes') ? ' has-error' : '' }}">
                             {!! Form::label('notes', 'Notes', ['class' => 'col-md-4 control-label']) !!}
@@ -60,7 +69,6 @@
                                 @endif
                             </div>
                         </div>
-
                         <div class="form-group{{ $errors->has('photo_url') ? ' has-error' : '' }}">
                             {!! Form::label('photo_url', 'Photo URL', ['class' => 'col-md-4 control-label']) !!}
                             <div class="col-md-6">
@@ -80,37 +88,18 @@
                                         </span>
                                     @endif
                                 </div>
-                                <div class="form-group{{ $errors->has('notes') ? ' has-error' : '' }}">
-                                    <label for="notes" class="control-label">Notes</label>
-                                    <textarea id="notes" class="form-control" name="notes">{{ old('notes') }}</textarea>
-                                    @if ($errors->has('notes'))
-                                        <span class="help-block">
-                                            <strong>{{ $errors->first('notes') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-primary">
-                                        Créer une progression
+                                        Valider votre progression
                                     </button>
                                 </div>
 
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
     </form>
 @endsection
-
-
