@@ -123,4 +123,8 @@
     .ui-autocomplete li {
         list-style-type: none;
     }
+    .ui-autocomplete {
+        width: 300px; /* On ajuste la valeur de la largeur en fonction du champ du formulaire */
+    }
+
 </style>
