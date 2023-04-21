@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\LevelController;
+use App\Http\Controllers\EtapeController;
+use App\Http\Controllers\ProgressionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,6 +30,7 @@ Route::get('/dashboard', 'DashboardController@index')->middleware('auth');
 
 //Imeplementation des routes permettant d'acceder aux methode de LevelController
 
+/*
 Route::get('/levels', [LevelController::class, 'index'])->name('levels.index');
 Route::get('/levels/create', [LevelController::class, 'create'])->name('levels.create');
 Route::post('/levels', [LevelController::class, 'store'])->name('levels.store');
@@ -55,13 +58,16 @@ Route::group(['prefix' => 'kites'], function () {
 });
 
 Route::get('/progressions', [ProgressionController::class, 'index'])->name('progressions.index');
-Route::get('/progressions/create', [ProgressionController::class, 'create'])->name('progressions.create');
-Route::post('/progressions', [ProgressionController::class, 'store'])->name('progressions.store');
-Route::get('/progressions/{progression}', [ProgressionController::class, 'show'])->name('progressions.show');
-Route::get('/progressions/{progression}/edit', [ProgressionController::class, 'edit'])->name('progressions.edit');
-Route::put('/progressions/{progression}', [ProgressionController::class, 'update'])->name('progressions.update');
-Route::delete('/progressions/{progression}', [ProgressionController::class, 'destroy'])->name('progressions.destroy');
 
+Route::get('/progressions/create', [ProgressionController::class, 'create'])->name('progressions.create');
+
+Route::post('/progressions', [ProgressionController::class, 'store'])->name('progressions.store');
+Route::get('/progressions/{progressions}', [ProgressionController::class, 'show'])->name('progressions.show');
+Route::get('/progressions/{progressions}/edit', [ProgressionController::class, 'edit'])->name('progressions.edit');
+Route::put('/progressions/{progressions}', [ProgressionController::class, 'update'])->name('progressions.update');
+Route::delete('/progressions/{progressions}', [ProgressionController::class, 'destroy'])->name('progressions.destroy');
+*/
 
 Route::resource('etapes', 'App\Http\Controllers\EtapeController');
 Route::resource('levels', 'App\Http\Controllers\LevelController');
+Route::resource('progressions', 'App\Http\Controllers\ProgressionController');

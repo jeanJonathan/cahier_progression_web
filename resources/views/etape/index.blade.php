@@ -11,6 +11,7 @@
                         <th>#</th>
                         <th>Nom</th>
                         <th>Description</th>
+                        <th>Video</th>
                         <th>Actions</th>
                     </tr>
                     </thead>
@@ -20,6 +21,7 @@
                             <th>{{ $etape->id }}</th>
                             <td>{{ $etape->nom }}</td>
                             <td>{{ $etape->description }}</td>
+                            <td>{{ $etape->video_url }}</td>
                             <td>
                                 <a href="{{ route('etapes.show', $etape->id) }}" class="btn btn-primary">Voir</a>
                                 <a href="{{ route('etapes.edit', $etape->id) }}" class="btn btn-warning">Modifier</a>

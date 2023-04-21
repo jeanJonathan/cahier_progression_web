@@ -16,6 +16,8 @@
 
                     {{ __('You are logged in!') }}
                         <a href="{{ route('etapes.index') }}">Voir les étapes</a>
+                        <a href="{{ route('progressions.create') }}">Creer une progression</a>
+                        <a href="{{ route('levels.index') }}">Voir les niveaux</a>
                 </div>
             </div>
         </div>

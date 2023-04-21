@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Progression;
 
 class ProgressionController extends Controller
 {
@@ -104,7 +105,7 @@ class ProgressionController extends Controller
         $progression->wingfoil_progression = $request->wingfoil_progression;
         $progression->save();
 
-        return redirect()->route('progression.show', ['progression' => $progression])->with('success', 'La progression a été mise à jour avec succès !');
+        return redirect()->route('progressions.show', ['progressions' => $progression])->with('success', 'La progressions a été mise à jour avec succès !');
 
     }
 
@@ -119,7 +120,7 @@ class ProgressionController extends Controller
         $progression = Progression::find($id);
         $progression->delete();
 
-        return redirect()->route('progression.index')->with('success', 'La progression a été supprimée avec succès !');
+        return redirect()->route('progressions.index')->with('success', 'La progressions a été supprimée avec succès !');
 
     }
 }
