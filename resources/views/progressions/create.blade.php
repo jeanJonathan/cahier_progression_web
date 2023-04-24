@@ -23,6 +23,37 @@
                             {{ $errors->first('location') }}
                         </div>
                     @endif
+                    <!--implementation de la fonctionnalite d'auto completion-->
+                    <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+                    <script src="//code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+                    <script>
+                        $(document).ready(function() {
+                            $(document).ready(function() {
+                                var lieux = ['Ahangama', 'Açores', 'Arugam Bay', 'Bali', 'Biarritz', 'Bilbao', 'Boa Vista', 'Cabarete', 'Caparica', 'Capbreton', 'Conil', 'Dakhla', 'El Gouna', 'Ericeira', 'Essaouira', 'Fuerteventura', 'Galice', 'Hendaye', 'Herekitya', 'Hossegor', 'Imsouane', 'Jaco', 'Lacanau', 'Las Palmas', 'Lanzarote', 'Lisbonne', 'Madère', 'Madiha', 'Mentawai', 'Mirissa', 'Montezuma', 'Nazare', 'Nosara', 'Pavones', 'Peniche', 'Polhena', 'Porto', 'Quepos', 'Santa Teresa', 'Sicile', 'Sumbawa', 'Tamarindo', 'Taghazout', 'Tarifa', 'Toncones', 'Uvita', 'Vieux Boucau', 'Weligama', 'Zanzibar'];
+                                $("#location-input").autocomplete({
+                                    source: lieux,
+                                    /* une option pour ignorer les différences de casse afin d'ameliorer l'experience utilisateur*/
+                                    ignoreCase: true,
+
+                                });
+                            });
+                            var meteos = [
+                                'ensoleillé',
+                                'nuageux',
+                                'pluvieux',
+                                'orageux',
+                                'neigeux',
+                                'brumeux',
+                                'venteux',
+                                'tempete',
+                                'caniculaire',
+                                'froid'
+                            ];
+                            $("#weather-input").autocomplete({
+                                source: meteos
+                            });
+                        });
+                    </script>
                 </div>
             </div>
 
@@ -164,34 +195,6 @@
             </div>
             </form>
 @endsection
-<!--implementation de la fonctionnalite d'auto completion-->
-<script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="//code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
-<script>
-    $(document).ready(function() {
-        var lieux = [ 'Capbreton',            'Hossegor',            'Biarritz',            'Lacanau',            'Hendaye',            'Vieux Boucau',            'Sicile',            'Bilbao',            'Galice',            'Conil',            'Tarifa',            'Lanzarote',            'Fuerteventura',            'Las Palmas',            'Caparica',            'Lisbonne',            'Porto',            'Ericeira',            'Peniche',            'Nazare',            'Madère',            'Açores',            'Boa Vista',            'Essaouira',            'Imsouane',            'Taghazout',            'Dakhla',            'Ahangama',            'Madiha',            'Polhena',            'Weligama',            'Herekitya',            'Mirissa',            'Arugam Bay',            'Zanzibar',            'El Gouna',            'Pavones',            'Santa Teresa',            'Tamarindo',            'Nosara',            'Uvita',            'Quepos',            'Jaco',            'Montezuma',            'Toncones',            'Mentawai',            'Bali',            'Sumbawa',            'Cabarete'        ];
-        $("#location-input").autocomplete({
-            source: lieux
-        });
-        var meteos = [
-            'ensoleillé',
-            'nuageux',
-            'pluvieux',
-            'orageux',
-            'neigeux',
-            'brumeux',
-            'venteux',
-            'tempete',
-            'caniculaire',
-            'froid'
-        ];
-
-        $("#weather-input").autocomplete({
-            source: meteos
-        });
-
-    });
-</script>
 <style>
     .ui-autocomplete {
         color: blue;
