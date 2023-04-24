@@ -60,49 +60,81 @@
                     @endif
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="form-group{{ $errors->has('photo_url') ? ' has-error' : '' }}">
-                    {!! Form::label('photo_url', 'Photos', ['class' => 'form-label']) !!}
-                    <div class="row mx-auto"> <!-- ajouter la classe mx-auto -->
-                        @for ($i = 0; $i < 6; $i++)
-                            <div class="col-md-2 col-sm-4 col-6">
-                                <div class="preview-images-zone">
-                                    <div class="image-wrapper">
-                                        <img src="" class="preview-image" style="max-height: 100%; max-width: 100%; display: none;">
-                                        <p class="preview-text" style="font-size: 8px;"></p>
-                                    </div>
-                                    <input type="file" class="file-input" name="photo_url[]" accept="image/*" style="display:none;">
-                                    <button type="button" class="btn btn-primary file-button"><img src="" class="add-icon" style="max-height: 100%; max-width: 100%;">+</button>
-                                    <p class="filename"></p>
+            <div class="form-group{{ $errors->has('photo_url') ? ' has-error' : '' }}">
+                {!! Form::label('photo_url', 'Photos', ['class' => 'form-label']) !!}
+                <div class="row mx-auto justify-content-center preview-images-row">
+                    @for ($i = 0; $i < 5; $i++)
+                        <div class="col-md-2 col-sm-4 col-6 preview-images-col">
+                            <div class="preview-images-zone">
+                                <div class="image-wrapper">
+                                    <img src="" class="preview-image" style="max-height: 100%; max-width: 100%; display: none;">
+                                    <p class="preview-text" style="font-size: 8px;"></p>
                                 </div>
+                                <input type="file" class="file-input" name="photo_url[]" accept="image/*" style="display:none;">
+                                <button type="button" class="btn btn-primary file-button btn-block mb-3"><img src="" class="add-icon" style="max-height: 100%; max-width: 100%;">+</button>
+                                <p class="filename"></p>
                             </div>
-                        @endfor
-                    </div>
-                    @if ($errors->has('photo_url'))
-                        <div class="invalid-feedback">
-                            {{ $errors->first('photo_url') }}
                         </div>
-                    @endif
+                    @endfor
                 </div>
-                <script>
-                    $(function() {
-                        $('.file-button').on('click', function() {
-                            $(this).siblings('.file-input').click();
-                        });
-                        $('.file-input').on('change', function() {
-                            var file = $(this)[0].files[0];
-                            if (file.type.match('image.*')) {
-                                var reader = new FileReader();
-                                var zone = $(this).parent('.preview-images-zone');
-                                reader.onload = function(e) {
-                                    zone.children('.image-wrapper').children('.preview-text').text(file.name.substring(0, 3)).show();
-                                    zone.children('.image-wrapper').children('.preview-image').attr('src', e.target.result).show();
-                                    zone.children('.file-button').children('.add-icon').hide();
-                                }
-                                reader.readAsDataURL(file);
+                @if ($errors->has('photo_url'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('photo_url') }}
+                    </div>
+                @endif
+            </div>
+            <script>
+                $(function() {
+                    var numCols = 6;
+                    var colWidth = 2;
+                    var screenWidth = $(window).width();
+                    if (screenWidth < 320) {
+                        numCols = 2;
+                        colWidth = 6;
+                    } else if (screenWidth < 576) {
+                        numCols = 2;
+                        colWidth = 6;
+                    } else if (screenWidth < 768) {
+                        numCols = 3;
+                        colWidth = 4;
+                    } else if (screenWidth < 992) {
+                        numCols = 4;
+                        colWidth = 3;
+                    } else if (screenWidth < 1200) {
+                        numCols = 5;
+                        colWidth = 2;
+                    }
+                    var margin = 5;
+                    var rowWidth = (numCols * (100/numCols)) - (margin * (numCols - 1));
+                    $('.preview-images-row').css({
+                        'width': rowWidth + '%',
+                        'margin': '0 auto'
+                    });
+                    $('.preview-images-col').css({
+                        'width': colWidth + '%',
+                        'margin-left': margin + '%',
+                        'margin-right': margin + '%'
+                    });
+                    $('.file-button').toggleClass('btn-block', screenWidth < 576);
+
+                    $('.file-button').on('click', function() {
+                        $(this).siblings('.file-input').click();
+                    });
+
+                    $('.file-input').on('change', function() {
+                        var file = $(this)[0].files[0];
+                        if (file.type.match('image.*')) {
+                            var reader = new FileReader();
+                            var zone = $(this).parent('.preview-images-zone');
+                            reader.onload = function(e) {
+                                zone.children('.image-wrapper').children('.preview-text').text(file.name.substring(0, 3)).show();
+                                zone.children('.image-wrapper').children('.preview-image').attr('src', e.target.result).show();
+                                zone.children('.file-button').children('.add-icon').hide();
                             }
-                            //zone.children('.filename').text(file.name);
-                        });
+                            reader.readAsDataURL(file);
+                        }
+                        //zone.children('.filename').text(file.name);
+                    });
                         $(window).on('resize', function() {
                             var screenWidth = $(window).width();
                             var numCols = 6;
@@ -119,17 +151,18 @@
                             $('.preview-images-zone').removeClass(function(index, className) {
                                 return (className.match(/(^|\s)col-\S+/g) || []).join(' ');
                             }).addClass('col-' + colWidth);
+                            $('.file-button').toggleClass('btn-block', screenWidth < 576);
                         }).trigger('resize');
                     });
                 </script>
             </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">
-                        Valider votre progression
-                    </button>
-                </div>
+
+            <div class="form-group d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary">
+                    Valider votre progression
+                </button>
             </div>
-    </form>
+            </form>
 @endsection
 <!--implementation de la fonctionnalite d'auto completion-->
 <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
