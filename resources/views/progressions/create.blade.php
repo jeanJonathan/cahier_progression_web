@@ -34,7 +34,8 @@
                                     source: lieux,
                                     /* une option pour ignorer les différences de casse afin d'ameliorer l'experience utilisateur*/
                                     ignoreCase: true,
-
+                                    /*pour garantir la confidentialite des donnees des surf camp*/
+                                    minLength: 3
                                 });
                             });
                             var meteos = [
