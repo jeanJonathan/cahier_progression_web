@@ -25,6 +25,7 @@
                     @endif
                 </div>
             </div>
+
             <div class="col-md-6">
                 <div class="form-group{{ $errors->has('weather') ? ' has-error' : '' }}">
                     {!! Form::label('weather', 'Météo', ['class' => 'form-label']) !!}
@@ -32,6 +33,29 @@
                     @if ($errors->has('weather'))
                         <div class="invalid-feedback">
                             {{ $errors->first('weather') }}
+                        </div>
+                    @endif
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group{{ $errors->has('video_file') ? ' has-error' : '' }}">
+                    <label for="video_file" class="control-label">Télécharger une vidéo (taille maximale: 50 Mo)</label>
+                    <input id="video_file" type="file" class="form-control" name="video_file">
+                    @if ($errors->has('video_file'))
+                        <span class="help-block">
+                <strong>{{ $errors->first('video_file') }}</strong>
+            </span>
+                    @endif
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-group{{ $errors->has('notes') ? ' has-error' : '' }}">
+                    {!! Form::label('notes', 'Notes', ['class' => 'form-label']) !!}
+                    {!! Form::textarea('notes', null, ['class' => 'form-control', 'rows' => 3]) !!}
+                    @if ($errors->has('notes'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('notes') }}
                         </div>
                     @endif
                 </div>
@@ -99,29 +123,7 @@
                     });
                 </script>
             </div>
-
-            <div class="col-md-12">
-                <div class="form-group{{ $errors->has('notes') ? ' has-error' : '' }}">
-                    {!! Form::label('notes', 'Notes', ['class' => 'form-label']) !!}
-                    {!! Form::textarea('notes', null, ['class' => 'form-control', 'rows' => 3]) !!}
-                    @if ($errors->has('notes'))
-                        <div class="invalid-feedback">
-                            {{ $errors->first('notes') }}
-                        </div>
-                    @endif
-                </div>
-            </div>
-            <!--champ pour la video dans un autre bloc juste en bas s'adaptant a la largeur de l'ecran-->
-            <div class="form-group{{ $errors->has('video_file') ? ' has-error' : '' }}">
-                <label for="video_file" class="control-label">Télécharger une vidéo (taille maximale: 50 Mo)</label>
-                <input id="video_file" type="file" class="form-control" name="video_file">
-                @if ($errors->has('video_file'))
-                    <span class="help-block">
-            <strong>{{ $errors->first('video_file') }}</strong>
-        </span>
-                @endif
-            </div>
-            <div class="form-group">
+                <div class="form-group">
                     <button type="submit" class="btn btn-primary">
                         Valider votre progression
                     </button>
