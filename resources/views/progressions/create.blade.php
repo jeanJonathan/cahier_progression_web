@@ -39,7 +39,7 @@
             </div>
             <div class="col-md-6">
                 <div class="form-group{{ $errors->has('video_file') ? ' has-error' : '' }}">
-                    <label for="video_file" class="control-label">Télécharger une vidéo (taille maximale: 50 Mo)</label>
+                    <label for="video_file" class="control-label "style="margin-top: 8px;">Télécharger une vidéo (taille maximale: 50 Mo)</label>
                     <input id="video_file" type="file" class="form-control" name="video_file">
                     @if ($errors->has('video_file'))
                         <span class="help-block">
