@@ -31,28 +31,31 @@
                             $(document).ready(function() {
                                 var lieux = ['Ahangama', 'Açores', 'Arugam Bay', 'Bali', 'Biarritz', 'Bilbao', 'Boa Vista', 'Cabarete', 'Caparica', 'Capbreton', 'Conil', 'Dakhla', 'El Gouna', 'Ericeira', 'Essaouira', 'Fuerteventura', 'Galice', 'Hendaye', 'Herekitya', 'Hossegor', 'Imsouane', 'Jaco', 'Lacanau', 'Las Palmas', 'Lanzarote', 'Lisbonne', 'Madère', 'Madiha', 'Mentawai', 'Mirissa', 'Montezuma', 'Nazare', 'Nosara', 'Pavones', 'Peniche', 'Polhena', 'Porto', 'Quepos', 'Santa Teresa', 'Sicile', 'Sumbawa', 'Tamarindo', 'Taghazout', 'Tarifa', 'Toncones', 'Uvita', 'Vieux Boucau', 'Weligama', 'Zanzibar'];
                                 $("#location-input").autocomplete({
-                                    source: lieux,
-                                    /* une option pour ignorer les différences de casse afin d'ameliorer l'experience utilisateur*/
-                                    ignoreCase: true,
+                                    source: function(request, response) {
+                                        var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
+                                        response($.grep(lieux, function(item) {
+                                            return matcher.test(item);
+                                        }));
+                                    },
                                     /*pour garantir la confidentialite des donnees des surf camp*/
-                                    minLength: 3
+                                    minLength: 2,
+                                    autoFocus: true,
+                                    /*le délai en millisecondes avant de déclencher la recherche d'autocomplétion*/
+                                    delay: 0,
+                                    /*pour rechercher uniquement les termes commençant par la chaîne de caractères saisie*/
+                                    startsWith: true,
+                                    /* une option pour ignorer les différences de casse afin d'ameliorer l'experience utilisateur*/
+                                    ignoreCase: true
                                 });
-                            });
-                            var meteos = [
-                                'ensoleillé',
-                                'nuageux',
-                                'pluvieux',
-                                'orageux',
-                                'neigeux',
-                                'brumeux',
-                                'venteux',
-                                'tempete',
-                                'caniculaire',
-                                'froid'
-                            ];
-                            $("#weather-input").autocomplete({
-                                source: meteos
-                            });
+
+                                var meteos = [
+                                    'vent de terre off shore leger','ciel bleu', '1m de houle, personne a l eau',
+                                    'vent de nord est 15 noeuds','ciel brumeux','peu de monde sur la plage'
+                                ];
+                                $("#weather-input").autocomplete({
+                                    source: meteos
+                                });
+                            })
                         });
                     </script>
                 </div>
