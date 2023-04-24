@@ -1,103 +1,78 @@
 @extends('layouts.app')
-
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading"><strong>Notez votre Progression</strong></div>
-                    <div class="panel-body">
-                        {!! Form::open(['route' => 'progressions.store', 'method' => 'POST', 'files' => true, 'class' => 'form-horizontal']) !!}
-
-                        <div class="form-group{{ $errors->has('date') ? ' has-error' : '' }}">
-                            {!! Form::label('date', 'Date', ['class' => 'col-md-4 control-label']) !!}
-                            <div class="col-md-6">
-                                {!! Form::date('date', null, ['class' => 'form-control', 'required']) !!}
-
-                                @if ($errors->has('date'))
-                                    <span class="help-block">
-                                            <strong>{{ $errors->first('date') }}</strong>
-                                        </span>
-                                @endif
-                            </div>
+        <div class="container my-5">
+            <h1 class="text-center my-5">Notez votre progression</h1>
+            {!! Form::open(['route' => 'progressions.store', 'method' => 'POST', 'files' => true, 'class' => 'row g-3']) !!}
+            <div class="col-md-6">
+                <div class="form-group{{ $errors->has('date') ? ' has-error' : '' }}">
+                    {!! Form::label('date', 'Date', ['class' => 'form-label']) !!}
+                    {!! Form::date('date', null, ['class' => 'form-control', 'required']) !!}
+                    @if ($errors->has('date'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('date') }}
                         </div>
-
-                        <div class="form-group{{ $errors->has('location') ? ' has-error' : '' }}">
-                            {!! Form::label('location', 'Lieu', ['class' => 'col-md-4 control-label']) !!}
-                            <div class="col-md-6">
-                                {!! Form::text('location', null, ['class' => 'form-control', 'required', 'id' => 'location-input']) !!}
-                                @if ($errors->has('location'))
-                                    <span class="help-block">
-                <strong>{{ $errors->first('location') }}</strong>
-            </span>
-                                @endif
-                            </div>
+                    @endif
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group{{ $errors->has('location') ? ' has-error' : '' }}">
+                    {!! Form::label('location', 'Lieu', ['class' => 'form-label']) !!}
+                    {!! Form::text('location', null, ['class' => 'form-control', 'required', 'id' => 'location-input']) !!}
+                    @if ($errors->has('location'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('location') }}
                         </div>
-
-                        <div class="form-group{{ $errors->has('weather') ? ' has-error' : '' }}">
-                            {!! Form::label('weather', 'Météo', ['class' => 'col-md-4 control-label']) !!}
-                            <div class="col-md-6">
-                                {!! Form::text('weather', null, ['class' => 'form-control', 'required']) !!}
-                                @if ($errors->has('weather'))
-                                    <span class="help-block">
-                <strong>{{ $errors->first('weather') }}</strong>
-            </span>
-                                @endif
-                            </div>
+                    @endif
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group{{ $errors->has('weather') ? ' has-error' : '' }}">
+                    {!! Form::label('weather', 'Météo', ['class' => 'form-label']) !!}
+                    {!! Form::text('weather', null, ['class' => 'form-control', 'required', 'id' => 'weather-input']) !!}
+                    @if ($errors->has('weather'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('weather') }}
                         </div>
-                        <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
-                        <script src="//code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
-                        <script>
-                            $(document).ready(function() {
-                                var lieux = [            'Capbreton',            'Hossegor',            'Biarritz',            'Lacanau',            'Hendaye',            'Vieux Boucau',            'Sicile',            'Bilbao',            'Galice',            'Conil',            'Tarifa',            'Lanzarote',            'Fuerteventura',            'Las Palmas',            'Caparica',            'Lisbonne',            'Porto',            'Ericeira',            'Peniche',            'Nazare',            'Madère',            'Açores',            'Boa Vista',            'Essaouira',            'Imsouane',            'Taghazout',            'Dakhla',            'Ahangama',            'Madiha',            'Polhena',            'Weligama',            'Herekitya',            'Mirissa',            'Arugam Bay',            'Zanzibar',            'El Gouna',            'Pavones',            'Santa Teresa',            'Tamarindo',            'Nosara',            'Uvita',            'Quepos',            'Jaco',            'Montezuma',            'Toncones',            'Mentawai',            'Bali',            'Sumbawa',            'Cabarete'        ];
-                                $("#location-input").autocomplete({
-                                    source: lieux
-                                });
-                            });
-                        </script>
-
-                        <div class="form-group{{ $errors->has('notes') ? ' has-error' : '' }}">
-                            {!! Form::label('notes', 'Notes', ['class' => 'col-md-4 control-label']) !!}
-                            <div class="col-md-6">
-                                {!! Form::textarea('notes', null, ['class' => 'form-control', 'rows' => 3]) !!}
-
-                                @if ($errors->has('notes'))
-                                    <span class="help-block">
-                                            <strong>{{ $errors->first('notes') }}</strong>
-                                        </span>
-                                @endif
-                            </div>
+                    @endif
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group{{ $errors->has('photo_url') ? ' has-error' : '' }}">
+                    {!! Form::label('photo_url', 'Photo URL', ['class' => 'form-label']) !!}
+                    <!---texte pour indiquer la saisie d'un url pour la photo, on a aussi file..-->
+                    {!! Form::text('photo_url', null, ['class' => 'form-control']) !!}
+                    @if ($errors->has('photo_url'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('photo_url') }}
                         </div>
-                        <div class="form-group{{ $errors->has('photo_url') ? ' has-error' : '' }}">
-                            {!! Form::label('photo_url', 'Photo URL', ['class' => 'col-md-4 control-label']) !!}
-                            <div class="col-md-6">
-                                {!! Form::file('photo_url', ['class' => 'form-control-file']) !!}
-
-                                @if ($errors->has('photo_url'))
-                                    <span class="help-block">
-                                            <strong>{{ $errors->first('photo_url') }}</strong>
-                                        </span>
-                                @endif
-                                <div class="form-group{{ $errors->has('video_url') ? ' has-error' : '' }}">
-                                    <label for="video_url" class="control-label">Vidéo URL</label>
-                                    <input id="video_url" type="text" class="form-control" name="video_url" value="{{ old('video_url') }}" autofocus>
-                                    @if ($errors->has('video_url'))
-                                        <span class="help-block">
+                    @endif
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group{{ $errors->has('notes') ? ' has-error' : '' }}">
+                    {!! Form::label('notes', 'Notes', ['class' => 'form-label']) !!}
+                    {!! Form::textarea('notes', null, ['class' => 'form-control', 'rows' => 3]) !!}
+                    @if ($errors->has('notes'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('notes') }}
+                        </div>
+                    @endif
+                </div>
+            </div>
+            <!--champ pour la video dans un autre bloc juste en bas s'adaptant a la largeur de l'ecran-->
+                <div class="form-group{{ $errors->has('video_url') ? ' has-error' : '' }}">
+                    <label for="video_url" class="control-label">Vidéo URL</label>
+                    <input id="video_url" type="text" class="form-control" name="video_url" value="{{ old('video_url') }}" autofocus>
+                    @if ($errors->has('video_url'))
+                        <span class="help-block">
                                             <strong>{{ $errors->first('video_url') }}</strong>
                                         </span>
-                                    @endif
-                                </div>
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-primary">
-                                        Valider votre progression
-                                    </button>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                        </div>
-                    </div>
+                    @endif
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">
+                        Valider votre progression
+                    </button>
                 </div>
             </div>
     </form>
@@ -126,5 +101,32 @@
     .ui-autocomplete {
         width: 300px; /* On ajuste la valeur de la largeur en fonction du champ du formulaire */
     }
-
 </style>
+<!--implementation de la fonctionnalite d'auto completion-->
+<script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="//code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var lieux = [            'Capbreton',            'Hossegor',            'Biarritz',            'Lacanau',            'Hendaye',            'Vieux Boucau',            'Sicile',            'Bilbao',            'Galice',            'Conil',            'Tarifa',            'Lanzarote',            'Fuerteventura',            'Las Palmas',            'Caparica',            'Lisbonne',            'Porto',            'Ericeira',            'Peniche',            'Nazare',            'Madère',            'Açores',            'Boa Vista',            'Essaouira',            'Imsouane',            'Taghazout',            'Dakhla',            'Ahangama',            'Madiha',            'Polhena',            'Weligama',            'Herekitya',            'Mirissa',            'Arugam Bay',            'Zanzibar',            'El Gouna',            'Pavones',            'Santa Teresa',            'Tamarindo',            'Nosara',            'Uvita',            'Quepos',            'Jaco',            'Montezuma',            'Toncones',            'Mentawai',            'Bali',            'Sumbawa',            'Cabarete'        ];
+        $("#location-input").autocomplete({
+            source: lieux
+        });
+        var meteos = [
+            'ensoleillé',
+            'nuageux',
+            'pluvieux',
+            'orageux',
+            'neigeux',
+            'brumeux',
+            'venteux',
+            'tempete',
+            'caniculaire',
+            'froid'
+        ];
+
+        $("#weather").autocomplete({
+            source: meteos
+        });
+
+    });
+</script>
