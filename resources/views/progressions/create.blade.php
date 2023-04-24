@@ -39,7 +39,7 @@
             <div class="col-md-6">
                 <div class="form-group{{ $errors->has('photo_url') ? ' has-error' : '' }}">
                     {!! Form::label('photo_url', 'Photos', ['class' => 'form-label']) !!}
-                    <div class="row">
+                    <div class="row mx-auto"> <!-- ajouter la classe mx-auto -->
                         @for ($i = 0; $i < 6; $i++)
                             <div class="col-md-2 col-sm-4 col-6">
                                 <div class="preview-images-zone">
@@ -112,16 +112,16 @@
                 </div>
             </div>
             <!--champ pour la video dans un autre bloc juste en bas s'adaptant a la largeur de l'ecran-->
-                <div class="form-group{{ $errors->has('video_url') ? ' has-error' : '' }}">
-                    <label for="video_url" class="control-label">Vidéo URL</label>
-                    <input id="video_url" type="text" class="form-control" name="video_url" value="{{ old('video_url') }}" autofocus>
-                    @if ($errors->has('video_url'))
-                        <span class="help-block">
-                                            <strong>{{ $errors->first('video_url') }}</strong>
-                                        </span>
-                    @endif
-                </div>
-                <div class="form-group">
+            <div class="form-group{{ $errors->has('video_file') ? ' has-error' : '' }}">
+                <label for="video_file" class="control-label">Télécharger une vidéo (taille maximale: 50 Mo)</label>
+                <input id="video_file" type="file" class="form-control" name="video_file">
+                @if ($errors->has('video_file'))
+                    <span class="help-block">
+            <strong>{{ $errors->first('video_file') }}</strong>
+        </span>
+                @endif
+            </div>
+            <div class="form-group">
                     <button type="submit" class="btn btn-primary">
                         Valider votre progression
                     </button>
@@ -129,31 +129,6 @@
             </div>
     </form>
 @endsection
-<style>
-    .ui-autocomplete {
-        color: blue;
-        /*pour placer la liste au-dessus de tous les autres éléments de la page avec*/
-        z-index: 9999;
-    }
-
-    .ui-menu-item {
-        background-color: white;
-        color: black;
-    }
-    .ui-autocomplete {
-        border-radius: 5px;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-        background-color: #fff;
-        padding: 0.5em;
-        list-style-type: none;
-    }
-    .ui-autocomplete li {
-        list-style-type: none;
-    }
-    .ui-autocomplete {
-        width: 300px; /* On ajuste la valeur de la largeur en fonction du champ du formulaire */
-    }
-</style>
 <!--implementation de la fonctionnalite d'auto completion-->
 <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="//code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
@@ -182,3 +157,29 @@
 
     });
 </script>
+<style>
+    .ui-autocomplete {
+        color: blue;
+        /*pour placer la liste au-dessus de tous les autres éléments de la page avec*/
+        z-index: 9999;
+    }
+
+    .ui-menu-item {
+        background-color: white;
+        color: black;
+    }
+    .ui-autocomplete {
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        background-color: #fff;
+        padding: 0.5em;
+        list-style-type: none;
+    }
+    .ui-autocomplete li {
+        list-style-type: none;
+    }
+    .ui-autocomplete {
+        width: 300px; /* On ajuste la valeur de la largeur en fonction du champ du formulaire */
+    }
+</style>
+
