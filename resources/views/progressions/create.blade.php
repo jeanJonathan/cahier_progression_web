@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
         <div class="container my-5">
-            <h1 class="text-center my-5">Notez votre progression</h1>
+            <h1 class="text-center my-5">Formulaire de progression</h1>
             {!! Form::open(['route' => 'progressions.store', 'method' => 'POST', 'files' => true, 'class' => 'row g-3']) !!}
             <div class="col-md-6">
                 <div class="form-group{{ $errors->has('date') ? ' has-error' : '' }}">
@@ -44,10 +44,12 @@
                             <div class="col-md-2 col-sm-4 col-6">
                                 <div class="preview-images-zone">
                                     <div class="image-wrapper">
+                                        <img src="" class="preview-image" style="max-height: 100%; max-width: 100%; display: none;">
                                         <p class="preview-text" style="font-size: 8px;"></p>
                                     </div>
                                     <input type="file" class="file-input" name="photo_url[]" accept="image/*" style="display:none;">
-                                    <button type="button" class="btn btn-primary file-button">+</button>
+                                    <button type="button" class="btn btn-primary file-button"><img src="" class="add-icon" style="max-height: 100%; max-width: 100%;">+</button>
+                                    <p class="filename"></p>
                                 </div>
                             </div>
                         @endfor
@@ -58,33 +60,6 @@
                         </div>
                     @endif
                 </div>
-
-                <style>
-                    .image-wrapper {
-                        width: 50px;
-                        height: 50px;
-                        overflow: hidden;
-                        position: relative;
-                    }
-
-                    .preview-text {
-                        position: absolute;
-                        top: 50%;
-                        left: 50%;
-                        transform: translate(-50%, -50%);
-                        font-size: 10px;
-                        text-align: center;
-                    }
-
-                    .file-button {
-                        padding: 0;
-                        border: none;
-                        background: none;
-                        font-size: 20px;
-                        cursor: pointer;
-                        margin-top: 5px;
-                    }
-                </style>
                 <script>
                     $(function() {
                         $('.file-button').on('click', function() {
@@ -96,14 +71,35 @@
                                 var reader = new FileReader();
                                 var zone = $(this).parent('.preview-images-zone');
                                 reader.onload = function(e) {
-                                    zone.children('.image-wrapper').children('.preview-text').text(file.name);
+                                    zone.children('.image-wrapper').children('.preview-text').text(file.name.substring(0, 3)).show();
+                                    zone.children('.image-wrapper').children('.preview-image').attr('src', e.target.result).show();
+                                    zone.children('.file-button').children('.add-icon').hide();
                                 }
                                 reader.readAsDataURL(file);
                             }
+                            //zone.children('.filename').text(file.name);
                         });
+                        $(window).on('resize', function() {
+                            var screenWidth = $(window).width();
+                            var numCols = 6;
+                            if (screenWidth < 576) {
+                                numCols = 2;
+                            } else if (screenWidth < 768) {
+                                numCols = 3;
+                            } else if (screenWidth < 992) {
+                                numCols = 4;
+                            } else if (screenWidth < 1200) {
+                                numCols = 5;
+                            }
+                            var colWidth = 12 / numCols;
+                            $('.preview-images-zone').removeClass(function(index, className) {
+                                return (className.match(/(^|\s)col-\S+/g) || []).join(' ');
+                            }).addClass('col-' + colWidth);
+                        }).trigger('resize');
                     });
                 </script>
             </div>
+
             <div class="col-md-12">
                 <div class="form-group{{ $errors->has('notes') ? ' has-error' : '' }}">
                     {!! Form::label('notes', 'Notes', ['class' => 'form-label']) !!}
