@@ -25,29 +25,92 @@
                     @endif
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="form-group{{ $errors->has('weather') ? ' has-error' : '' }}">
-                    {!! Form::label('weather', 'Météo', ['class' => 'form-label']) !!}
-                    {!! Form::text('weather', null, ['class' => 'form-control', 'required', 'id' => 'weather-input']) !!}
-                    @if ($errors->has('weather'))
-                        <div class="invalid-feedback">
-                            {{ $errors->first('weather') }}
-                        </div>
-                    @endif
-                </div>
-            </div>
+            <!--implementation de l'algorithme pour afficher les 6 photos dans 6 case et les afficher dans un tableau de la bd-->
             <div class="col-md-6">
                 <div class="form-group{{ $errors->has('photo_url') ? ' has-error' : '' }}">
-                    {!! Form::label('photo_url', 'Photo URL', ['class' => 'form-label']) !!}
-                    <!---texte pour indiquer la saisie d'un url pour la photo, on a aussi file..-->
-                    {!! Form::text('photo_url', null, ['class' => 'form-control']) !!}
+                    {!! Form::label('photo_url', 'Photos', ['class' => 'form-label']) !!}
+                    <div class="row">
+                        @for ($i = 0; $i < 6; $i++)
+                            <div class="col-md-2 col-sm-4 col-6">
+                                <div class="preview-images-zone">
+                                    <div class="image-wrapper">
+                                        <p class="preview-text"></p>
+                                    </div>
+                                    <input type="file" class="file-input" name="photo_url[]" accept="image/*" style="display:none;">
+                                    <button type="button" class="btn btn-primary file-button">+</button>
+                                </div>
+                            </div>
+                        @endfor
+                    </div>
                     @if ($errors->has('photo_url'))
                         <div class="invalid-feedback">
                             {{ $errors->first('photo_url') }}
                         </div>
                     @endif
                 </div>
+
+                <style>
+                    .image-wrapper {
+                        width: 50px;
+                        height: 50px;
+                        overflow: hidden;
+                        position: relative;
+                    }
+
+                    .preview-text {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        font-size: 10px;
+                        text-align: center;
+                    }
+
+                    .file-button {
+                        padding: 0;
+                        border: none;
+                        background: none;
+                        font-size: 20px;
+                        color: #007bff;
+                        cursor: pointer;
+                        margin-top: 5px;
+                    }
+                </style>
+                <script>
+                    $(function() {
+                        $('.file-button').on('click', function() {
+                            $(this).siblings('.file-input').click();
+                        });
+                        $('.file-input').on('change', function() {
+                            var file = $(this)[0].files[0];
+                            if (file.type.match('image.*')) {
+                                var reader = new FileReader();
+                                var zone = $(this).parent('.preview-images-zone');
+                                reader.onload = function(e) {
+                                    zone.children('.image-wrapper').children('.preview-text').text(file.name);
+                                }
+                                reader.readAsDataURL(file);
+                            }
+                        });
+                    });
+                </script>
             </div>
+            <!--champ pour la video dans un autre bloc juste en bas s'adaptant a la largeur de l'ecran-->
+            <div class="form-group{{ $errors->has('video_url') ? ' has-error' : '' }}">
+                <label for="video_url" class="control-label">Vidéo URL</label>
+                <input id="video_url" type="text" class="form-control" name="video_url" value="{{ old('video_url') }}" autofocus>
+                @if ($errors->has('video_url'))
+                    <span class="help-block">
+                                            <strong>{{ $errors->first('video_url') }}</strong>
+                                        </span>
+                @endif
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">
+                    Valider votre progression
+                </button>
+            </div>
+
             <div class="col-md-12">
                 <div class="form-group{{ $errors->has('notes') ? ' has-error' : '' }}">
                     {!! Form::label('notes', 'Notes', ['class' => 'form-label']) !!}
@@ -59,21 +122,6 @@
                     @endif
                 </div>
             </div>
-            <!--champ pour la video dans un autre bloc juste en bas s'adaptant a la largeur de l'ecran-->
-                <div class="form-group{{ $errors->has('video_url') ? ' has-error' : '' }}">
-                    <label for="video_url" class="control-label">Vidéo URL</label>
-                    <input id="video_url" type="text" class="form-control" name="video_url" value="{{ old('video_url') }}" autofocus>
-                    @if ($errors->has('video_url'))
-                        <span class="help-block">
-                                            <strong>{{ $errors->first('video_url') }}</strong>
-                                        </span>
-                    @endif
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">
-                        Valider votre progression
-                    </button>
-                </div>
             </div>
     </form>
 @endsection
