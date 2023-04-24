@@ -25,7 +25,17 @@
                     @endif
                 </div>
             </div>
-            <!--implementation de l'algorithme pour afficher les 6 photos dans 6 case et les afficher dans un tableau de la bd-->
+            <div class="col-md-6">
+                <div class="form-group{{ $errors->has('weather') ? ' has-error' : '' }}">
+                    {!! Form::label('weather', 'Météo', ['class' => 'form-label']) !!}
+                    {!! Form::text('weather', null, ['class' => 'form-control', 'required', 'id' => 'weather-input']) !!}
+                    @if ($errors->has('weather'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('weather') }}
+                        </div>
+                    @endif
+                </div>
+            </div>
             <div class="col-md-6">
                 <div class="form-group{{ $errors->has('photo_url') ? ' has-error' : '' }}">
                     {!! Form::label('photo_url', 'Photos', ['class' => 'form-label']) !!}
@@ -34,7 +44,7 @@
                             <div class="col-md-2 col-sm-4 col-6">
                                 <div class="preview-images-zone">
                                     <div class="image-wrapper">
-                                        <p class="preview-text"></p>
+                                        <p class="preview-text" style="font-size: 8px;"></p>
                                     </div>
                                     <input type="file" class="file-input" name="photo_url[]" accept="image/*" style="display:none;">
                                     <button type="button" class="btn btn-primary file-button">+</button>
@@ -71,7 +81,6 @@
                         border: none;
                         background: none;
                         font-size: 20px;
-                        color: #007bff;
                         cursor: pointer;
                         margin-top: 5px;
                     }
@@ -95,22 +104,6 @@
                     });
                 </script>
             </div>
-            <!--champ pour la video dans un autre bloc juste en bas s'adaptant a la largeur de l'ecran-->
-            <div class="form-group{{ $errors->has('video_url') ? ' has-error' : '' }}">
-                <label for="video_url" class="control-label">Vidéo URL</label>
-                <input id="video_url" type="text" class="form-control" name="video_url" value="{{ old('video_url') }}" autofocus>
-                @if ($errors->has('video_url'))
-                    <span class="help-block">
-                                            <strong>{{ $errors->first('video_url') }}</strong>
-                                        </span>
-                @endif
-            </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary">
-                    Valider votre progression
-                </button>
-            </div>
-
             <div class="col-md-12">
                 <div class="form-group{{ $errors->has('notes') ? ' has-error' : '' }}">
                     {!! Form::label('notes', 'Notes', ['class' => 'form-label']) !!}
@@ -122,6 +115,21 @@
                     @endif
                 </div>
             </div>
+            <!--champ pour la video dans un autre bloc juste en bas s'adaptant a la largeur de l'ecran-->
+                <div class="form-group{{ $errors->has('video_url') ? ' has-error' : '' }}">
+                    <label for="video_url" class="control-label">Vidéo URL</label>
+                    <input id="video_url" type="text" class="form-control" name="video_url" value="{{ old('video_url') }}" autofocus>
+                    @if ($errors->has('video_url'))
+                        <span class="help-block">
+                                            <strong>{{ $errors->first('video_url') }}</strong>
+                                        </span>
+                    @endif
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">
+                        Valider votre progression
+                    </button>
+                </div>
             </div>
     </form>
 @endsection
