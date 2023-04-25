@@ -21,8 +21,8 @@ return new class extends Migration
             $table->string('location');
             $table->string('weather');
             $table->text('notes')->nullable();
-            $table->string('photo_url')->nullable();
-            $table->string('video_url')->nullable();
+            $table->string('photo_file')->nullable();
+            $table->string('video_file')->nullable();
             $table->integer('user_id');
             $table->unsignedBigInteger('etape_id');
             $table->foreign('etape_id')->references('id')->on('etapes');
