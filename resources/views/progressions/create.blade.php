@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 @section('content')
     <div class="container my-5">
         <h1 class="text-center my-5">Formulaire de progression</h1>
@@ -6,7 +7,7 @@
         <div class="col-md-6">
             <div class="form-group{{ $errors->has('date') ? ' has-error' : '' }}">
                 {!! Form::label('date', 'Date', ['class' => 'form-label']) !!}
-                {!! Form::date('date', null, ['class' => 'form-control', 'required']) !!}
+                {!! Form::date('date', null, ['class' => 'form-control', 'required','max' => today()->format('Y-m-d')]) !!}
                 @if ($errors->has('date'))
                     <div class="invalid-feedback">
                         {{ $errors->first('date') }}
@@ -14,6 +15,7 @@
                 @endif
             </div>
         </div>
+
         <div class="col-md-6">
             <div class="form-group{{ $errors->has('location') ? ' has-error' : '' }}">
                 {!! Form::label('location', 'Lieu', ['class' => 'form-label']) !!}
@@ -47,7 +49,6 @@
                                 /* une option pour ignorer les différences de casse afin d'ameliorer l'experience utilisateur*/
                                 ignoreCase: true
                             });
-
                             var meteos = [    'vent de terre off shore léger', 'ciel bleu', '1m de houle, personne à l\'eau',    'vent de nord est 15 noeuds', 'ciel brumeux', 'peu de monde sur la plage',    'vent de sud-est 10 noeuds', 'ciel couvert avec risque d\'averse', 'houle de 2m, conditions difficiles',    'vent d\'ouest 20 noeuds', 'ciel variable avec éclaircies', 'vagues de 1m à 1m50, conditions moyennes',    'vent de nord 5 noeuds', 'ciel dégagé', 'plage calme et tranquille',    'vent de sud-ouest 25 noeuds', 'ciel orageux', 'mer agitée avec des vagues de plus de 2m'];
                             $("#weather-input").autocomplete({
                                 source: function(request, response) {
@@ -69,7 +70,6 @@
                 </script>
             </div>
         </div>
-
         <div class="col-md-6">
             <div class="form-group{{ $errors->has('weather') ? ' has-error' : '' }}">
                 {!! Form::label('weather', 'Météo', ['class' => 'form-label']) !!}
@@ -92,7 +92,6 @@
                 @endif
             </div>
         </div>
-
         <div class="col-md-12">
             <div class="form-group{{ $errors->has('notes') ? ' has-error' : '' }}">
                 {!! Form::label('notes', 'Notes', ['class' => 'form-label']) !!}
@@ -200,38 +199,10 @@
             });
         </script>
     </div>
-
     <div class="form-group d-flex justify-content-center">
         <button type="submit" class="btn btn-primary">
             Valider votre progression
         </button>
     </div>
-    </form>
-
 @endsection
-<style>
-    .ui-autocomplete {
-        color: blue;
-        /*pour placer la liste au-dessus de tous les autres éléments de la page avec*/
-        z-index: 9999;
-    }
-
-    .ui-menu-item {
-        background-color: white;
-        color: black;
-    }
-    .ui-autocomplete {
-        border-radius: 5px;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-        background-color: #fff;
-        padding: 0.5em;
-        list-style-type: none;
-    }
-    .ui-autocomplete li {
-        list-style-type: none;
-    }
-    .ui-autocomplete {
-        width: 300px; /* On ajuste la valeur de la largeur en fonction du champ du formulaire */
-    }
-</style>
 
