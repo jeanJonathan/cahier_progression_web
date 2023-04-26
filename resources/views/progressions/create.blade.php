@@ -103,8 +103,8 @@
                 @endif
             </div>
         </div>
-        <div class="form-group{{ $errors->has('photo_url') ? ' has-error' : '' }}">
-            {!! Form::label('photo_url', 'Photos', ['class' => 'form-label']) !!}
+        <div class="form-group{{ $errors->has('photo_file') ? ' has-error' : '' }}">
+            {!! Form::label('photo_file', 'Photos', ['class' => 'form-label']) !!}
             <div class="row mx-auto justify-content-center preview-images-row">
                 @for ($i = 0; $i < 6; $i++)
                     <div class="col-md-2 col-sm-4 col-6 preview-images-col">
@@ -120,9 +120,9 @@
                     </div>
                 @endfor
             </div>
-            @if ($errors->has('photo_url'))
+            @if ($errors->has('photo_file'))
                 <div class="invalid-feedback">
-                    {{ $errors->first('photo_url') }}
+                    {{ $errors->first('photo_file') }}
                 </div>
             @endif
         </div>
@@ -164,7 +164,7 @@
                     $(this).siblings('.file-input').click();
                 });
 
-                $('.file-input').on('change', function() {
+                $('.file-input').on('change', funaction() {
                     var file = $(this)[0].files[0];
                     if (file.type.match('image.*')) {
                         var reader = new FileReader();
@@ -205,4 +205,3 @@
         </button>
     </div>
 @endsection
-
