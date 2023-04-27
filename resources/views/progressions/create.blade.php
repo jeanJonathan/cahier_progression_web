@@ -113,7 +113,7 @@
                                 <img src="" class="preview-image" style="max-height: 100%; max-width: 100%; display: none;">
                                 <p class="preview-text" style="font-size: 8px;"></p>
                             </div>
-                            <input type="file" class="file-input" name="photo_url[]" accept="image/*" style="display:none;">
+                            <input type="file" class="file-input" name="photo_file[]" accept="image/*" style="display:none;">
                             <button type="button" class="btn btn-primary file-button btn-block mb-3"><img src="" class="add-icon" style="max-height: 100%; max-width: 100%;">+</button>
                             <p class="filename"></p>
                         </div>
@@ -164,7 +164,7 @@
                     $(this).siblings('.file-input').click();
                 });
 
-                $('.file-input').on('change', funaction() {
+                $('.file-input').on('change', function() {
                     var file = $(this)[0].files[0];
                     if (file.type.match('image.*')) {
                         var reader = new FileReader();

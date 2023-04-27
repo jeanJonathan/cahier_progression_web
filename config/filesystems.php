@@ -73,4 +73,16 @@ return [
         public_path('storage') => storage_path('app/public'),
     ],
 
+    /*Configuration pour OVH Storage*/
+    'ovh' => [
+        'driver' => 's3',
+        'key' => env('OVH_KEY'),
+        'secret' => env('OVH_SECRET'),
+        'region' => env('OVH_REGION'),
+        'bucket' => env('OVH_BUCKET'),
+        'endpoint' => env('OVH_ENDPOINT'),
+        'use_path_style_endpoint' => true,
+    ],
+
+
 ];
