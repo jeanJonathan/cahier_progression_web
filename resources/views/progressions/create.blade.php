@@ -106,7 +106,7 @@
         <div class="form-group{{ $errors->has('photo_file') ? ' has-error' : '' }}">
             {!! Form::label('photo_file', 'Photos', ['class' => 'form-label']) !!}
             <div class="row mx-auto justify-content-center preview-images-row">
-                @for ($i = 0; $i < 6; $i++)
+                @for ($i = 0; $i < 3; $i++)
                     <div class="col-md-2 col-sm-4 col-6 preview-images-col">
                         <div class="preview-images-zone">
                             <div class="image-wrapper">
