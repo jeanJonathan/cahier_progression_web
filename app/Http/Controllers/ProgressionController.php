@@ -31,9 +31,10 @@ class ProgressionController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
+    /*
     public function store(Request $request)
     {
         $validatedData = $request->validate([
@@ -82,6 +83,69 @@ class ProgressionController extends Controller
 
         return redirect()->route('progressions.show', $progression->id)->with('success', 'Progression créée avec succès');
     }
+    */
+    public function store(Request $request)
+    {
+        $validatedData = $request->validate([
+            'level_id' => 'nullable',
+            'date' => 'required|date|before_or_equal:today',
+            'location' => 'required|string',
+            'weather' => 'nullable|string',
+            'notes' => 'nullable|string',
+            'photo_file' => 'nullable|file',
+            'video_file' => 'nullable|file|max:50000|mimetypes:video/mp4,video/mpeg,video/quicktime',
+            'etape_id' => 'nullable',
+            'surf_progression' => 'nullable|string',
+            'kite_progression' => 'nullable|string',
+            'wingfoil_progression' => 'nullable|string',
+        ]);
+
+        // Initialisation des variables pour les chemins d'accès aux fichiers
+        $photo_url = null;
+        $video_url = null;
+
+        // érifient si les fichiers photo et video ont été envoyés avec la requête.
+        // Si ces fichiers existent, les variables $photo et $video sont initialisées avec les chemins de stockage des fichiers.
+        if ($request->hasFile('photo_file')) {
+            $photo = $request->file('photo_file')->store('public/photos');
+            $photo_url = Storage::url($photo);
+        }
+
+        if ($request->hasFile('video_file')) {
+            $video = $request->file('video_file')->store('public/videos');
+            $video_url = Storage::url($video);
+        }
+
+        // Création d'une instance de Progression avec les données validées
+        $progression = new Progression([
+            'date' => $validatedData['date'],
+            'location' => $validatedData['location'],
+            'notes' => $validatedData['notes'] ?? null,
+            'photo_url' => $photo_url,
+            'video_url' => $video_url,
+        ]);
+
+        // Associer la progression à l'utilisateur connecté
+        $progression->user_id = auth()->id();
+
+        // Associer la progression à l'étape sélectionnée (si elle est spécifiée)
+        if ($validatedData['etape_id']) {
+            $progression->etape_id = $validatedData['etape_id'];
+        }
+
+        // Associer la progression au niveau de pratique sélectionné (si il est spécifié)
+        if ($validatedData['level_id']) {
+            $progression->level_id = $validatedData['level_id'];
+        }
+
+        // Sauvegarde de la progression dans la base de données
+        $progression->save();
+
+        // Redirection de l'utilisateur vers la liste des progressions
+        return redirect()->route('progressions.index');
+    }
+
+
 
 
 

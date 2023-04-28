@@ -33,10 +33,11 @@ class Progression extends Model
         return $this->belongsTo(Etape::class);
     }
 
-    public function kite()
+    /*public function kite()
     {
         return $this->belongsTo(Kite::class);
     }
+    */
 
     public function level()
     {
