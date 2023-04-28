@@ -200,8 +200,7 @@
         </script>
     </div>
     <div class="form-group d-flex justify-content-center">
-        <button type="submit" class="btn btn-primary">
-            Valider votre progression
-        </button>
+        {!! Form::submit('Valider votre progression', ['class' => 'btn btn-primary']) !!}
     </div>
+    {!! Form::close() !!}
 @endsection

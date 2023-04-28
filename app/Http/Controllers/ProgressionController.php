@@ -104,8 +104,8 @@ class ProgressionController extends Controller
         $photo_url = null;
         $video_url = null;
 
-        // érifient si les fichiers photo et video ont été envoyés avec la requête.
-        // Si ces fichiers existent, les variables $photo et $video sont initialisées avec les chemins de stockage des fichiers.
+        // Vérifier si les fichiers photo et vidéo ont été envoyés avec la requête
+        // Si ces fichiers existent, les variables $photo_url et $video_url sont initialisées avec les chemins de stockage des fichiers
         if ($request->hasFile('photo_file')) {
             $photo = $request->file('photo_file')->store('public/photos');
             $photo_url = Storage::url($photo);
@@ -120,9 +120,13 @@ class ProgressionController extends Controller
         $progression = new Progression([
             'date' => $validatedData['date'],
             'location' => $validatedData['location'],
+            'weather' => $validatedData['weather'] ?? null,
             'notes' => $validatedData['notes'] ?? null,
             'photo_url' => $photo_url,
             'video_url' => $video_url,
+            'surf_progression' => $validatedData['surf_progression'] ?? null,
+            'kite_progression' => $validatedData['kite_progression'] ?? null,
+            'wingfoil_progression' => $validatedData['wingfoil_progression'] ?? null,
         ]);
 
         // Associer la progression à l'utilisateur connecté
@@ -142,8 +146,9 @@ class ProgressionController extends Controller
         $progression->save();
 
         // Redirection de l'utilisateur vers la liste des progressions
-        return redirect()->route('progressions.index');
+        return redirect()->route('progressions.create');
     }
+
 
 
 
