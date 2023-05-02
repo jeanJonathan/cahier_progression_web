@@ -12,7 +12,8 @@ class Etape extends Model
         'nom',
         'description',
         'video_url',
-        'level_id'
+        'level_id',
+        'validated '
     ];
 
     public function level()
