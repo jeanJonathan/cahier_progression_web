@@ -71,9 +71,11 @@ class ProgressionController extends Controller
         ]);
 
         //Implementation de la fonctionnalite pour creer chaque dossier de chaque utilisateur
+        //Pour que le dossier de chaque utilisatuer soit presentable pour les (date et nom du user
+        $date = date('Y-m-d');
         $user = auth()->user();
-        $folder_name = $user->name . '_' . $user->phone;
-        //$path = Storage::disk('public')->makeDirectory($folder_name);
+        $folder_name = $user->name . '_' . $user->phone . '_' . $date;
+        $path = Storage::disk('public')->makeDirectory($folder_name);
 
         if ($request->hasFile('photo1')) {
             $path = Storage::disk('public')->putFileAs($folder_name, $request->file('photo1'), 'photo1.jpg');
@@ -87,8 +89,6 @@ class ProgressionController extends Controller
             $path = Storage::disk('public')->putFileAs($folder_name, $request->file('photo3'), 'photo3.jpg');
             $photo3_url = Storage::url($path);
         }
-
-
         /*
         if ($request->hasFile('video_file')) {
             $video = $request->file('video_file')->store('public/videos');
