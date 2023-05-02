@@ -47,4 +47,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    //Pour lier les étapes avec les utilisateurs.
+    public function etapes()
+    {
+        return $this->belongsToMany(Etape::class, 'progression', 'user_id', 'etape_id')->withPivot('validated')->withTimestamps();
+    }
+
 }
