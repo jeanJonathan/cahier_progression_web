@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Progression extends Model
 {
@@ -13,8 +14,9 @@ class Progression extends Model
         'location',
         'weather',
         'notes',
-        'photo_file',
-        'video_file',
+        'photo1_url',
+        'photo2_url',
+        'photo3_url',
         'user_id',
         'etape_id',
         'surf_progression',
@@ -41,5 +43,15 @@ class Progression extends Model
     public function level()
     {
         return $this->belongsTo(Level::class);
+    }
+
+    //Pour définir la valeur de la colonne user_id à partir
+    // de l'ID de l'utilisateur actuellement authentifié avec la méthode Auth::id().
+    public static function booted()
+    {
+        //methode appele des que le modele soit instancie
+        static::creating(function ($progression) {
+            $progression->user_id = Auth::id();
+        });
     }
 }

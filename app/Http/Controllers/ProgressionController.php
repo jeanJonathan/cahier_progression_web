@@ -42,7 +42,6 @@ class ProgressionController extends Controller
             'location' => 'required|string',
             'weather' => 'nullable|string',
             'notes' => 'nullable|string',
-            'photo_file' => 'nullable|file',
             'video_file' => 'nullable|file|max:50000|mimetypes:video/mp4,video/mpeg,video/quicktime',
             'etape_id' => 'nullable',
             'surf_progression' => 'nullable|string',
@@ -51,26 +50,45 @@ class ProgressionController extends Controller
         ]);
 
         // Initialisation des variables pour les chemins d'accès aux fichiers
-        $photo_url = null;
-        $video_url = null;
+        $photo1_url= null;
+        $photo2_url= null;
+        $photo3_url= null;
+
+        //Initialisation d'une instance de progression
+        // Création d'une instance de Progression avec les données validées
+        $progression = new Progression([
+            'date' => $validatedData['date'],
+            'location' => $validatedData['location'],
+            'weather' => $validatedData['weather'] ?? null,
+            'notes' => $validatedData['notes'] ?? null,
+            'photo1_url'=> $photo1_url,
+            'photo2_url'=> $photo2_url,
+            'photo3_url'=> $photo3_url,
+
+            'surf_progression' => $validatedData['surf_progression'] ?? null,
+            'kite_progression' => $validatedData['kite_progression'] ?? null,
+            'wingfoil_progression' => $validatedData['wingfoil_progression'] ?? null,
+        ]);
 
         // Vérifier si les fichiers photo et vidéo ont été envoyés avec la requête
         // Si ces fichiers existent, les variables $photo_url et $video_url sont initialisées avec les chemins de stockage des fichiers
         if ($request->hasFile('photo1')) {
             $path = Storage::disk('public')->putFile('photos', $request->file('photo1'));
-            //$progression->photo1_url = $path;
-            //$progression->save();
+            //On doit neccessairement initialiser la variable $progression avant de l'utiliser pour stocker un chemin
+            $progression->photo1_url = $path;
+            $progression->save();
         }
         if ($request->hasFile('photo2')) {
             $path = Storage::disk('public')->putFile('photos', $request->file('photo2'));
-            //$progression->photo3_url = $path;
-            //$progression->save();
+            $progression->photo2_url = $path;
+            $progression->save();
         }
         if ($request->hasFile('photo3')) {
             $path = Storage::disk('public')->putFile('photos', $request->file('photo3'));
-            //$progression->photo2_url = $path;
-            //$progression->save();
+            $progression->photo3_url = $path;
+            $progression->save();
         }
+
         /*
         if ($request->hasFile('video_file')) {
             $video = $request->file('video_file')->store('public/videos');
@@ -84,12 +102,15 @@ class ProgressionController extends Controller
             'location' => $validatedData['location'],
             'weather' => $validatedData['weather'] ?? null,
             'notes' => $validatedData['notes'] ?? null,
-            'photo_url' => $photo_url,
-            'video_url' => $video_url,
+            'photo1_url'=> $photo1_url,
+            'photo2_url'=> $photo2_url,
+            'photo3_url'=> $photo3_url,
+
             'surf_progression' => $validatedData['surf_progression'] ?? null,
             'kite_progression' => $validatedData['kite_progression'] ?? null,
             'wingfoil_progression' => $validatedData['wingfoil_progression'] ?? null,
         ]);
+
 
         // Associer la progression à l'utilisateur connecté
         $progression->user_id = auth()->id();
