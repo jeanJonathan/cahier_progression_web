@@ -56,15 +56,27 @@ class ProgressionController extends Controller
 
         // Vérifier si les fichiers photo et vidéo ont été envoyés avec la requête
         // Si ces fichiers existent, les variables $photo_url et $video_url sont initialisées avec les chemins de stockage des fichiers
-        if ($request->hasFile('photo_file')) {
-            $photo = $request->file('photo_file')->store('public/photos');
-            $photo_url = Storage::url($photo);
+        if ($request->hasFile('photo1')) {
+            $path = Storage::disk('public')->putFile('photos', $request->file('photo1'));
+            //$progression->photo1_url = $path;
+            //$progression->save();
         }
-
+        if ($request->hasFile('photo2')) {
+            $path = Storage::disk('public')->putFile('photos', $request->file('photo2'));
+            //$progression->photo3_url = $path;
+            //$progression->save();
+        }
+        if ($request->hasFile('photo3')) {
+            $path = Storage::disk('public')->putFile('photos', $request->file('photo3'));
+            //$progression->photo2_url = $path;
+            //$progression->save();
+        }
+        /*
         if ($request->hasFile('video_file')) {
             $video = $request->file('video_file')->store('public/videos');
             $video_url = Storage::url($video);
         }
+        */
 
         // Création d'une instance de Progression avec les données validées
         $progression = new Progression([
