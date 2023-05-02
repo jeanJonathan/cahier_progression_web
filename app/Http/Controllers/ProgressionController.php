@@ -75,8 +75,6 @@ class ProgressionController extends Controller
         $date = date('Y-m-d');
         $user = auth()->user();
         $folder_name = $user->name . '_' . $user->phone . '_' . $date;
-        $path = Storage::disk('public')->makeDirectory($folder_name);
-
         if ($request->hasFile('photo1')) {
             $path = Storage::disk('public')->putFileAs($folder_name, $request->file('photo1'), 'photo1.jpg');
             $photo1_url = Storage::url($path);
