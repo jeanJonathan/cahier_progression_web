@@ -9,7 +9,6 @@ class Progression extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'level_id',
         'date',
         'location',
         'weather',

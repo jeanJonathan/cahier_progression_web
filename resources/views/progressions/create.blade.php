@@ -3,7 +3,7 @@
 @section('content')
     <div class="container my-5">
         <h1 class="text-center my-5">Formulaire de progression</h1>
-        {!! Form::open(['route' => 'progressions.store', 'method' => 'POST', 'files' => true, 'class' => 'row g-3']) !!}
+        {!! Form::open(['route' => 'progressions.store', 'method' => 'POST', 'files' => true, 'class' => 'row g-3', 'enctype' => 'multipart/form-data']) !!}
         <div class="col-md-6">
             <div class="form-group{{ $errors->has('date') ? ' has-error' : '' }}">
                 {!! Form::label('date', 'Date', ['class' => 'form-label']) !!}
@@ -70,7 +70,7 @@
                 </script>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="">
             <div class="form-group{{ $errors->has('weather') ? ' has-error' : '' }}">
                 {!! Form::label('weather', 'Météo', ['class' => 'form-label']) !!}
                 {!! Form::text('weather', null, ['class' => 'form-control', 'required', 'id' => 'weather-input']) !!}
@@ -81,17 +81,43 @@
                 @endif
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="form-group{{ $errors->has('video_file') ? ' has-error' : '' }}">
-                <label for="video_file" class="control-label "style="margin-top: 8px;">Télécharger une vidéo (taille maximale: 50 Mo)</label>
-                <input id="video_file" type="file" class="form-control" name="video_file " accept="video/*" max-size="52428800">
-                @if ($errors->has('video_file'))
-                    <span class="help-block">
-                <strong>{{ $errors->first('video_file') }}</strong>
+        <div class="form-group row">
+            <div class="col-sm-12 col-md-4 text-center">
+                {!! Form::label('envoyer une premiere photo', __('envoyer une premiere photo'), ['class' => 'col-form-label']) !!}
+                {!! Form::file('photo1', ['class' => 'form-control-file', 'required']) !!}
+
+                @if ($errors->has('photo1'))
+                    <span class="invalid-feedback" role="alert">
+                <strong>{{ $errors->first('photo1') }}</strong>
+            </span>
+                @endif
+            </div>
+
+            <div class="col-sm-12 col-md-4 text-center">
+                {!! Form::label('envoyer une seconde photo', __('envoyer une seconde photo'), ['class' => 'col-form-label']) !!}
+                {!! Form::file('photo2', ['class' => 'form-control-file', 'required']) !!}
+
+                @if ($errors->has('photo2'))
+                    <span class="invalid-feedback" role="alert">
+                <strong>{{ $errors->first('photo2') }}</strong>
+            </span>
+                @endif
+            </div>
+
+            <div class="col-sm-12 col-md-4 text-center">
+                {!! Form::label('envoyer une derniere photo', __('envoyer une derniere photo'), ['class' => 'col-form-label']) !!}
+                {!! Form::file('photo3', ['class' => 'form-control-file', 'required']) !!}
+
+                @if ($errors->has('photo3'))
+                    <span class="invalid-feedback" role="alert">
+                <strong>{{ $errors->first('photo3') }}</strong>
             </span>
                 @endif
             </div>
         </div>
+
+
+
         <div class="col-md-12">
             <div class="form-group{{ $errors->has('notes') ? ' has-error' : '' }}">
                 {!! Form::label('notes', 'Notes', ['class' => 'form-label']) !!}
@@ -103,103 +129,7 @@
                 @endif
             </div>
         </div>
-        <div class="form-group{{ $errors->has('photo_file') ? ' has-error' : '' }}">
-            {!! Form::label('photo_file', 'Photos', ['class' => 'form-label']) !!}
-            <div class="row mx-auto justify-content-center preview-images-row">
-                @for ($i = 0; $i < 3; $i++)
-                    <div class="col-md-2 col-sm-4 col-6 preview-images-col">
-                        <div class="preview-images-zone">
-                            <div class="image-wrapper">
-                                <img src="" class="preview-image" style="max-height: 100%; max-width: 100%; display: none;">
-                                <p class="preview-text" style="font-size: 8px;"></p>
-                            </div>
-                            <input type="file" class="file-input" name="photo_file[]" accept="image/*" style="display:none;">
-                            <button type="button" class="btn btn-primary file-button btn-block mb-3"><img src="" class="add-icon" style="max-height: 100%; max-width: 100%;">+</button>
-                            <p class="filename"></p>
-                        </div>
-                    </div>
-                @endfor
-            </div>
-            @if ($errors->has('photo_file'))
-                <div class="invalid-feedback">
-                    {{ $errors->first('photo_file') }}
-                </div>
-            @endif
-        </div>
-        <script>
-            $(function() {
-                var numCols = 6;
-                var colWidth = 2;
-                var screenWidth = $(window).width();
-                if (screenWidth < 320) {
-                    numCols = 2;
-                    colWidth = 6;
-                } else if (screenWidth < 576) {
-                    numCols = 2;
-                    colWidth = 6;
-                } else if (screenWidth < 768) {
-                    numCols = 3;
-                    colWidth = 4;
-                } else if (screenWidth < 992) {
-                    numCols = 4;
-                    colWidth = 3;
-                } else if (screenWidth < 1200) {
-                    numCols = 5;
-                    colWidth = 2;
-                }
-                var margin = 5;
-                var rowWidth = (numCols * (100/numCols)) - (margin * (numCols - 1));
-                $('.preview-images-row').css({
-                    'width': rowWidth + '%',
-                    'margin': '0 auto'
-                });
-                $('.preview-images-col').css({
-                    'width': colWidth + '%',
-                    'margin-left': margin + '%',
-                    'margin-right': margin + '%'
-                });
-                $('.file-button').toggleClass('btn-block', screenWidth < 576);
-
-                $('.file-button').on('click', function() {
-                    $(this).siblings('.file-input').click();
-                });
-
-                $('.file-input').on('change', function() {
-                    var file = $(this)[0].files[0];
-                    if (file.type.match('image.*')) {
-                        var reader = new FileReader();
-                        var zone = $(this).parent('.preview-images-zone');
-                        reader.onload = function(e) {
-                            zone.children('.image-wrapper').children('.preview-text').text(file.name.substring(0, 3)).show();
-                            zone.children('.image-wrapper').children('.preview-image').attr('src', e.target.result).show();
-                            zone.children('.file-button').children('.add-icon').hide();
-                        }
-                        reader.readAsDataURL(file);
-                    }
-                    //zone.children('.filename').text(file.name);
-                });
-                $(window).on('resize', function() {
-                    var screenWidth = $(window).width();
-                    var numCols = 6;
-                    if (screenWidth < 576) {
-                        numCols = 2;
-                    } else if (screenWidth < 768) {
-                        numCols = 3;
-                    } else if (screenWidth < 992) {
-                        numCols = 4;
-                    } else if (screenWidth < 1200) {
-                        numCols = 5;
-                    }
-                    var colWidth = 12 / numCols;
-                    $('.preview-images-zone').removeClass(function(index, className) {
-                        return (className.match(/(^|\s)col-\S+/g) || []).join(' ');
-                    }).addClass('col-' + colWidth);
-                    $('.file-button').toggleClass('btn-block', screenWidth < 576);
-                }).trigger('resize');
-            });
-        </script>
-    </div>
-    <div class="form-group d-flex justify-content-center">
+        <div class="form-group d-flex justify-content-center">
         {!! Form::submit('Valider votre progression', ['class' => 'btn btn-primary']) !!}
     </div>
     {!! Form::close() !!}

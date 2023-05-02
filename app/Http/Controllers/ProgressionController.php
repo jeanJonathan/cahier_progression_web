@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Progression;
 
+use Illuminate\Support\Facades\Storage;
 class ProgressionController extends Controller
 {
     /**
@@ -34,60 +35,9 @@ class ProgressionController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    /*
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'level_id' => 'required',
-            'date' => 'required|date|before_or_equal:today',
-            'location' => 'required|string',
-            'weather' => 'nullable|string',
-            'notes' => 'nullable|string',
-            'photo_file' => 'nullable|file',
-            'video_file' => 'nullable|file|max:50000|mimetypes:video/mp4,video/mpeg,video/quicktime',
-            'etape_id' => 'required',
-            'surf_progression' => 'nullable|string',
-            'kite_progression' => 'nullable|string',
-            'wingfoil_progression' => 'nullable|string',
-        ]);
-
-        $progression = new Progression([
-            'level_id' => $validatedData['level_id'],
-            'date' => $validatedData['date'],
-            'location' => $validatedData['location'],
-            'weather' => $validatedData['weather'],
-            'notes' => $validatedData['notes'],
-            'user_id' => auth()->user()->id,
-            'etape_id' => $validatedData['etape_id'],
-            'surf_progression' => $validatedData['surf_progression'],
-            'kite_progression' => $validatedData['kite_progression'],
-            'wingfoil_progression' => $validatedData['wingfoil_progression'],
-        ]);
-        $progression->save();
-
-        // Ajout de la photo s'il y en a une
-        if ($request->hasFile('photo_file')) {
-            $photo = $request->file('photo_file');
-            $photoFile = $photo->store('photos', 'public');
-            $progression->photo_file = $photoFile;
-            $progression->save();
-        }
-
-        // Ajout de la vidéo s'il y en a une
-        if ($request->hasFile('video_file')) {
-            $video = $request->file('video_file');
-            $videoFile = $video->store('videos', 'public');
-            $progression->video_file = $videoFile;
-            $progression->save();
-        }
-
-        return redirect()->route('progressions.show', $progression->id)->with('success', 'Progression créée avec succès');
-    }
-    */
-    public function store(Request $request)
-    {
-        $validatedData = $request->validate([
-            'level_id' => 'nullable',
             'date' => 'required|date|before_or_equal:today',
             'location' => 'required|string',
             'weather' => 'nullable|string',
@@ -133,14 +83,15 @@ class ProgressionController extends Controller
         $progression->user_id = auth()->id();
 
         // Associer la progression à l'étape sélectionnée (si elle est spécifiée)
-        if ($validatedData['etape_id']) {
+        /*if ($validatedData['etape_id']) {
             $progression->etape_id = $validatedData['etape_id'];
-        }
+        }*/
 
         // Associer la progression au niveau de pratique sélectionné (si il est spécifié)
-        if ($validatedData['level_id']) {
+        /*if ($validatedData['level_id']) {
             $progression->level_id = $validatedData['level_id'];
         }
+        */
 
         // Sauvegarde de la progression dans la base de données
         $progression->save();

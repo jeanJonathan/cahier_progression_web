@@ -15,8 +15,6 @@ return new class extends Migration
     {
         Schema::create('progressions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('level_id');
-            $table->foreign('level_id')->references('id')->on('levels');
             $table->dateTime('date');
             $table->string('location');
             $table->string('weather');
