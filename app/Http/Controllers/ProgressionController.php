@@ -70,24 +70,24 @@ class ProgressionController extends Controller
             'wingfoil_progression' => $validatedData['wingfoil_progression'] ?? null,
         ]);
 
-        // Vérifier si les fichiers photo et vidéo ont été envoyés avec la requête
-        // Si ces fichiers existent, les variables $photo_url et $video_url sont initialisées avec les chemins de stockage des fichiers
+        //Implementation de la fonctionnalite pour creer chaque dossier de chaque utilisateur
+        $user = auth()->user();
+        $folder_name = $user->name . '_' . $user->phone;
+        //$path = Storage::disk('public')->makeDirectory($folder_name);
+
         if ($request->hasFile('photo1')) {
-            $path = Storage::disk('public')->putFile('photos', $request->file('photo1'));
-            //On doit neccessairement initialiser la variable $progression avant de l'utiliser pour stocker un chemin
-            $progression->photo1_url = $path;
-            $progression->save();
+            $path = Storage::disk('public')->putFileAs($folder_name, $request->file('photo1'), 'photo1.jpg');
+            $photo1_url = Storage::url($path);
         }
         if ($request->hasFile('photo2')) {
-            $path = Storage::disk('public')->putFile('photos', $request->file('photo2'));
-            $progression->photo2_url = $path;
-            $progression->save();
+            $path = Storage::disk('public')->putFileAs($folder_name, $request->file('photo2'), 'photo2.jpg');
+            $photo2_url = Storage::url($path);
         }
         if ($request->hasFile('photo3')) {
-            $path = Storage::disk('public')->putFile('photos', $request->file('photo3'));
-            $progression->photo3_url = $path;
-            $progression->save();
+            $path = Storage::disk('public')->putFileAs($folder_name, $request->file('photo3'), 'photo3.jpg');
+            $photo3_url = Storage::url($path);
         }
+
 
         /*
         if ($request->hasFile('video_file')) {

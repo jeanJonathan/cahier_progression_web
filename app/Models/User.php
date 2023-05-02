@@ -21,6 +21,12 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+	    'sport_id',
+	    'address',
+	    'phone',
+	    'kite_progression',
+	    'surf_progression',
+	    'wingfoil_progression'
     ];
 
     /**
