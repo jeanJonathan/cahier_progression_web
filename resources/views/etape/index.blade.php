@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h1>Liste des étapes</h1>
+        <h1>Liste des étapes  - {{ $sportNom->name }}</h1>
 
         <ul>
             @foreach ($etapes as $etape)

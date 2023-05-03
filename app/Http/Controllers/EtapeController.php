@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Etape;
 //On va utiliser la table level a cause du sport qui sera interessant pour les methode index des differents sport
 use App\Models\Level;
+use App\Models\Sport;
 
 class EtapeController extends Controller
 {
@@ -25,8 +26,10 @@ class EtapeController extends Controller
         $sport = '1';
         // On récupére les etapes(normalement level) pour ce sport
         $etapes = Level::where('sport_id', $sport)->get();
-        //On retourne les donnee dans la vue index
-        return view('etape.index', compact('etapes'));
+        //On definie la variable level pour reccuperer les level afin de manipuler le nom du sport via la cle etrangere
+        $sportNom = Sport::where('name', 'Wing foil')->firstOrFail();
+        // On retourne les données dans la vue index
+        return view('etape.index', compact('etapes', 'sportNom'));
     }
 
     public function indexSurf()
