@@ -16,10 +16,6 @@ class EtapeController extends Controller
         return view('etape.index', compact('etapes'));
         //return view('etapes', ['etapes' => $etapes]);
     }
-    public function indexKiteSurf()
-    {
-        return view('kiteSurf');
-    }
     public function indexWingfoil()
     {
         // on initialise sport pour identifier le wingfoil
@@ -31,10 +27,20 @@ class EtapeController extends Controller
         // On retourne les données dans la vue index
         return view('etape.index', compact('etapes', 'sportNom'));
     }
+    public function indexKiteSurf()
+    {
+        $sport = '2';
+        $etapes = Level::where('sport_id', $sport)->get();
+        $sportNom = Sport::where('name', 'Kite Surf')->firstOrFail();
+        return view('etape.index', compact('etapes', 'sportNom'));
+    }
 
     public function indexSurf()
     {
-        return view('surf');
+        $sport = '3';
+        $etapes = Level::where('sport_id', $sport)->get();
+        $sportNom = Sport::where('name', 'Surf')->firstOrFail();
+        return view('etape.index', compact('etapes', 'sportNom'));
     }
 
 
