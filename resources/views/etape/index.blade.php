@@ -20,9 +20,10 @@
                         <div class="etapes-item-description">{{ $key + 1 }} - {{ $etape->description}}</div>
                         <div class="etape-buttons">
                             @if (!$etape->is_validated)
-                                <a href="{{ route('progressions.create', ['etape_id' => $etape->id]) }}" class="">Valider étape</a>
+                                <a href="{{ route('progressions.create', ['etape_id' => $etape->id]) }}" class="btn btn-sm btn-success" style="text-decoration:none;">Valider étape</a>
+                                &nbsp; &nbsp; &nbsp;
                             @endif
-                            <a href="{{ $etape->video_url }}" target="_blank" class="">Voir la vidéo</a>
+                            <a href="{{ $etape->video_url }}" target="_blank" class="btn btn-sm btn-info" style="text-decoration:none;">Voir la vidéo</a>
                         </div>
                     </div>
                 </div>
@@ -30,5 +31,33 @@
         </div>
     </div>
 @endsection
+<style>
+    .etapes-container {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 20px;
+    }
 
+    .etapes-item {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid black;
+        padding: 10px;
+        max-width: 300px;
+    }
+
+    .etapes-item-image {
+        margin-bottom: 10px;
+    }
+
+    .etapes-item-description {
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .etapes-item-buttons {
+        display: flex;
+        justify-content: space-between;
+    }
+</style>
 
