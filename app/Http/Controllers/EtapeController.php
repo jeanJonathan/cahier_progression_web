@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Etape;
+//On va utiliser la table level a cause du sport qui sera interessant pour les methode index des differents sport
 use App\Models\Level;
 
 class EtapeController extends Controller
