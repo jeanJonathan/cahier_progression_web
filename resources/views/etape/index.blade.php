@@ -11,7 +11,7 @@
                             @if ($etape->isValidated)
                                 <img src="{{ asset('isValided.png') }}" alt="Image de l'étape validée {{ $key + 1 }}" class="video" width="220" height="140">
                             @else
-                                <video width="220" height="140" controls>
+                                <video width="220" height="140" controls style="border-radius: 8px;">
                                     <source src="{{ $etape->video_url }}" type="video/mp4">
                                     Votre navigateur ne supporte pas la lecture de vidéos HTML5.
                                 </video>
