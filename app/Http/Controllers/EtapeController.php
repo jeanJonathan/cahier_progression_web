@@ -14,6 +14,11 @@ class EtapeController extends Controller
         return view('etape.index', compact('etapes'));
         //return view('etapes', ['etapes' => $etapes]);
     }
+    public function indexKiteSurf()
+    {
+        return view('kiteSurf');
+    }
+
 
     /**
      * Show the form for editing the specified resource.
