@@ -28,10 +28,16 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //Liste des routes accessible qu'aux utilisateurs connecte
 Route::get('/dashboard', 'DashboardController@index')->middleware('auth');
 
-//Imeplementation des routes permettant d'acceder aux methode de LevelController
+//Implementation des routes permettant d'acceder aux methode de LevelController
 
 /*Toute les routes seront creer a l'aide de le méthode ressource
 qui crée automatiquement plusieurs routes pour les opérations CRUD*/
 Route::resource('etapes', 'App\Http\Controllers\EtapeController');
 Route::resource('levels', 'App\Http\Controllers\LevelController');
 Route::resource('progressions', 'App\Http\Controllers\ProgressionController');
+
+//On modifie la route kitesurf en ajoutant le middleware auth et en changeant son URL pour pointer vers la nouvelle route indexKiteSurf.
+//Route::get('/kitesurf', 'EtapeController@indexKiteSurf')->middleware('auth')->name('kitesurf');
+Route::get('/kitesurf', [App\Http\Controllers\EtapeController::class, 'indexKiteSurf'])->name('etapes.indexKiteSurf');
+Route::get('/wingfoil', [App\Http\Controllers\EtapeController::class, 'indexWingfoil'])->name('etapes.indexWingfoil');
+Route::get('/surf', [App\Http\Controllers\EtapeController::class, 'indexSurf'])->name('etapes.indexSurf');
