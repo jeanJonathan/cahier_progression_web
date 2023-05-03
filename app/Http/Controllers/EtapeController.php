@@ -18,6 +18,14 @@ class EtapeController extends Controller
     {
         return view('kiteSurf');
     }
+    public function indexWingfoil()
+    {
+        return view('wingfoil');
+    }
+    public function indexSurf()
+    {
+        return view('surf');
+    }
 
 
     /**

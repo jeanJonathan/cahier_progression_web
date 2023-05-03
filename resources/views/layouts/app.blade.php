@@ -37,10 +37,10 @@
                             <a class="nav-link" href="{{ Auth::check() ? route('etapes.indexKiteSurf') : route('login') }}">{{ __('Kitesurf') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('wingfoil') }}">{{ __('Wingfoil') }}</a>
+                            <a class="nav-link" href="{{ Auth::check() ? route('etapes.indexWingfoil') : route('login') }}">{{ __('Wingfoil') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('surf') }}">{{ __('Surf') }}</a>
+                            <a class="nav-link" href="{{ Auth::check() ? route('etapes.indexSurf') : route('login') }}">{{ __('Surf') }}</a>
                         </li>
                     </ul>
                     <!-- Right Side Of Navbar -->
