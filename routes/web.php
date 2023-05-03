@@ -28,7 +28,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //Liste des routes accessible qu'aux utilisateurs connecte
 Route::get('/dashboard', 'DashboardController@index')->middleware('auth');
 
-//Imeplementation des routes permettant d'acceder aux methode de LevelController
+//Implementation des routes permettant d'acceder aux methode de LevelController
 
 /*Toute les routes seront creer a l'aide de le méthode ressource
 qui crée automatiquement plusieurs routes pour les opérations CRUD*/

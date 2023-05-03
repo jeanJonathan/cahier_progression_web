@@ -33,13 +33,15 @@
                     <!-- Left Side Of Navbar -->
                     <!----
                     <ul class="navbar-nav me-auto">
-                    A completer a la fin des fonctionnalites implementer
+
                     </ul> ---->
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
+                        <!--si l'utilisateur n'est pas connecte alors on affiche les elements suivants-->
                         @guest
+                            <!--si la route de connexion est définie, on affiche le lien de navigation li--->
                             @if (Route::has('login'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -51,6 +53,7 @@
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
+                            <!--si l'utilisateur est connecte--->
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -63,6 +66,7 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
+                                    
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
