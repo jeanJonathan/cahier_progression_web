@@ -35,3 +35,15 @@ qui crée automatiquement plusieurs routes pour les opérations CRUD*/
 Route::resource('etapes', 'App\Http\Controllers\EtapeController');
 Route::resource('levels', 'App\Http\Controllers\LevelController');
 Route::resource('progressions', 'App\Http\Controllers\ProgressionController');
+
+Route::get('/kitesurf', function () {
+    return view('kitesurf');
+})->name('kitesurf');
+
+Route::get('/wingfoil', function () {
+    return view('wingfoil');
+})->name('wingfoil');
+
+Route::get('/surf', function () {
+    return view('surf');
+})->name('surf');

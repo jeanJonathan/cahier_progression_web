@@ -31,11 +31,17 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <!----
                     <ul class="navbar-nav me-auto">
-
-                    </ul> ---->
-
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('kitesurf') }}">{{ __('Kitesurf') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('wingfoil') }}">{{ __('Wingfoil') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('surf') }}">{{ __('Surf') }}</a>
+                        </li>
+                    </ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
@@ -66,11 +72,6 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-                                    
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
                                 </div>
                             </li>
                         @endguest
