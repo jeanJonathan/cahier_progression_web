@@ -20,8 +20,6 @@ return new class extends Migration
             $table->string('video_url');
             $table->unsignedBigInteger('level_id');
             $table->foreign('level_id')->references('id')->on('levels');
-            $table->unsignedBigInteger('sport_id');
-            $table->foreign('level_id')->references('id')->on('sports');
             $table->timestamps();
         });
     }

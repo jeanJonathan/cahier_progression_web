@@ -21,8 +21,14 @@ class EtapeController extends Controller
     }
     public function indexWingfoil()
     {
-        return view('wingfoil');
+        // on initialise sport pour identifier le wingfoil
+        $sport = '1';
+        // On récupére les etapes(normalement level) pour ce sport
+        $etapes = Level::where('sport_id', $sport)->get();
+        //On retourne les donnee dans la vue index
+        return view('etape.index', compact('etapes'));
     }
+
     public function indexSurf()
     {
         return view('surf');
