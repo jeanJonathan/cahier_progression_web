@@ -37,5 +37,5 @@ Route::resource('levels', 'App\Http\Controllers\LevelController');
 Route::resource('progressions', 'App\Http\Controllers\ProgressionController');
 
 //On modifie la route kitesurf en ajoutant le middleware auth et en changeant son URL pour pointer vers la nouvelle route indexKiteSurf.
-Route::get('/kitesurf', 'EtapeController@indexKiteSurf')->middleware('auth')->name('kitesurf');
-
+//Route::get('/kitesurf', 'EtapeController@indexKiteSurf')->middleware('auth')->name('kitesurf');
+Route::get('/kitesurf', [App\Http\Controllers\EtapeController::class, 'indexKiteSurf'])->name('etapes.indexKiteSurf');

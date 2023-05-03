@@ -33,7 +33,8 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('kitesurf') }}">{{ __('Kitesurf') }}</a>
+                            <!--On a utilise la methode Auth::check() pour verifier si l'utilisateur est connecté -->
+                            <a class="nav-link" href="{{ Auth::check() ? route('etapes.indexKiteSurf') : route('login') }}">{{ __('Kitesurf') }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('wingfoil') }}">{{ __('Wingfoil') }}</a>
