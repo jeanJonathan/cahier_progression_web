@@ -18,7 +18,7 @@
                             @endif
                         </div>
                         <div class="etapes-item-description">
-                            <a href="{{ route('etapes.show', $etape->id) }}">
+                            <a href="{{ route('etapes.show', $etape->id) }}" style="text-decoration:none;">
                                 {{ $key + 1 }} - {{ $etape->description}}
                             </a>
                         <div class="etape-buttons">
