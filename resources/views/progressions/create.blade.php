@@ -84,7 +84,8 @@
         <div class="form-group row">
             <div class="col-sm-12 col-md-4 text-center">
                 {!! Form::label('envoyer une premiere photo', __('envoyer une premiere photo'), ['class' => 'col-form-label']) !!}
-                {!! Form::file('photo1', ['class' => 'form-control-file', 'required']) !!}
+                <!---on a rajouter la propriete accept pour lire que l'utilisateur voir que des images lorsqu'il veut charger une photo-->
+                {!! Form::file('photo1', ['class' => 'form-control-file', 'required','accept' => 'image/*']) !!}
 
                 @if ($errors->has('photo1'))
                     <span class="invalid-feedback" role="alert">
@@ -95,7 +96,7 @@
 
             <div class="col-sm-12 col-md-4 text-center">
                 {!! Form::label('envoyer une seconde photo', __('envoyer une seconde photo'), ['class' => 'col-form-label']) !!}
-                {!! Form::file('photo2', ['class' => 'form-control-file', 'required']) !!}
+                {!! Form::file('photo2', ['class' => 'form-control-file', 'required','accept' => 'image/*']) !!}
 
                 @if ($errors->has('photo2'))
                     <span class="invalid-feedback" role="alert">
@@ -106,7 +107,7 @@
 
             <div class="col-sm-12 col-md-4 text-center">
                 {!! Form::label('envoyer une derniere photo', __('envoyer une derniere photo'), ['class' => 'col-form-label']) !!}
-                {!! Form::file('photo3', ['class' => 'form-control-file', 'required']) !!}
+                {!! Form::file('photo3', ['class' => 'form-control-file', 'required','accept' => 'image/*']) !!}
 
                 @if ($errors->has('photo3'))
                     <span class="invalid-feedback" role="alert">
@@ -115,8 +116,6 @@
                 @endif
             </div>
         </div>
-
-
 
         <div class="col-md-12">
             <div class="form-group{{ $errors->has('notes') ? ' has-error' : '' }}">
