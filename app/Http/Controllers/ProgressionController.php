@@ -128,7 +128,8 @@ class ProgressionController extends Controller
         $progression->save();
 
         // Redirection de l'utilisateur vers la liste des progressions
-        return redirect()->route('progressions.create');
+        return redirect()->intended();
+
     }
 
 
