@@ -15,6 +15,9 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+    <!--on installe le package JavaScript de l'API YouTube Player-->
+    <script src="https://www.youtube.com/iframe_api"></script>
 </head>
 <body>
 <div id="app">

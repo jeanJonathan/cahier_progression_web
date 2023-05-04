@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h1>{{ $sportNom->name }}</h1>
+        <h1 style="text-align: center;">{{ $sportNom->name }}</h1>
         <div class="etapes-container">
             @foreach ($etapes as $key => $etape)
                 <div class="">
@@ -17,7 +17,10 @@
                                 </video>
                             @endif
                         </div>
-                        <div class="etapes-item-description">{{ $key + 1 }} - {{ $etape->description}}</div>
+                        <div class="etapes-item-description">
+                            <a href="{{ route('etapes.show', $etape->id) }}" style="text-decoration:none;">
+                                {{ $key + 1 }} - {{ $etape->description}}
+                            </a>
                         <div class="etape-buttons">
                             @if (!$etape->is_validated)
                                 <a href="{{ route('progressions.create', ['etape_id' => $etape->id]) }}" class="btn btn-sm btn-success" style="text-decoration:none;">Valider étape</a>
@@ -25,6 +28,7 @@
                             @endif
                             <a href="{{ $etape->video_url }}" target="_blank" class="btn btn-sm btn-info" style="text-decoration:none;">Voir la vidéo</a>
                         </div>
+                    </div>
                     </div>
                 </div>
             @endforeach

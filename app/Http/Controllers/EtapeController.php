@@ -114,14 +114,12 @@ class EtapeController extends Controller
         return redirect()->route('levels.show', $level_id)->with('success', 'Etape supprimée avec succès');
     }
 
-    /*methode pour récupère toutes les étapes associées au sport "wingfoil" depuis la base de données et les passe à la vue "wingfoil"*/
-    /*car j'ai une seule table etape*/
-    public function wingfoil()
+    //Pour permettre a l'utilisateur de voir la description de l'etape qu'il clic
+    public function show($id)
     {
-        //where pour filtrer les etapes en fonction du sport
-        $etapes = Level ::where('sport', '1')->get(); // 1 correspond au wingfoil
-        //compact pour passee les donnees des etapes a la vue
-        return view('wingfoil', compact('etapes'));
-    }
+        $level = Level::findOrFail($id);
+        $etapes = Etape::where('level_id', $id)->orderBy('id', 'asc')->get();
 
+        return view('etape.show', compact('level', 'etapes'));
+    }
 }
