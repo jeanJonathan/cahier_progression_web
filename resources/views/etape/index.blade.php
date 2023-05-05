@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h1 style="text-align: center;">{{ $sportNom->name }}</h1>
+        <h1 style="text-align: center; font-weight: bold; margin-bottom: 20px; font-size: 36px; line-height: 1.2;">{{ $sportNom->name }}</h1>
         <div class="etapes-container">
             @foreach ($etapes as $key => $etape)
                 <div class="">
@@ -35,33 +35,83 @@
         </div>
     </div>
 @endsection
+
 <style>
-    .etapes-container {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        gap: 20px;
+    @media (max-width: 426px) {
+        .etapes-container {
+            grid-template-columns: repeat(2, 1fr);
+            display: grid;
+            gap: 20px;
+        }
+        video {
+            width: 170px;
+            height: 130px;
+        }
+        .etape-buttons .btn {
+            font-size: 9px;
+            padding: 4px 9px;
+        }
+        .etapes-item-description{
+            font-size: 12px;
+        }
     }
-
-    .etapes-item {
-        display: flex;
-        flex-direction: column;
-        border: 1px solid black;
-        padding: 10px;
-        max-width: 300px;
+    @media (min-width: 768px) {
+        .etapes-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
     }
-
-    .etapes-item-image {
-        margin-bottom: 10px;
+    @media (min-width: 992px) {
+        .etapes-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
     }
-
+    @media (min-width: 1024px) {
+        .etapes-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+    }
+    @media (min-width: 1440px) {
+        .etapes-container {
+            grid-template-columns: repeat(5, 1fr);
+        }
+    }
+    @media (min-width: 1600px) {
+        .etapes-container {
+            grid-template-columns: repeat(5, 1fr);
+        }
+    }
     .etapes-item-description {
         font-weight: bold;
         margin-bottom: 10px;
     }
-
-    .etapes-item-buttons {
-        display: flex;
-        justify-content: space-between;
+    @media (max-width: 320px) {
+        .etapes-container {
+            grid-template-columns: repeat(2, 1fr);
+            display: grid;
+            gap: 20px;
+        }
+        video {
+            width: 140px;
+            height: 100px;
+        }
+        .etape-buttons .btn {
+            font-size: 9px;
+            padding: 2px 3px;
+        }
+        .etapes-item-description{
+            font-size: 10px;
+        }
+    }
+    .etapes-container{
+        justify-content: center;
+    }
+    .etapes-item-content {
+        text-align: center;
     }
 </style>
-

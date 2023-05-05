@@ -23,7 +23,7 @@
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <!--Pour ajouter le logo-->
-                    <img src="{{ asset('ocean.png') }}" alt="Ocean" style="width: 50px; height: auto;">
+                    <img src="{{ asset('ocean.png') }}" alt="Ocean" style="width: 200px; height: auto;">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
