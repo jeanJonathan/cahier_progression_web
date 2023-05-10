@@ -30,7 +30,6 @@ class EtapeController extends Controller
 
         //Pour reccuperer toute les progressions d'un utilisateur spécifique identifié par l'id authentifié
         $progressions_user = Progression::where('user_id', auth()->id())->get();
-
         // On retourne les données dans la vue index
         return view('etape.index', compact('etapes', 'sportNom','progressions_user'));
     }
@@ -41,6 +40,7 @@ class EtapeController extends Controller
             ->where('levels.sport_id', $sport)
             ->get();
         $sportNom = Sport::where('name', 'Kite Surf')->firstOrFail();
+
         return view('etape.index', compact('etapes', 'sportNom'));
     }
 
@@ -51,6 +51,7 @@ class EtapeController extends Controller
             ->where('levels.sport_id', $sport)
             ->get();
         $sportNom = Sport::where('name', 'Surf')->firstOrFail();
+
         return view('etape.index', compact('etapes', 'sportNom'));
     }
 
