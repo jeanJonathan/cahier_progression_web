@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Progression;
-
+use App\Models\Level;
 use Illuminate\Support\Facades\Storage;
 class ProgressionController extends Controller
 {
@@ -24,9 +24,15 @@ class ProgressionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('progressions.create');
+        // Récupérer l'identifiant de l'étape à partir de l'URL generer apres avoir cliquer sur le bouton valider etape
+        $etape_id = $request->input('etape_id');
+        // Récupérer l'objet Level car c'est level qui est lie a la table progression
+        $etape = Level::findOrFail($etape_id);
+
+        // Afficher le formulaire de création de progression
+        return view('progressions.create',compact('etape','etape_id'));
     }
 
     /**
