@@ -12,7 +12,7 @@
                                 $i = 0;
                                 $isValided = false;
                             @endphp
-                            @while(!$isValid && $i < count($progressions_user))
+                            @while(!$isValided && $i < count($progressions_user))
                                 @if($progressions_user[$i]->etape_id == $etape->level_id)
                                     <img src="{{ asset('isValided.png') }}" alt="Image de l'étape validée {{ $key + 1 }}" class="video" width="220" height="140">
                                     @php
