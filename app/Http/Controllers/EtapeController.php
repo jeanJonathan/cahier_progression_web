@@ -26,6 +26,9 @@ class EtapeController extends Controller
             ->get();
         //On definie la variable level pour reccuperer les level afin de manipuler le nom du sport via la cle etrangere
         $sportNom = Sport::where('name', 'Wing foil')->firstOrFail();
+
+        //fonctionnalite propre a chaque user
+
         // On retourne les données dans la vue index
         return view('etape.index', compact('etapes', 'sportNom'));
     }

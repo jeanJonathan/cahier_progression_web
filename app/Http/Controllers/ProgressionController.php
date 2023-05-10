@@ -37,13 +37,16 @@ class ProgressionController extends Controller
      */
     public function store(Request $request)
     {
+        // Pour récupérer l'identifiant de l'étape à partir de la requête
+        $etape_id = $request->input('etape_id');
+
         $validatedData = $request->validate([
             'date' => 'required|date|before_or_equal:today',
             'location' => 'required|string',
             'weather' => 'nullable|string',
             'notes' => 'nullable|string',
             'video_file' => 'nullable|file|max:50000|mimetypes:video/mp4,video/mpeg,video/quicktime',
-            'etape_id' => 'nullable',
+            //on a supprimer etape_id car deja initialise
             'surf_progression' => 'nullable|string',
             'kite_progression' => 'nullable|string',
             'wingfoil_progression' => 'nullable|string',
@@ -64,7 +67,7 @@ class ProgressionController extends Controller
             'photo1_url'=> $photo1_url,
             'photo2_url'=> $photo2_url,
             'photo3_url'=> $photo3_url,
-
+            'etape_id' => $etape_id,
             'surf_progression' => $validatedData['surf_progression'] ?? null,
             'kite_progression' => $validatedData['kite_progression'] ?? null,
             'wingfoil_progression' => $validatedData['wingfoil_progression'] ?? null,
@@ -103,7 +106,7 @@ class ProgressionController extends Controller
             'photo1_url'=> $photo1_url,
             'photo2_url'=> $photo2_url,
             'photo3_url'=> $photo3_url,
-
+            'etape_id' => $etape_id,
             'surf_progression' => $validatedData['surf_progression'] ?? null,
             'kite_progression' => $validatedData['kite_progression'] ?? null,
             'wingfoil_progression' => $validatedData['wingfoil_progression'] ?? null,
@@ -114,15 +117,19 @@ class ProgressionController extends Controller
         $progression->user_id = auth()->id();
 
         // Associer la progression à l'étape sélectionnée (si elle est spécifiée)
-        /*if ($validatedData['etape_id']) {
+
+        if ($validatedData['etape_id']) {
             $progression->etape_id = $validatedData['etape_id'];
-        }*/
+        }
+
 
         // Associer la progression au niveau de pratique sélectionné (si il est spécifié)
         /*if ($validatedData['level_id']) {
             $progression->level_id = $validatedData['level_id'];
         }
         */
+        //
+        //$progression->etape_id = $etape_id; // Ajouter l'identifiant de l'étape
 
         // Sauvegarde de la progression dans la base de données
         $progression->save();
@@ -131,12 +138,6 @@ class ProgressionController extends Controller
         return redirect()->intended();
 
     }
-
-
-
-
-
-
     /**
      * Display the specified resource.
      *

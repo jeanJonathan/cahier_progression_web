@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container my-5">
-        <h1 class="text-center my-5">Formulaire de progression</h1>
+    <div class="container">
+        <h1 style="text-align: center; margin-bottom: 20px; font-size: 36px; line-height: 1.2;">Formulaire de progression</h1>
         {!! Form::open(['route' => 'progressions.store', 'method' => 'POST', 'files' => true, 'class' => 'row g-3', 'enctype' => 'multipart/form-data']) !!}
         <div class="col-md-6">
             <div class="form-group{{ $errors->has('date') ? ' has-error' : '' }}">
@@ -128,6 +128,8 @@
                 @endif
             </div>
         </div>
+        <!---ajoute d'un champ caché pour récupérer etape_id-->
+        {!! Form::hidden('etape_id', $etape_id) !!}
         <div class="form-group d-flex justify-content-center">
         {!! Form::submit('Valider votre progression', ['class' => 'btn btn-primary']) !!}
     </div>

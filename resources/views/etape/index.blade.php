@@ -23,12 +23,13 @@
                             </a>
                         <div class="etape-buttons">
                             @if (!$etape->is_validated)
+                                <!--pour passer l'identifiant en tant que paramètre dans l'URL de la page suivante--->
                                 <a href="{{ route('progressions.create', ['etape_id' => $etape->id]) }}" class="btn btn-sm btn-success" style="text-decoration:none;">Valider étape</a>
                                 &nbsp; &nbsp; &nbsp;
                             @endif
                             <a href="{{ $etape->video_url }}" target="_blank" class="btn btn-sm btn-info" style="text-decoration:none;">Voir la vidéo</a>
                         </div>
-                    </div>
+                        </div>
                     </div>
                 </div>
             @endforeach
