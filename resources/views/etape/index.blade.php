@@ -28,25 +28,28 @@
                                     <source src="{{ $etape->video_url }}" type="video/mp4">
                                     Votre navigateur ne supporte pas la lecture de vidéos HTML5.
                                 </video>
+                                <!-- On affiche le cadenas pour verrouiller l'étape non validée -->
+                                <img src="{{ asset('etapelock.jpg') }}" alt="Image du cadenas" class="lock" width="10" height="10">
                             @endif
                         </div>
                         <div class="etapes-item-description">
                             <a href="{{ route('etapes.show', $etape->id) }}" style="text-decoration:none;">
                                 {{ $key + 1 }} - {{ $etape->description}}
                             </a>
-                        <div class="etape-buttons">
-                            @if($isValided)
-                                <!---On grise le bouton valider etape et le bouton voir video si l'etape est validée-->
-                                <a href="{{ route('progressions.create', ['etape_id' => $etape->id]) }}" class="btn btn-sm btn-success disabled" style="text-decoration:none;">Valider étape</a>
-                                &nbsp; &nbsp; &nbsp;
-                                <a href="{{ $etape->video_url }}" target="_blank" class="btn btn-sm btn-info disabled" style="text-decoration:none;">Voir la vidéo</a>
-                            @else
-                                <!---pour afficher le bouton valider etape que si l'etape n'est pas validee-->
-                                <!--pour passer l'identifiant en tant que paramètre dans l'URL de la page suivante--->
-                                <a href="{{ route('progressions.create', ['etape_id' => $etape->id]) }}" class="btn btn-sm btn-success" style="text-decoration:none;">Valider étape</a>
-                                &nbsp; &nbsp; &nbsp;
-                                <a href="{{ $etape->video_url }}" target="_blank" class="btn btn-sm btn-info" style="text-decoration:none;">Voir la vidéo</a>
-                            @endif
+                            <div class="etape-buttons">
+                                @if($isValided)
+                                    <!-- On grise le bouton valider étape et le bouton voir vidéo si l'étape est validée -->
+                                    <a href="{{ route('progressions.create', ['etape_id' => $etape->id]) }}" class="btn btn-sm btn-success disabled" style="text-decoration:none;">Valider étape</a>
+                                    &nbsp; &nbsp; &nbsp;
+                                    <a href="{{ $etape->video_url }}" target="_blank" class="btn btn-sm btn-info disabled" style="text-decoration:none;">Voir la vidéo</a>
+                                @else
+                                    <!-- On affiche le bouton valider étape que si l'étape n'est pas validée -->
+                                    <!-- On passe l'identifiant en tant que paramètre dans l'URL de la page suivante -->
+                                    <a href="{{ route('progressions.create', ['etape_id' => $etape->id]) }}" class="btn btn-sm btn-success" style="text-decoration:none;">Valider étape</a>
+                                    &nbsp; &nbsp; &nbsp;
+                                    <!-- On grise le bouton voir vidéo si l'étape n'est pas validée -->
+                                    <a href="{{ $etape->video_url }}" target="_blank" class="btn btn-sm btn-info" style="text-decoration:none;">Voir la vidéo</a>
+                                @endif
                         </div>
                         </div>
                     </div>
