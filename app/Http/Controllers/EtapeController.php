@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Progression;
 use Illuminate\Http\Request;
 use App\Models\Etape;
 //On va utiliser la table level a cause du sport qui sera interessant pour les methode index des differents sport
@@ -27,10 +28,11 @@ class EtapeController extends Controller
         //On definie la variable level pour reccuperer les level afin de manipuler le nom du sport via la cle etrangere
         $sportNom = Sport::where('name', 'Wing foil')->firstOrFail();
 
-        //fonctionnalite propre a chaque user
+        //Pour reccuperer toute les progressions d'un utilisateur spécifique identifié par l'id authentifié
+        $progressions_user = Progression::where('user_id', auth()->id())->get();
 
         // On retourne les données dans la vue index
-        return view('etape.index', compact('etapes', 'sportNom'));
+        return view('etape.index', compact('etapes', 'sportNom','progressions_user'));
     }
     public function indexKiteSurf()
     {

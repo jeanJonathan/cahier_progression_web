@@ -8,9 +8,22 @@
                 <div class="">
                     <div class="etapes-item-content">
                         <div class="etapes-item-image">
-                            @if ($etape->isValidated)
-                                <img src="{{ asset('isValided.png') }}" alt="Image de l'étape validée {{ $key + 1 }}" class="video" width="220" height="140">
-                            @else
+                            @php
+                                $i = 0;
+                                $isValided = false;
+                            @endphp
+                            @while(!$isValid && $i < count($progressions_user))
+                                @if($progressions_user[$i]->etape_id == $etape->level_id)
+                                    <img src="{{ asset('isValided.png') }}" alt="Image de l'étape validée {{ $key + 1 }}" class="video" width="220" height="140">
+                                    @php
+                                        $isValided = true;
+                                    @endphp
+                                @endif
+                                @php
+                                    $i++;
+                                @endphp
+                            @endwhile
+                            @if(!$isValided)
                                 <video width="220" height="140" controls style="border-radius: 8px;">
                                     <source src="{{ $etape->video_url }}" type="video/mp4">
                                     Votre navigateur ne supporte pas la lecture de vidéos HTML5.

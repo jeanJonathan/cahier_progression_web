@@ -123,11 +123,11 @@ class ProgressionController extends Controller
         $progression->user_id = auth()->id();
 
         // Associer la progression à l'étape sélectionnée (si elle est spécifiée)
-
+/*
         if ($validatedData['etape_id']) {
             $progression->etape_id = $validatedData['etape_id'];
         }
-
+    */
 
         // Associer la progression au niveau de pratique sélectionné (si il est spécifié)
         /*if ($validatedData['level_id']) {
