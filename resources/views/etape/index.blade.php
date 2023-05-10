@@ -8,9 +8,22 @@
                 <div class="">
                     <div class="etapes-item-content">
                         <div class="etapes-item-image">
-                            @if ($etape->isValidated)
-                                <img src="{{ asset('isValided.png') }}" alt="Image de l'étape validée {{ $key + 1 }}" class="video" width="220" height="140">
-                            @else
+                            @php
+                                $i = 0;
+                                $isValided = false;
+                            @endphp
+                            @while(!$isValided && $i < count($progressions_user))
+                                @if($progressions_user[$i]->etape_id == $etape->level_id)
+                                    <img src="{{ asset('isValided.png') }}" alt="Image de l'étape validée {{ $key + 1 }}" class="video" width="220" height="140">
+                                    @php
+                                        $isValided = true;
+                                    @endphp
+                                @endif
+                                @php
+                                    $i++;
+                                @endphp
+                            @endwhile
+                            @if(!$isValided)
                                 <video width="220" height="140" controls style="border-radius: 8px;">
                                     <source src="{{ $etape->video_url }}" type="video/mp4">
                                     Votre navigateur ne supporte pas la lecture de vidéos HTML5.
@@ -23,12 +36,13 @@
                             </a>
                         <div class="etape-buttons">
                             @if (!$etape->is_validated)
+                                <!--pour passer l'identifiant en tant que paramètre dans l'URL de la page suivante--->
                                 <a href="{{ route('progressions.create', ['etape_id' => $etape->id]) }}" class="btn btn-sm btn-success" style="text-decoration:none;">Valider étape</a>
                                 &nbsp; &nbsp; &nbsp;
                             @endif
                             <a href="{{ $etape->video_url }}" target="_blank" class="btn btn-sm btn-info" style="text-decoration:none;">Voir la vidéo</a>
                         </div>
-                    </div>
+                        </div>
                     </div>
                 </div>
             @endforeach
