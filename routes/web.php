@@ -32,12 +32,19 @@ Route::get('/dashboard', 'DashboardController@index')->middleware('auth');
 
 /*Toute les routes seront creer a l'aide de le méthode ressource
 qui crée automatiquement plusieurs routes pour les opérations CRUD*/
+/*Route reserver aux admin plustard*/
 Route::resource('etapes', 'App\Http\Controllers\EtapeController');
 Route::resource('levels', 'App\Http\Controllers\LevelController');
-Route::resource('progressions', 'App\Http\Controllers\ProgressionController');
 
+/*protection de la route resource pour le controller progression*/
+Route::middleware(['auth'])->group(function () {
+    Route::resource('progressions', 'App\Http\Controllers\ProgressionController');
+});
 //On modifie la route kitesurf en ajoutant le middleware auth et en changeant son URL pour pointer vers la nouvelle route indexKiteSurf.
 //Route::get('/kitesurf', 'EtapeController@indexKiteSurf')->middleware('auth')->name('kitesurf');
-Route::get('/kitesurf', [App\Http\Controllers\EtapeController::class, 'indexKiteSurf'])->name('etapes.indexKiteSurf');
-Route::get('/wingfoil', [App\Http\Controllers\EtapeController::class, 'indexWingfoil'])->name('etapes.indexWingfoil');
-Route::get('/surf', [App\Http\Controllers\EtapeController::class, 'indexSurf'])->name('etapes.indexSurf');
+
+/*protection des routes suivantes pour empecher l'utilisateur d'acceder au contenue lorsqu'il saisir directement l'url*/
+Route::get('/kitesurf', [App\Http\Controllers\EtapeController::class, 'indexKiteSurf'])->name('etapes.indexKiteSurf')->middleware('auth');
+Route::get('/wingfoil', [App\Http\Controllers\EtapeController::class, 'indexWingfoil'])->name('etapes.indexWingfoil')->middleware('auth');
+Route::get('/surf', [App\Http\Controllers\EtapeController::class, 'indexSurf'])->name('etapes.indexSurf')->middleware('auth');
+

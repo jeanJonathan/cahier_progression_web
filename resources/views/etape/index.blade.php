@@ -7,7 +7,6 @@
             @php
                 $nb_validated_step = 0;
             @endphp
-
             @foreach ($etapes as $key => $etape)
                 <div class="">
                     <div class="etapes-item-content">
@@ -18,7 +17,7 @@
                             @endphp
                             @while(!$isValided && $i < count($progressions_user))
                                 @if($progressions_user[$i]->etape_id == $etape->level_id)
-                                    <img src="{{ asset('isValided.png') }}" alt="Image de l'étape validée {{ $key + 1 }}" class="video" width="220" height="140">
+                                    <img src="{{ asset('isValided.png') }}" alt="Image de l'étape validée {{ $key + 1 }}" class="video" >
                                     @php
                                         $isValided = true;
                                         //On increment pour connaitre le nombre d'etape validee
@@ -35,20 +34,19 @@
                                 // pour commencer le parcours à partir de la deuxieme étape non validée ainsi la premiere etape suivant l'etape
                                 //validee aura les boutons activee.
                             $current_step = $nb_validated_step + 1;
-
                             @endphp
-
                             @if(!$isValided)
                                 <video width="220" height="140" controls style="border-radius: 8px;">
                                     <source src="{{ $etape->video_url }}" type="video/mp4">
                                     Votre navigateur ne supporte pas la lecture de vidéos HTML5.
                                 </video>
                                 <!-- On affiche le cadenas pour verrouiller l'étape non validée -->
-                                <img src="{{ asset('etapelock.jpg') }}" alt="Image du cadenas" class="lock" width="10" height="10">
+                                <img src="{{ asset('etapelock.jpg') }}" alt="Image du cadenas" class="lock" width="30" height="20">
                             @endif
                         </div>
                         <div class="etapes-item-description">
-                            <a href="{{ route('etapes.show', $etape->id) }}" style="text-decoration:none;">
+                            <!---protection de la route pour voir la description des etapes --->
+                            <a href="{{ Auth::check() ? route('etapes.show', $etape->id) : route('login') }}" style="text-decoration:none;">
                                 {{ $key + 1 }} - {{ $etape->description}}
                             </a>
                             <div class="etape-buttons">
@@ -61,7 +59,7 @@
                                     @if($loop->iteration >= $current_step)
                                         <!-- On grise le bouton valider étape et le bouton voir vidéo si l'étape n'a pas encore été atteinte -->
                                         @if($etape->id == $etapes[$current_step - 1]->id)
-                                            <a href="{{ route('progressions.create', ['etape_id' => $etape->id]) }}" class="btn btn-sm btn-success" style="text-decoration:none;">Valider étape</a>
+                                            <a href="{{ route('progressions.create', ['etape_id' => $etape->id])}}" class="btn btn-sm btn-success" style="text-decoration:none;">Valider étape</a>
                                         @else
                                             <a href="{{ route('progressions.create', ['etape_id' => $etape->id]) }}" class="btn btn-sm btn-success disabled" style="text-decoration:none;">Valider étape</a>
                                         @endif
@@ -73,7 +71,6 @@
                                         @endif
                                     @endif
                                 @endif
-
                             </div>
                         </div>
                     </div>
@@ -90,9 +87,13 @@
             display: grid;
             gap: 20px;
         }
-        video {
-            width: 170px;
-            height: 130px;
+        .video {
+            width: 100px;
+            height: 60px;
+        }
+        .video[src$="isValided.png"] {
+            width: 110px;
+            height: 70px;
         }
         .etape-buttons .btn {
             font-size: 9px;
@@ -108,12 +109,20 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 20px;
         }
+        .video[src$="isValided.png"] {
+            width: 140px;
+            height: 90px;
+        }
     }
     @media (min-width: 992px) {
         .etapes-container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 20px;
+        }
+        .video[src$="isValided.png"] {
+            width: 170px;
+            height: 110px;
         }
     }
     @media (min-width: 1024px) {
@@ -122,15 +131,27 @@
             grid-template-columns: repeat(4, 1fr);
             gap: 20px;
         }
+        .video[src$="isValided.png"] {
+            width: 220px;
+            height: 140px;
+        }
     }
     @media (min-width: 1440px) {
         .etapes-container {
             grid-template-columns: repeat(5, 1fr);
         }
+        .video[src$="isValided.png"] {
+            width: 220px;
+            height: 140px;
+        }
     }
     @media (min-width: 1600px) {
         .etapes-container {
             grid-template-columns: repeat(5, 1fr);
+        }
+        .video[src$="isValided.png"] {
+            width: 220px;
+            height: 140px;
         }
     }
     .etapes-item-description {
@@ -143,9 +164,13 @@
             display: grid;
             gap: 20px;
         }
-        video {
+        .video {
             width: 140px;
             height: 100px;
+        }
+        .video[src$="isValided.png"] {
+            width: 90px;
+            height: 60px;
         }
         .etape-buttons .btn {
             font-size: 9px;
@@ -162,3 +187,4 @@
         text-align: center;
     }
 </style>
+
