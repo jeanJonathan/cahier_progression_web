@@ -41,7 +41,9 @@ class EtapeController extends Controller
             ->get();
         $sportNom = Sport::where('name', 'Kite Surf')->firstOrFail();
 
-        return view('etape.index', compact('etapes', 'sportNom'));
+        $progressions_user = Progression::where('user_id', auth()->id())->get();
+
+        return view('etape.index', compact('etapes', 'sportNom','progressions_user'));
     }
 
     public function indexSurf()
@@ -52,7 +54,9 @@ class EtapeController extends Controller
             ->get();
         $sportNom = Sport::where('name', 'Surf')->firstOrFail();
 
-        return view('etape.index', compact('etapes', 'sportNom'));
+        $progressions_user = Progression::where('user_id', auth()->id())->get();
+
+        return view('etape.index', compact('etapes', 'sportNom','progressions_user'));
     }
 
 
