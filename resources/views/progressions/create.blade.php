@@ -30,6 +30,8 @@
                 <!--implementation de la fonctionnalite d'auto completion-->
                 <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
                 <script src="//code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+                <!---<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> ---->
                 <script>
                     $(document).ready(function() {
                         $(document).ready(function() {
