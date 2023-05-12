@@ -30,8 +30,10 @@
                 <!--implementation de la fonctionnalite d'auto completion-->
                 <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
                 <script src="//code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
-                <!---<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> ---->
+
+                <!-----
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> ----->
                 <script>
                     $(document).ready(function() {
                         $(document).ready(function() {
@@ -135,27 +137,7 @@
         <!---ajoute d'un champ caché pour récupérer etape_id-->
         {!! Form::hidden('etape_id', $etape_id) !!}
         <div class="form-group d-flex justify-content-center">
-        {!! Form::submit('Valider votre progression', ['class' => 'btn btn-primary', 'id'=>'submit-btn']) !!}
-            /*on ajoute un événement click sur le bouton submit */
-            <script>
-                $(document).ready(function() {
-                    $('#submit-btn').click(function(e) {
-                        e.preventDefault();
-                        var formData = $('form').serialize();
-                        $.ajax({
-                            type: 'POST',
-                            url: '/form',
-                            data: formData,
-                            success: function(data) {
-                                $('#confirmation').modal('show');
-                            },
-                            error: function(data) {
-                                console.log(data);
-                            }
-                        });
-                    });
-                });
-            </script>
+        {!! Form::submit('Valider votre progression', ['class' => 'btn btn-primary']) !!}
     </div>
     {!! Form::close() !!}
 @endsection

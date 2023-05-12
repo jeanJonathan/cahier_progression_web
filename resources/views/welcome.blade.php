@@ -110,7 +110,7 @@
                         </aside>
                     </section>
                 </div>
-                <div class="col-md-4">
+                <div class="co8l-md-4">
                     <section class="text-center">
                         <img src="{{ asset('ocean.png') }}" alt="surf" class="card-img-top rounded-circle mx-auto d-block mb-4" style="max-width: 50%; margin: 0 auto;">
                         <article class="card-body">

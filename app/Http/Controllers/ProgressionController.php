@@ -141,7 +141,11 @@ class ProgressionController extends Controller
         $progression->save();
 
         // Redirection de l'utilisateur vers la liste des progressions
-        return redirect()->intended();
+        // Message de réussite
+        $request->session()->flash('success', 'Votre progression a été enregistrée avec succès.');
+
+        // Affichage de la fenêtre modale après la validation de la progression
+        return redirect()->intended()->with('success', true);
 
     }
     /**
