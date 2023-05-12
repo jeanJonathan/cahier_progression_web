@@ -141,7 +141,18 @@
                 $(document).ready(function() {
                     $('#submit-btn').click(function(e) {
                         e.preventDefault();
-
+                        var formData = $('form').serialize();
+                        $.ajax({
+                            type: 'POST',
+                            url: '/form',
+                            data: formData,
+                            success: function(data) {
+                                $('#confirmation').modal('show');
+                            },
+                            error: function(data) {
+                                console.log(data);
+                            }
+                        });
                     });
                 });
             </script>
