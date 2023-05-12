@@ -35,8 +35,11 @@ qui crée automatiquement plusieurs routes pour les opérations CRUD*/
 /*Route reserver aux admin plustard*/
 Route::resource('etapes', 'App\Http\Controllers\EtapeController');
 Route::resource('levels', 'App\Http\Controllers\LevelController');
-Route::resource('progressions', 'App\Http\Controllers\ProgressionController');
 
+/*protection de la route resource pour le controller progression*/
+Route::middleware(['auth'])->group(function () {
+    Route::resource('progressions', 'App\Http\Controllers\ProgressionController');
+});
 //On modifie la route kitesurf en ajoutant le middleware auth et en changeant son URL pour pointer vers la nouvelle route indexKiteSurf.
 //Route::get('/kitesurf', 'EtapeController@indexKiteSurf')->middleware('auth')->name('kitesurf');
 

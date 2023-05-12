@@ -46,13 +46,12 @@
                         </div>
                         <div class="etapes-item-description">
                             <!---protection de la route pour voir la description des etapes --->
-                            <a href="{{ route('etapes.show', $etape->id) }}" style="text-decoration:none;">
+                            <a href="{{ Auth::check() ? route('etapes.show', $etape->id) : route('login') }}" style="text-decoration:none;">
                                 {{ $key + 1 }} - {{ $etape->description}}
                             </a>
                             <div class="etape-buttons">
                                 @if($isValided)
                                     <!-- On grise le bouton valider étape et le bouton voir vidéo si l'étape est validée -->
-                                <!----protection de la route pour acceder au formulaire en fonction de chaque etape---->
                                     <a href="{{ route('progressions.create', ['etape_id' => $etape->id]) }}" class="btn btn-sm btn-success disabled" style="text-decoration:none;">Valider étape</a>
                                     &nbsp; &nbsp; &nbsp;
                                     <a href="{{ $etape->video_url }}" target="_blank" class="btn btn-sm btn-info disabled" style="text-decoration:none;">Voir la vidéo</a>
@@ -60,8 +59,7 @@
                                     @if($loop->iteration >= $current_step)
                                         <!-- On grise le bouton valider étape et le bouton voir vidéo si l'étape n'a pas encore été atteinte -->
                                         @if($etape->id == $etapes[$current_step - 1]->id)
-                                            <!----protection de la route pour acceder au formulaire en fonction de chaque etape---->
-                                            <a href="{{ route('progressions.create', ['etape_id' => $etape->id]) }}" class="btn btn-sm btn-success" style="text-decoration:none;">Valider étape</a>
+                                            <a href="{{ route('progressions.create', ['etape_id' => $etape->id])}}" class="btn btn-sm btn-success" style="text-decoration:none;">Valider étape</a>
                                         @else
                                             <a href="{{ route('progressions.create', ['etape_id' => $etape->id]) }}" class="btn btn-sm btn-success disabled" style="text-decoration:none;">Valider étape</a>
                                         @endif
