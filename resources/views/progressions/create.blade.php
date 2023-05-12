@@ -135,7 +135,16 @@
         <!---ajoute d'un champ caché pour récupérer etape_id-->
         {!! Form::hidden('etape_id', $etape_id) !!}
         <div class="form-group d-flex justify-content-center">
-        {!! Form::submit('Valider votre progression', ['class' => 'btn btn-primary']) !!}
+        {!! Form::submit('Valider votre progression', ['class' => 'btn btn-primary', 'id'=>'submit-btn']) !!}
+            /*on ajoute un événement click sur le bouton submit */
+            <script>
+                $(document).ready(function() {
+                    $('#submit-btn').click(function(e) {
+                        e.preventDefault();
+
+                    });
+                });
+            </script>
     </div>
     {!! Form::close() !!}
 @endsection
