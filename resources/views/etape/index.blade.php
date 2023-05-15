@@ -41,7 +41,7 @@
                                     Votre navigateur ne supporte pas la lecture de vidéos HTML5.
                                 </video>
                                 <!-- On affiche le cadenas pour verrouiller l'étape non validée -->
-                                <img src="{{ asset('etapelock.jpg') }}" alt="Image du cadenas" class="lock" width="30" height="20">
+                                <img src="{{ asset('etapelocks.jpg') }}" alt="Image du cadenas" class="lock" width="30" height="20">
                             @endif
                         </div>
                         <div class="etapes-item-description">
