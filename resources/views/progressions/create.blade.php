@@ -7,7 +7,9 @@
         <div class="col-md-6">
             <div class="form-group{{ $errors->has('date') ? ' has-error' : '' }}">
                 {!! Form::label('date', 'Date', ['class' => 'form-label']) !!}
-                {!! Form::date('date', null, ['class' => 'form-control', 'required','max' => today()->format('Y-m-d')]) !!}
+                <!--on utilise old pour reafficher les valeur precedemment saisie en cas d'erreur de validation par le user--->
+                <!--le champs est donc preremplir avec la derniere valeur saisie par l'utilisateur en cas d'erreur-->
+                {!! Form::date('date', old('date'), ['class' => 'form-control', 'required','max' => today()->format('Y-m-d')]) !!}
                 @if ($errors->has('date'))
                     <div class="invalid-feedback">
                         {{ $errors->first('date') }}
@@ -19,7 +21,7 @@
         <div class="col-md-6">
             <div class="form-group{{ $errors->has('location') ? ' has-error' : '' }}">
                 {!! Form::label('location', 'Lieu', ['class' => 'form-label']) !!}
-                {!! Form::text('location', null, ['class' => 'form-control', 'required', 'id' => 'location-input']) !!}
+                {!! Form::text('location', old('location'), ['class' => 'form-control', 'required', 'id' => 'location-input']) !!}
                 @if ($errors->has('location'))
                     <div class="invalid-feedback">
                         {{ $errors->first('location') }}
@@ -28,6 +30,10 @@
                 <!--implementation de la fonctionnalite d'auto completion-->
                 <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
                 <script src="//code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+
+                <!-----
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> ----->
                 <script>
                     $(document).ready(function() {
                         $(document).ready(function() {
@@ -73,7 +79,7 @@
         <div class="">
             <div class="form-group{{ $errors->has('weather') ? ' has-error' : '' }}">
                 {!! Form::label('weather', 'Météo', ['class' => 'form-label']) !!}
-                {!! Form::text('weather', null, ['class' => 'form-control', 'required', 'id' => 'weather-input']) !!}
+                {!! Form::text('weather', old('weather'), ['class' => 'form-control', 'required', 'id' => 'weather-input']) !!}
                 @if ($errors->has('weather'))
                     <div class="invalid-feedback">
                         {{ $errors->first('weather') }}
@@ -120,7 +126,7 @@
         <div class="col-md-12">
             <div class="form-group{{ $errors->has('notes') ? ' has-error' : '' }}">
                 {!! Form::label('notes', 'Notes', ['class' => 'form-label']) !!}
-                {!! Form::textarea('notes', null, ['class' => 'form-control', 'rows' => 3]) !!}
+                {!! Form::textarea('notes', old('notes'), ['class' => 'form-control', 'rows' => 3]) !!}
                 @if ($errors->has('notes'))
                     <div class="invalid-feedback">
                         {{ $errors->first('notes') }}

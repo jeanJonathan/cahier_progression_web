@@ -29,11 +29,11 @@
                                 @endphp
                             @endwhile
                             @php
-                            //On initialise nb_step a la valeur totale d'etape contenue dans l'objet etape passe a la vue
-                                $nb_step = count($etapes);
-                                // pour commencer le parcours à partir de la deuxieme étape non validée ainsi la premiere etape suivant l'etape
-                                //validee aura les boutons activee.
-                            $current_step = $nb_validated_step + 1;
+                                //On initialise nb_step a la valeur totale d'etape contenue dans l'objet etape passe a la vue
+                                    $nb_step = count($etapes);
+                                    // pour commencer le parcours à partir de la deuxieme étape non validée ainsi la premiere etape suivant l'etape
+                                    //validee aura les boutons activee.
+                                $current_step = $nb_validated_step + 1;
                             @endphp
                             @if(!$isValided)
                                 <video width="220" height="140" controls style="border-radius: 8px;">
@@ -58,17 +58,17 @@
                                 @else
                                     @if($loop->iteration >= $current_step)
                                         <!-- On grise le bouton valider étape et le bouton voir vidéo si l'étape n'a pas encore été atteinte -->
-                                        @if($etape->id == $etapes[$current_step - 1]->id)
-                                            <a href="{{ route('progressions.create', ['etape_id' => $etape->id])}}" class="btn btn-sm btn-success" style="text-decoration:none;">Valider étape</a>
-                                        @else
-                                            <a href="{{ route('progressions.create', ['etape_id' => $etape->id]) }}" class="btn btn-sm btn-success disabled" style="text-decoration:none;">Valider étape</a>
-                                        @endif
+                                        @php
+                                            $validerEtapeClass = 'btn-success disabled';
+                                            $voirVideoClass = 'btn-info disabled';
+                                            if ($etape->id == $etapes[$current_step - 1]->id) {
+                                                $validerEtapeClass = 'btn-success';
+                                                $voirVideoClass = 'btn-info';
+                                            }
+                                        @endphp
+                                        <a href="{{ route('progressions.create', ['etape_id' => $etape->id]) }}" class="btn btn-sm {{ $validerEtapeClass }}" style="text-decoration:none;">Valider étape</a>
                                         &nbsp; &nbsp; &nbsp;
-                                        @if($etape->id == $etapes[$current_step - 1]->id)
-                                            <a href="{{ $etape->video_url }}" target="_blank" class="btn btn-sm btn-info" style="text-decoration:none;">Voir la vidéo</a>
-                                        @else
-                                            <a href="{{ $etape->video_url }}" target="_blank" class="btn btn-sm btn-info disabled" style="text-decoration:none;">Voir la vidéo</a>
-                                        @endif
+                                        <a href="{{ $etape->video_url }}" target="_blank" class="btn btn-sm {{ $voirVideoClass }}" style="text-decoration:none;">Voir la vidéo</a>
                                     @endif
                                 @endif
                             </div>
