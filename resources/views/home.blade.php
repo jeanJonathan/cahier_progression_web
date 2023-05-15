@@ -19,7 +19,7 @@
                     <section class="text-center">
                         <img src="{{ asset('surf.jpg') }}" alt="surf" class="card-img-top card mb-4">
                         <article class="card-body">
-                            <h2 class="">{{ __('Surf') }}</h2>
+                            <h2 class="surf-title">{{ __('Surf') }}</h2>
                         </article>
                         <aside class="card-body">
                             <p>{{ __('Lorem ipsum dolor sit amet, consectetur adipiscing elit.') }}</p>

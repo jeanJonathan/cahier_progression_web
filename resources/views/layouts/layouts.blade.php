@@ -34,16 +34,21 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav me-auto">
+                <ul class="navbar-nav me-auto" style="background-color: #1F355F; padding: 10px; border-radius: 5px;">
                     <li class="nav-item">
-                        <!--On a utilise la methode Auth::check() pour verifier si l'utilisateur est connecté -->
-                        <a class="nav-link" href="{{ Auth::check() ? route('etapes.indexKiteSurf') : route('login') }}">{{ __('Kitesurf') }}</a>
+                        <a class="nav-link" href="{{ Auth::check() ? route('etapes.indexKiteSurf') : route('login') }}" style="color: #FFF; font-weight: bold; text-decoration: none; transition: color 0.3s;">
+                            {{ __('Kitesurf') }}
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ Auth::check() ? route('etapes.indexWingfoil') : route('login') }}">{{ __('Wingfoil') }}</a>
+                        <a class="nav-link" href="{{ Auth::check() ? route('etapes.indexWingfoil') : route('login') }}" style="color: #FFF; font-weight: bold; text-decoration: none; transition: color 0.3s;">
+                            {{ __('Wingfoil') }}
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ Auth::check() ? route('etapes.indexSurf') : route('login') }}">{{ __('Surf') }}</a>
+                        <a class="nav-link" href="{{ Auth::check() ? route('etapes.indexSurf') : route('login') }}" style="color: #FFF; font-weight: bold; text-decoration: none; transition: color 0.3s;">
+                            {{ __('Surf') }}
+                        </a>
                     </li>
                 </ul>
                 <!-- Right Side Of Navbar -->
