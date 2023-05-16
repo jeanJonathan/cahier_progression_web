@@ -28,19 +28,23 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <!--On a utilise la methode Auth::check() pour verifier si l'utilisateur est connecté -->
-                            <a class="nav-link" href="{{ Auth::check() ? route('etapes.indexKiteSurf') : route('login') }}">{{ __('Kitesurf') }}</a>
+                            <a class="nav-link" href="{{ Auth::check() ? route('etapes.indexKiteSurf') : route('login') }}" style="color: #1F355F; font-weight: bold; text-decoration: none; transition: color 0.3s;">
+                                {{ __('Kitesurf') }}
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ Auth::check() ? route('etapes.indexWingfoil') : route('login') }}">{{ __('Wingfoil') }}</a>
+                            <a class="nav-link" href="{{ Auth::check() ? route('etapes.indexWingfoil') : route('login') }}" style="color: #1F355F; font-weight: bold; text-decoration: none; transition: color 0.3s;">
+                                {{ __('Wingfoil') }}
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ Auth::check() ? route('etapes.indexSurf') : route('login') }}">{{ __('Surf') }}</a>
+                            <a class="nav-link" href="{{ Auth::check() ? route('etapes.indexSurf') : route('login') }}" style="color: #1F355F; font-weight: bold; text-decoration: none; transition: color 0.3s;">
+                                {{ __('Surf') }}
+                            </a>
                         </li>
                     </ul>
                     <!-- Right Side Of Navbar -->
@@ -51,24 +55,24 @@
                             <!--si la route de connexion est définie, on affiche le lien de navigation li--->
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link" href="{{ route('login') }}" style="color: #35A19B; font-weight: bold; text-decoration: none; transition: color 0.3s;">{{ __('Login') }}</a>
                                 </li>
                             @endif
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }} "style="color: #35A19B; font-weight: bold; text-decoration: none; transition: color 0.3s;">{{ __('Register') }}</a>
                                 </li>
                             @endif
                             <!--si l'utilisateur est connecte--->
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="color: #35A19B; font-weight: bold; text-decoration: none; transition: color 0.3s;">
                                     {{ Auth::user()->name }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                    <a class="dropdown-item" href="{{ route('logout') }} " style="color: #35A19B; font-weight: bold; text-decoration: none; transition: color 0.3s;"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
@@ -109,6 +113,25 @@
             width: 300px; /* On ajuste la valeur de la largeur en fonction du champ du formulaire */
         }
     </style>
+    <!-- Code HTML pour la fenêtre modale -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Validation réussie !</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Votre progression a été enregistrée avec succès.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
 @if ($errors->any())

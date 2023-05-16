@@ -2,13 +2,15 @@
 
 @section('content')
     <div class="container">
-        <h1 style="text-align: center; font-weight: bold; margin-bottom: 20px; font-size: 36px; line-height: 1.2;">{{ $sportNom->name }}</h1>
+        <h1 style="text-align: center; font-weight: bold; margin-bottom: 20px; font-size: 36px; line-height: 1.2; color: #10B307; text-transform: uppercase; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
+            {{ $sportNom->name }}
+        </h1>
         <div class="etapes-container">
             @php
                 $nb_validated_step = 0;
             @endphp
             @foreach ($etapes as $key => $etape)
-                <div class="">
+                <div class="etapes-item">
                     <div class="etapes-item-content">
                         <div class="etapes-item-image">
                             @php
@@ -46,15 +48,15 @@
                         </div>
                         <div class="etapes-item-description">
                             <!---protection de la route pour voir la description des etapes --->
-                            <a href="{{ Auth::check() ? route('etapes.show', $etape->id) : route('login') }}" style="text-decoration:none;">
-                                {{ $key + 1 }} - {{ $etape->description}}
+                            <a href="{{ Auth::check() ? route('etapes.show', $etape->id) : route('login') }}" style="font-family: Arial, sans-serif; font-weight: bold; color: #10B307; text-decoration: none; opacity: 0.5;">
+                                {{ $key + 1 }} - {{ $etape->description }}
                             </a>
                             <div class="etape-buttons">
                                 @if($isValided)
                                     <!-- On grise le bouton valider étape et le bouton voir vidéo si l'étape est validée -->
                                     <a href="{{ route('progressions.create', ['etape_id' => $etape->id]) }}" class="btn btn-sm btn-success disabled" style="text-decoration:none;">Valider étape</a>
                                     &nbsp; &nbsp; &nbsp;
-                                    <a href="{{ $etape->video_url }}" target="_blank" class="btn btn-sm btn-info disabled" style="text-decoration:none;">Voir la vidéo</a>
+                                    <a href="{{ $etape->video_url }}" target="_blank" class="btn btn-sm btn-info disabled" style="text-decoration:none; background-color: #00BFFF;">Voir la vidéo</a>
                                 @else
                                     @if($loop->iteration >= $current_step)
                                         <!-- On grise le bouton valider étape et le bouton voir vidéo si l'étape n'a pas encore été atteinte -->
@@ -68,7 +70,7 @@
                                         @endphp
                                         <a href="{{ route('progressions.create', ['etape_id' => $etape->id]) }}" class="btn btn-sm {{ $validerEtapeClass }}" style="text-decoration:none;">Valider étape</a>
                                         &nbsp; &nbsp; &nbsp;
-                                        <a href="{{ $etape->video_url }}" target="_blank" class="btn btn-sm {{ $voirVideoClass }}" style="text-decoration:none;">Voir la vidéo</a>
+                                        <a href="{{ $etape->video_url }}" class="btn btn-sm {{ $voirVideoClass }}" style="text-decoration:none; background-color: #00BFFF ;">Voir la vidéo</a>
                                     @endif
                                 @endif
                             </div>
@@ -186,5 +188,15 @@
     .etapes-item-content {
         text-align: center;
     }
+    .etapes-item {
+        background-image: url('{{ asset('cahiersss.jpg') }}');
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 20px;
+        /* Autres styles souhaités */
+    }
+
 </style>
 

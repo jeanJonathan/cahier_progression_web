@@ -3,6 +3,8 @@
 @section('content')
     <div class="container">
         <h1 style="text-align: center; margin-bottom: 20px; font-size: 36px; line-height: 1.2;">Formulaire de progression</h1>
+        <!---la fonction open fournit une couche de sécurité supplémentaire en protégeant le formulaire de Cross-Site Request Forgery (CSRF) -->
+        <!---afin que utilisateur soumet un formulaire, le jeton est également soumis et vérifié par le serveur. Si le jeton soumis n'est pas valide ou manquant, la requête est rejetée---->
         {!! Form::open(['route' => 'progressions.store', 'method' => 'POST', 'files' => true, 'class' => 'row g-3', 'enctype' => 'multipart/form-data']) !!}
         <div class="col-md-6">
             <div class="form-group{{ $errors->has('date') ? ' has-error' : '' }}">
