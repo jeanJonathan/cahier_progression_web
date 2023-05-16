@@ -18,7 +18,9 @@
 
     <!--on installe le package JavaScript de l'API YouTube Player-->
     <script src="https://www.youtube.com/iframe_api"></script>
+
 </head>
+
 <body>
 <div id="app">
     <!---plustard on ajoutera la classe fixed-top pour fixer le nav -->
