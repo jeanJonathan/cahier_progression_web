@@ -5,21 +5,24 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="card mb-4">
+                    <div class="mb-4">
                         <div class="card-body">
-                            <h2 class="text-center">{{ __('IMPROVE YOUR TECHNIQUE') }}</h2>
+                            <!---color : #1F355F ;)--->
+                            <h2 class="text-center" style="font-family: Arial, sans-serif; font-size: 36px; font-weight: bold; color: #1F355F; text-transform: uppercase; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); letter-spacing: 2px;">
+                                {{ __('IMPROVE YOUR TECHNIQUE') }}
+                            </h2>
                         </div>
                         <div style="display: flex; flex-wrap: nowrap;">
-                            <img src="{{ asset('progresSurf.jpg') }}" alt="Wingfoil image" class="card-img-top" style="width: 100%;">
+                            <img src="{{ asset('progresSurfss.jpg') }}" alt="Wingfoil image" class="card-img-top" style="width: 100%;">
                         </div>
                     </div>
                 </div>
                 <!--bloc1 section1--->
                 <div class="col-md-4">
                     <section class="text-center">
-                        <img src="{{ asset('surf.jpg') }}" alt="surf" class="card-img-top card mb-4">
+                        <img src="{{ asset('surfs.jpg') }}" alt="surf" class="card-img-top card mb-4">
                         <article class="card-body">
-                            <h2 class="">{{ __('Surf') }}</h2>
+                            <h2>{{ __('Surf') }}</h2>
                         </article>
                         <aside class="card-body">
                             <p>{{ __('Lorem ipsum dolor sit amet, consectetur adipiscing elit.') }}</p>
@@ -29,7 +32,7 @@
                 <!--bloc2 section2--->
                 <div class="col-md-4">
                     <section class=" text-center">
-                        <img src="{{ asset('kitesurf.jpg') }}" alt="planches" class="card-img-top card mb-4">
+                        <img src="{{ asset('kitesurfs.jpg') }}" alt="planches" class="card-img-top card mb-4">
                         <article class="card-body">
                             <h2>{{ __('KiteSurf') }}</h2>
                             <p>{{ __('Lorem ipsum dolor sit amet, consectetur adipiscing elit.') }}</p>
@@ -39,7 +42,7 @@
                 <!--bloc3 section3 article1--->
                 <div class="col-md-4 ">
                     <section class="text-center">
-                        <img src="{{ asset('wingfoil.jpg') }}" alt="surf" class="card-img-top card mb-4">
+                        <img src="{{ asset('wingfoils.jpg') }}" alt="surf" class="card-img-top card mb-4">
                         <article class="card-body">
                             <h2>{{ __('WingFoil') }}</h2>
                             <p>{{ __('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.') }}</p>
@@ -110,7 +113,7 @@
                         </aside>
                     </section>
                 </div>
-                <div class="co8l-md-4">
+                <div class="col-md-4">
                     <section class="text-center">
                         <img src="{{ asset('ocean.png') }}" alt="surf" class="card-img-top rounded-circle mx-auto d-block mb-4" style="max-width: 50%; margin: 0 auto;">
                         <article class="card-body">
