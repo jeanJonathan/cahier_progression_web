@@ -149,6 +149,7 @@
                 // Création de la fenêtre modale
                 var modal = document.createElement('div');
                 modal.classList.add('modal');
+                modal.style.textAlign = 'center'; // Centrer le contenu horizontalement
 
                 // Rendre la fenêtre modale déplaçable
                 var isDragging = false;
@@ -199,7 +200,7 @@
 
                 // Titre de la fenêtre modale
                 var modalTitle = document.createElement('h2');
-                modalTitle.innerText = 'Options';
+                modalTitle.innerText = 'Qu\'envisagez vous de faire avant de valider votre progression;'
                 modalContent.appendChild(modalTitle);
 
                 // Lien vers le prochain trip
@@ -207,13 +208,16 @@
                 nextTripLink.href = 'lien_prochain_trip';
                 nextTripLink.innerText = 'Aller vers le prochain trip';
                 nextTripLink.target = '_blank'; // Ouverture dans une nouvelle page
+                nextTripLink.style.display = 'block';
                 modalContent.appendChild(nextTripLink);
+
 
                 // Lien pour voir l'étape suivante
                 var nextStepLink = document.createElement('a');
                 nextStepLink.href = 'lien_etape_suivante';
                 nextStepLink.innerText = 'Voir l\'étape suivante';
                 nextStepLink.target = '_blank'; // Ouverture dans une nouvelle page
+                nextStepLink.style.display = 'block';
                 modalContent.appendChild(nextStepLink);
 
                 // Lien pour préparer le prochain trip
@@ -221,6 +225,7 @@
                 prepareNextTripLink.href = 'lien_preparer_prochain_trip';
                 prepareNextTripLink.innerText = 'Préparer le prochain trip';
                 prepareNextTripLink.target = '_blank'; // Ouverture dans une nouvelle page
+                prepareNextTripLink.style.display = 'block';
                 modalContent.appendChild(prepareNextTripLink);
 
                 // Liens A, B, C
@@ -228,23 +233,26 @@
                 linkA.href = 'lien_a';
                 linkA.innerText = 'A';
                 linkA.target = '_blank';
+                linkA.style.display = 'block';
                 modalContent.appendChild(linkA);
 
                 var linkB = document.createElement('a');
                 linkB.href = 'lien_b';
                 linkB.innerText = 'B';
                 linkB.target = '_blank';
+                linkB.style.display = 'block';
                 modalContent.appendChild(linkB);
 
                 var linkC = document.createElement('a');
                 linkC.href = 'lien_c';
                 linkC.innerText = 'C';
                 linkC.target = '_blank';
+                linkC.style.display = 'block';
                 modalContent.appendChild(linkC);
 
                 // Bouton OK
                 var okButton = document.createElement('button');
-                okButton.innerText = 'OK';
+                okButton.innerText = 'NON MERCI';
                 okButton.addEventListener('click', function() {
                     // Supprimer la fenêtre modale
                     modal.remove();
