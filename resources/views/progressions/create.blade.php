@@ -194,6 +194,11 @@
                 modal.style.height = 'calc(100vw / 3)';
                 modal.style.maxHeight = '600px';
 
+                // Ajout de l'image en arrière-plan
+                modal.style.backgroundImage = 'url("https://france3-regions.francetvinfo.fr/image/ErMTeHiHEmfbQE6plUMny0J5tBo/600x400/regions/2020/06/09/5edfa6d1bff44_sebastian-leon-prado-mivvo-wvnxq-unsplash-4781700.jpg")';
+                modal.style.backgroundSize = 'cover';
+                modal.style.backgroundPosition = 'center';
+
                 // Contenu de la fenêtre modale
                 var modalContent = document.createElement('div');
                 modalContent.classList.add('modal-content');
@@ -201,6 +206,10 @@
                 // Titre de la fenêtre modale
                 var modalTitle = document.createElement('h2');
                 modalTitle.innerText = 'Qu\'envisagez vous de faire avant de valider votre progression;'
+                modalTitle.style.color = '#1F355F';
+                modalTitle.style.fontWeight = 'bold';
+                modalTitle.style.textDecoration = 'none';
+                modalTitle.style.transition = 'color 0.3s';
                 modalContent.appendChild(modalTitle);
 
                 // Lien vers le prochain trip
@@ -253,6 +262,7 @@
                 // Bouton OK
                 var okButton = document.createElement('button');
                 okButton.innerText = 'NON MERCI';
+
                 okButton.addEventListener('click', function() {
                     // Supprimer la fenêtre modale
                     modal.remove();
