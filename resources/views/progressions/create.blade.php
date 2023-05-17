@@ -195,7 +195,7 @@
                 modal.style.maxHeight = '600px';
 
                 // Ajout de l'image en arrière-plan
-                modal.style.backgroundImage = 'url("https://france3-regions.francetvinfo.fr/image/ErMTeHiHEmfbQE6plUMny0J5tBo/600x400/regions/2020/06/09/5edfa6d1bff44_sebastian-leon-prado-mivvo-wvnxq-unsplash-4781700.jpg")';
+                modal.style.backgroundImage = 'url("https://as1.ftcdn.net/v2/jpg/00/05/05/92/1000_F_5059201_qkuwu6zJlAa2ZexKhgLSayIIy6AjooKV.jpg")';
                 modal.style.backgroundSize = 'cover';
                 modal.style.backgroundPosition = 'center';
 
@@ -214,26 +214,38 @@
 
                 // Lien vers le prochain trip
                 var nextTripLink = document.createElement('a');
-                nextTripLink.href = 'lien_prochain_trip';
-                nextTripLink.innerText = 'Aller vers le prochain trip';
+                nextTripLink.href = 'https://github.com/jeanJonathan/cahier_progression_web';
+                nextTripLink.innerText = '-Aller vers le prochain trip-';
                 nextTripLink.target = '_blank'; // Ouverture dans une nouvelle page
                 nextTripLink.style.display = 'block';
+                nextTripLink.style.color = '#1F355F';
+                nextTripLink.style.fontWeight = 'bold';
+                nextTripLink.style.textDecoration = 'none';
+                nextTripLink.style.transition = 'color 0.3s';
                 modalContent.appendChild(nextTripLink);
 
                 // Lien pour voir l'étape suivante
                 var nextStepLink = document.createElement('a');
-                nextStepLink.href = 'lien_etape_suivante';
-                nextStepLink.innerText = 'Voir l\'étape suivante';
+                nextStepLink.href = 'https://github.com/jeanJonathan/cahier_progression_web';
+                nextStepLink.innerText = '-Voir l\'étape suivante-';
                 nextStepLink.target = '_blank'; // Ouverture dans une nouvelle page
                 nextStepLink.style.display = 'block';
+                nextStepLink.style.color = '#1F355F';
+                nextStepLink.style.fontWeight = 'bold';
+                nextStepLink.style.textDecoration = 'none';
+                nextStepLink.style.transition = 'color 0.3s';
                 modalContent.appendChild(nextStepLink);
 
                 // Lien pour préparer le prochain trip
                 var prepareNextTripLink = document.createElement('a');
                 prepareNextTripLink.href = 'lien_preparer_prochain_trip';
-                prepareNextTripLink.innerText = 'Préparer le prochain trip';
+                prepareNextTripLink.innerText = '-Préparer le prochain trip-';
                 prepareNextTripLink.target = '_blank'; // Ouverture dans une nouvelle page
                 prepareNextTripLink.style.display = 'block';
+                prepareNextTripLink.style.color = '#1F355F';
+                prepareNextTripLink.style.fontWeight = 'bold';
+                prepareNextTripLink.style.textDecoration = 'none';
+                prepareNextTripLink.style.transition = 'color 0.3s';
                 modalContent.appendChild(prepareNextTripLink);
 
                 // Liens A, B, C
@@ -242,6 +254,10 @@
                 linkA.innerText = 'A';
                 linkA.target = '_blank';
                 linkA.style.display = 'block';
+                linkA.style.color = '#1F355F';
+                linkA.style.fontWeight = 'bold';
+                linkA.style.textDecoration = 'none';
+                linkA.style.transition = 'color 0.3s';
                 modalContent.appendChild(linkA);
 
                 var linkB = document.createElement('a');
@@ -249,6 +265,10 @@
                 linkB.innerText = 'B';
                 linkB.target = '_blank';
                 linkB.style.display = 'block';
+                linkB.style.color = '#1F355F';
+                linkB.style.fontWeight = 'bold';
+                linkB.style.textDecoration = 'none';
+                linkB.style.transition = 'color 0.3s';
                 modalContent.appendChild(linkB);
 
                 var linkC = document.createElement('a');
@@ -256,12 +276,36 @@
                 linkC.innerText = 'C';
                 linkC.target = '_blank';
                 linkC.style.display = 'block';
+                linkC.style.color = '#1F355F';
+                linkC.style.fontWeight = 'bold';
+                linkC.style.textDecoration = 'none';
+                linkC.style.transition = 'color 0.3s';
                 modalContent.appendChild(linkC);
+
+                // Bouton de fermeture (X)
+                var closeButton = document.createElement('button');
+                closeButton.innerHTML = '&times;'; // Utilise le caractère "x" en tant que contenu du bouton
+                closeButton.style.position = 'absolute';
+                closeButton.style.top = '10px';
+                closeButton.style.right = '10px';
+                closeButton.style.border = 'none';
+                closeButton.style.backgroundColor = 'transparent';
+                closeButton.style.fontSize = '20px';
+                closeButton.style.color = '#1F355F';
+                closeButton.style.cursor = 'pointer';
+                modalContent.appendChild(closeButton);
+
+                // Gestionnaire d'événement pour le bouton de fermeture
+                closeButton.addEventListener('click', function() {
+                    modal.remove(); // Supprime la fenêtre modale
+                    // Soumission du formulaire
+                    document.getElementById('progression-form').submit();
+                });
 
                 // Bouton qui poursuit le processus de la validation du formulaire
                 var submitButton = document.createElement('button');
                 submitButton.innerText = 'NON MERCI';
-                submitButton.style.backgroundColor = '#1F355F';
+                submitButton.style.backgroundColor = '#1E3461';
                 submitButton.style.color = '#FFFFFF';
                 submitButton.style.border = 'none';
                 submitButton.style.padding = '10px 20px';
@@ -270,6 +314,23 @@
                 submitButton.style.borderRadius = '5px';
                 submitButton.style.cursor = 'pointer';
                 submitButton.style.transition = 'background-color 0.3s';
+                submitButton.classList.add('vibration-effect');
+
+                modalContent.appendChild(submitButton);
+                // CSS pour l'effet de vibration
+                var css = `.vibration-effect:hover {
+                            transform: translateX(-2px);
+                            }
+                            .vibration-effect:active {
+                            transform: translateY(2px);
+                            }
+                            `;
+
+                var style = document.createElement('style');
+                style.appendChild(document.createTextNode(css));
+                document.head.appendChild(style);
+
+
                 submitButton.addEventListener('click', function() {
                     // Suppression de la fenêtre modale
                     modal.remove();
