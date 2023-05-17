@@ -175,7 +175,7 @@
                 modal.style.width = '33.33%';
 
                 // Centrer la fenêtre modale
-                modal.style.transform = 'translate(75%,55%)';
+                modal.style.transform = 'translat8e(75%,55%)';
                 // Appliquer les styles à la fenêtre modale
                 modal.style.position = 'fixed';
                 modal.style.zIndex = '9999';
@@ -190,7 +190,7 @@
                 modal.style.width = 'calc(100vw / 3)';
                 modal.style.maxWidth = '600px';
                 // Définition de la longueur de la fenêtre modale
-                modal.style.height = 'calc(100vw / 2)';
+                modal.style.height = 'calc(100vw / 3)';
                 modal.style.maxHeight = '600px';
 
                 // Contenu de la fenêtre modale
@@ -206,34 +206,40 @@
                 var nextTripLink = document.createElement('a');
                 nextTripLink.href = 'lien_prochain_trip';
                 nextTripLink.innerText = 'Aller vers le prochain trip';
+                nextTripLink.target = '_blank'; // Ouverture dans une nouvelle page
                 modalContent.appendChild(nextTripLink);
 
                 // Lien pour voir l'étape suivante
                 var nextStepLink = document.createElement('a');
                 nextStepLink.href = 'lien_etape_suivante';
                 nextStepLink.innerText = 'Voir l\'étape suivante';
+                nextStepLink.target = '_blank'; // Ouverture dans une nouvelle page
                 modalContent.appendChild(nextStepLink);
 
                 // Lien pour préparer le prochain trip
                 var prepareNextTripLink = document.createElement('a');
                 prepareNextTripLink.href = 'lien_preparer_prochain_trip';
                 prepareNextTripLink.innerText = 'Préparer le prochain trip';
+                prepareNextTripLink.target = '_blank'; // Ouverture dans une nouvelle page
                 modalContent.appendChild(prepareNextTripLink);
 
                 // Liens A, B, C
                 var linkA = document.createElement('a');
                 linkA.href = 'lien_a';
                 linkA.innerText = 'A';
+                linkA.target = '_blank';
                 modalContent.appendChild(linkA);
 
                 var linkB = document.createElement('a');
                 linkB.href = 'lien_b';
                 linkB.innerText = 'B';
+                linkB.target = '_blank';
                 modalContent.appendChild(linkB);
 
                 var linkC = document.createElement('a');
                 linkC.href = 'lien_c';
                 linkC.innerText = 'C';
+                linkC.target = '_blank';
                 modalContent.appendChild(linkC);
 
                 // Bouton OK
