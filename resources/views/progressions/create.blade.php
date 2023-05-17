@@ -220,7 +220,6 @@
                 nextTripLink.style.display = 'block';
                 modalContent.appendChild(nextTripLink);
 
-
                 // Lien pour voir l'étape suivante
                 var nextStepLink = document.createElement('a');
                 nextStepLink.href = 'lien_etape_suivante';
@@ -259,28 +258,32 @@
                 linkC.style.display = 'block';
                 modalContent.appendChild(linkC);
 
-                // Bouton OK
-                var okButton = document.createElement('button');
-                okButton.innerText = 'NON MERCI';
-
-                okButton.addEventListener('click', function() {
-                    // Supprimer la fenêtre modale
+                // Bouton qui poursuit le processus de la validation du formulaire
+                var submitButton = document.createElement('button');
+                submitButton.innerText = 'NON MERCI';
+                submitButton.style.backgroundColor = '#1F355F';
+                submitButton.style.color = '#FFFFFF';
+                submitButton.style.border = 'none';
+                submitButton.style.padding = '10px 20px';
+                submitButton.style.fontFamily = 'Arial, sans-serif';
+                submitButton.style.fontSize = '16px';
+                submitButton.style.borderRadius = '5px';
+                submitButton.style.cursor = 'pointer';
+                submitButton.style.transition = 'background-color 0.3s';
+                submitButton.addEventListener('click', function() {
+                    // Suppression de la fenêtre modale
                     modal.remove();
 
-                    // Soumettre le formulaire
+                    // Soumission du formulaire
                     document.getElementById('progression-form').submit();
                 });
 
-                // Ajouter le bouton OK à la fenêtre modale
-                modalContent.appendChild(okButton);
-
-
-                // Ajouter le contenu à la fenêtre modale
+                // Ajout du bouton de soumission à la fenêtre modale
+                modalContent.appendChild(submitButton);
+                // Ajout du contenu à la fenêtre modale
                 modal.appendChild(modalContent);
-
                 // Ajouter la fenêtre modale à la page
                 document.body.appendChild(modal);
-
                 // Afficher la fenêtre modale à l'aide de Bootstrap Modal
                 $(modal).modal('show');
 
