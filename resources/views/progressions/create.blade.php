@@ -149,6 +149,7 @@
                 // Création de la fenêtre modale
                 var modal = document.createElement('div');
                 modal.classList.add('modal');
+                modal.style.textAlign = 'center'; // Centrer le contenu horizontalement
 
                 // Rendre la fenêtre modale déplaçable
                 var isDragging = false;
@@ -175,7 +176,7 @@
                 modal.style.width = '33.33%';
 
                 // Centrer la fenêtre modale
-                modal.style.transform = 'translat8e(75%,55%)';
+                modal.style.transform = 'translate(75%,55%)';
                 // Appliquer les styles à la fenêtre modale
                 modal.style.position = 'fixed';
                 modal.style.zIndex = '9999';
@@ -193,34 +194,58 @@
                 modal.style.height = 'calc(100vw / 3)';
                 modal.style.maxHeight = '600px';
 
+                // Ajout de l'image en arrière-plan
+                modal.style.backgroundImage = 'url("https://as1.ftcdn.net/v2/jpg/00/05/05/92/1000_F_5059201_qkuwu6zJlAa2ZexKhgLSayIIy6AjooKV.jpg")';
+                modal.style.backgroundSize = 'cover';
+                modal.style.backgroundPosition = 'center';
+
                 // Contenu de la fenêtre modale
                 var modalContent = document.createElement('div');
                 modalContent.classList.add('modal-content');
 
                 // Titre de la fenêtre modale
                 var modalTitle = document.createElement('h2');
-                modalTitle.innerText = 'Options';
+                modalTitle.innerText = 'Qu\'envisagez vous de faire avant de valider votre progression;'
+                modalTitle.style.color = '#1F355F';
+                modalTitle.style.fontWeight = 'bold';
+                modalTitle.style.textDecoration = 'none';
+                modalTitle.style.transition = 'color 0.3s';
                 modalContent.appendChild(modalTitle);
 
                 // Lien vers le prochain trip
                 var nextTripLink = document.createElement('a');
-                nextTripLink.href = 'lien_prochain_trip';
-                nextTripLink.innerText = 'Aller vers le prochain trip';
+                nextTripLink.href = 'https://github.com/jeanJonathan/cahier_progression_web';
+                nextTripLink.innerText = '-Aller vers le prochain trip-';
                 nextTripLink.target = '_blank'; // Ouverture dans une nouvelle page
+                nextTripLink.style.display = 'block';
+                nextTripLink.style.color = '#1F355F';
+                nextTripLink.style.fontWeight = 'bold';
+                nextTripLink.style.textDecoration = 'none';
+                nextTripLink.style.transition = 'color 0.3s';
                 modalContent.appendChild(nextTripLink);
 
                 // Lien pour voir l'étape suivante
                 var nextStepLink = document.createElement('a');
-                nextStepLink.href = 'lien_etape_suivante';
-                nextStepLink.innerText = 'Voir l\'étape suivante';
+                nextStepLink.href = 'https://github.com/jeanJonathan/cahier_progression_web';
+                nextStepLink.innerText = '-Voir l\'étape suivante-';
                 nextStepLink.target = '_blank'; // Ouverture dans une nouvelle page
+                nextStepLink.style.display = 'block';
+                nextStepLink.style.color = '#1F355F';
+                nextStepLink.style.fontWeight = 'bold';
+                nextStepLink.style.textDecoration = 'none';
+                nextStepLink.style.transition = 'color 0.3s';
                 modalContent.appendChild(nextStepLink);
 
                 // Lien pour préparer le prochain trip
                 var prepareNextTripLink = document.createElement('a');
                 prepareNextTripLink.href = 'lien_preparer_prochain_trip';
-                prepareNextTripLink.innerText = 'Préparer le prochain trip';
+                prepareNextTripLink.innerText = '-Préparer le prochain trip-';
                 prepareNextTripLink.target = '_blank'; // Ouverture dans une nouvelle page
+                prepareNextTripLink.style.display = 'block';
+                prepareNextTripLink.style.color = '#1F355F';
+                prepareNextTripLink.style.fontWeight = 'bold';
+                prepareNextTripLink.style.textDecoration = 'none';
+                prepareNextTripLink.style.transition = 'color 0.3s';
                 modalContent.appendChild(prepareNextTripLink);
 
                 // Liens A, B, C
@@ -228,41 +253,98 @@
                 linkA.href = 'lien_a';
                 linkA.innerText = 'A';
                 linkA.target = '_blank';
+                linkA.style.display = 'block';
+                linkA.style.color = '#1F355F';
+                linkA.style.fontWeight = 'bold';
+                linkA.style.textDecoration = 'none';
+                linkA.style.transition = 'color 0.3s';
                 modalContent.appendChild(linkA);
 
                 var linkB = document.createElement('a');
                 linkB.href = 'lien_b';
                 linkB.innerText = 'B';
                 linkB.target = '_blank';
+                linkB.style.display = 'block';
+                linkB.style.color = '#1F355F';
+                linkB.style.fontWeight = 'bold';
+                linkB.style.textDecoration = 'none';
+                linkB.style.transition = 'color 0.3s';
                 modalContent.appendChild(linkB);
 
                 var linkC = document.createElement('a');
                 linkC.href = 'lien_c';
                 linkC.innerText = 'C';
                 linkC.target = '_blank';
+                linkC.style.display = 'block';
+                linkC.style.color = '#1F355F';
+                linkC.style.fontWeight = 'bold';
+                linkC.style.textDecoration = 'none';
+                linkC.style.transition = 'color 0.3s';
                 modalContent.appendChild(linkC);
 
-                // Bouton OK
-                var okButton = document.createElement('button');
-                okButton.innerText = 'OK';
-                okButton.addEventListener('click', function() {
-                    // Supprimer la fenêtre modale
-                    modal.remove();
+                // Bouton de fermeture (X)
+                var closeButton = document.createElement('button');
+                closeButton.innerHTML = '&times;'; // On utilise le caractère "x" en tant que contenu du bouton
+                closeButton.style.position = 'absolute';
+                closeButton.style.top = '1px';
+                closeButton.style.right = '1px';
+                closeButton.style.border = 'none';
+                closeButton.style.backgroundColor = 'transparent';
+                closeButton.style.fontSize = '20px';
+                closeButton.style.color = '#1F355F';
+                closeButton.style.cursor = 'pointer';
+                modalContent.appendChild(closeButton);
 
-                    // Soumettre le formulaire
+                // Gestionnaire d'événement pour le bouton de fermeture
+                closeButton.addEventListener('click', function() {
+                    modal.remove(); // Supprime la fenêtre modale
+                    // Soumission du formulaire
                     document.getElementById('progression-form').submit();
                 });
 
-                // Ajouter le bouton OK à la fenêtre modale
-                modalContent.appendChild(okButton);
+                // Bouton qui poursuit le processus de la validation du formulaire
+                var submitButton = document.createElement('button');
+                submitButton.innerText = 'NON MERCI';
+                submitButton.style.backgroundColor = '#1E3461';
+                submitButton.style.color = '#FFFFFF';
+                submitButton.style.border = 'none';
+                submitButton.style.padding = '10px 20px';
+                submitButton.style.fontFamily = 'Arial, sans-serif';
+                submitButton.style.fontSize = '16px';
+                submitButton.style.borderRadius = '5px';
+                submitButton.style.cursor = 'pointer';
+                submitButton.style.transition = 'background-color 0.3s';
+                submitButton.classList.add('vibration-effect');
+
+                modalContent.appendChild(submitButton);
+                // CSS pour l'effet de vibration
+                var css = `.vibration-effect:hover {
+                            transform: translateX(-2px);
+                            }
+                            .vibration-effect:active {
+                            transform: translateY(2px);
+                            }
+                            `;
+
+                var style = document.createElement('style');
+                style.appendChild(document.createTextNode(css));
+                document.head.appendChild(style);
 
 
-                // Ajouter le contenu à la fenêtre modale
+                submitButton.addEventListener('click', function() {
+                    // Suppression de la fenêtre modale
+                    modal.remove();
+
+                    // Soumission du formulaire
+                    document.getElementById('progression-form').submit();
+                });
+
+                // Ajout du bouton de soumission à la fenêtre modale
+                modalContent.appendChild(submitButton);
+                // Ajout du contenu à la fenêtre modale
                 modal.appendChild(modalContent);
-
                 // Ajouter la fenêtre modale à la page
                 document.body.appendChild(modal);
-
                 // Afficher la fenêtre modale à l'aide de Bootstrap Modal
                 $(modal).modal('show');
 
