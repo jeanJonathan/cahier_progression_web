@@ -185,9 +185,13 @@
                 modal.style.backgroundColor = '#f5f5f5';
                 modal.style.border = '1px solid #ccc';
                 modal.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.2)';
-                modal.style.borderRadius = '5px';
+                modal.style.borderRadius = '5px'
+                // Définition de la largeur de la fenêtre modale
                 modal.style.width = 'calc(100vw / 3)';
                 modal.style.maxWidth = '600px';
+                // Définition de la longueur de la fenêtre modale
+                modal.style.height = 'calc(100vw / 2)';
+                modal.style.maxHeight = '600px';
 
                 // Contenu de la fenêtre modale
                 var modalContent = document.createElement('div');
