@@ -176,7 +176,7 @@
                 modal.style.width = '33.33%';
 
                 // Centrer la fenêtre modale
-                modal.style.transform = 'translat8e(75%,55%)';
+                modal.style.transform = 'translate(75%,55%)';
                 // Appliquer les styles à la fenêtre modale
                 modal.style.position = 'fixed';
                 modal.style.zIndex = '9999';
@@ -284,10 +284,10 @@
 
                 // Bouton de fermeture (X)
                 var closeButton = document.createElement('button');
-                closeButton.innerHTML = '&times;'; // Utilise le caractère "x" en tant que contenu du bouton
+                closeButton.innerHTML = '&times;'; // On utilise le caractère "x" en tant que contenu du bouton
                 closeButton.style.position = 'absolute';
-                closeButton.style.top = '10px';
-                closeButton.style.right = '10px';
+                closeButton.style.top = '1px';
+                closeButton.style.right = '1px';
                 closeButton.style.border = 'none';
                 closeButton.style.backgroundColor = 'transparent';
                 closeButton.style.fontSize = '20px';
