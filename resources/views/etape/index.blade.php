@@ -43,12 +43,12 @@
                                     Votre navigateur ne supporte pas la lecture de vidéos HTML5.
                                 </video>
                                 <!-- On affiche le cadenas pour verrouiller l'étape non validée -->
-                                <img src="{{ asset('etapelocks.jpg') }}" alt="Image du cadenas" class="lock" width="30" height="20">
+                                <!---<img src="{{ asset('etapelocks.jpg') }}" alt="Image du cadenas" class="lock" width="30" height="20">----->
                             @endif
                         </div>
                         <div class="etapes-item-description">
                             <!---protection de la route pour voir la description des etapes --->
-                            <a href="{{ Auth::check() ? route('etapes.show', $etape->id) : route('login') }}" style="font-family: Arial, sans-serif; font-weight: bold; color: #10B307; text-decoration: none; opacity: 0.5;">
+                            <a href="{{ Auth::check() ? route('etapes.show', $etape->id) : route('login') }}" style="font-family: Arial, sans-serif; font-weight: bold; color: #10B307; text-decoration: none; opacity: 2.5;">
                                 {{ $key + 1 }} - {{ $etape->description }}
                             </a>
                             <div class="etape-buttons">
@@ -85,9 +85,9 @@
 <style>
     @media (max-width: 426px) {
         .etapes-container {
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(1, 1fr);
             display: grid;
-            gap: 20px;
+            gap: 30px;
         }
         .video {
             width: 100px;
@@ -162,7 +162,7 @@
     }
     @media (max-width: 320px) {
         .etapes-container {
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(1, 1fr);
             display: grid;
             gap: 20px;
         }
@@ -193,8 +193,8 @@
         background-repeat: no-repeat;
         background-size: cover;
         border-radius: 8px;
-        padding: 20px;
-        margin-bottom: 20px;
+        padding: 10px;
+        margin-bottom: 10px;
         /* Autres styles souhaités */
     }
 

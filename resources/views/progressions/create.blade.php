@@ -2,7 +2,8 @@
 
 @section('content')
     <div class="container">
-        <h1 style="text-align: center; margin-bottom: 20px; font-size: 36px; line-height: 1.2;">Formulaire de progression</h1>
+        <h1 style="text-align: center; margin-bottom: 20px; font-size: 35px; line-height: 1.5; color: #1F355F; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); font-family: 'Arial', sans-serif;">Formulaire de progression</h1>
+
         <!---la fonction open fournit une couche de sécurité supplémentaire en protégeant le formulaire de Cross-Site Request Forgery (CSRF) -->
         <!---afin que utilisateur soumet un formulaire, le jeton est également soumis et vérifié par le serveur. Si le jeton soumis n'est pas valide ou manquant, la requête est rejetée---->
         {!! Form::open(['route' => 'progressions.store', 'method' => 'POST', 'files' => true, 'class' => 'row g-3', 'enctype' => 'multipart/form-data', 'id' => 'progression-form']) !!}
@@ -140,11 +141,14 @@
         <!---ajoute d'un champ caché pour récupérer etape_id-->
         {!! Form::hidden('etape_id', $etape_id) !!}
         <div class="form-group d-flex justify-content-center">
-            {!! Form::submit('Valider progression', ['class' => 'btn btn-primary', 'id' => 'valider-btn', 'onclick' => 'onValiderClicked(event)']) !!}
+            {!! Form::submit('Valider progression', ['class' => 'btn btn-primary', 'id' => 'valider-btn', 'onclick' => 'onValiderClicked(event)','style' => 'background-color: #1F355F; border-color:#35A19B;']) !!}
         </div>
         <script>
             function onValiderClicked(event) {
                 event.preventDefault(); // empêche le formulaire d'être soumis
+
+                // Ajout de la classe 'blur' au contenu de la page
+                document.body.classList.add('blur');
 
                 // Création de la fenêtre modale
                 var modal = document.createElement('div');
@@ -187,6 +191,7 @@
                 modal.style.border = '1px solid #ccc';
                 modal.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.2)';
                 modal.style.borderRadius = '5px'
+
                 // Définition de la largeur de la fenêtre modale
                 modal.style.width = 'calc(100vw / 3)';
                 modal.style.maxWidth = '600px';
@@ -198,6 +203,7 @@
                 modal.style.backgroundImage = 'url("https://as1.ftcdn.net/v2/jpg/00/05/05/92/1000_F_5059201_qkuwu6zJlAa2ZexKhgLSayIIy6AjooKV.jpg")';
                 modal.style.backgroundSize = 'cover';
                 modal.style.backgroundPosition = 'center';
+
 
                 // Contenu de la fenêtre modale
                 var modalContent = document.createElement('div');
