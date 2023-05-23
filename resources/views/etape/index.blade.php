@@ -189,7 +189,7 @@
         text-align: center;
     }
     .etapes-item {
-        background-image: url('{{ asset('cahiersss.jpg') }}');
+        background-image: url('{{ asset('autreimg.png') }}');
         background-repeat: no-repeat;
         background-size: cover;
         border-radius: 8px;
