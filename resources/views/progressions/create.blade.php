@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+{!! csrf_field() !!} <!--- Génère automatiquement la balise CSRF avec un jeton unique --->
+<!---par le token generé, Laravel s'assure de l'authenticité de la requête (cad que la requête provient
+bien du formulaire généré par l'application elle-même et non d'une source externe)-->
+
 @section('content')
     <div class="container">
         <h1 style="text-align: center; margin-bottom: 20px; font-size: 35px; line-height: 1.5; color: #1F355F; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); font-family: 'Arial', sans-serif;">Formulaire de progression</h1>
