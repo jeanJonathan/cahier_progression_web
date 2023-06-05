@@ -196,6 +196,8 @@ return [
     |
     */
 
-    'same_site' => 'lax',
+    'same_site' => 'strict',  /*modification de lax par strict car pour lax
+      permet aux cookies d'être inclus dans les requêtes provenant de liens externes,
+      tels que les liens de navigation dans la fenetre popup*/
 
 ];
